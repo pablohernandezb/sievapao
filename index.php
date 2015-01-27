@@ -63,5 +63,7 @@
 </div>
 
 <?
+    /* Agregando un comentario de prueba */
     include_once("vFooter.php");
+
 ?>
