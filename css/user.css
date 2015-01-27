@@ -1,0 +1,12 @@
+/* Basic style rule to outline and space block-level elements */
+.lsmall {  
+font-size: 12px;  
+font-weight: 200;  
+line-height: 15px;  
+} 
+
+.lsmallT {  
+font-size: 13px;  
+font-weight: 200;  
+line-height: 15px;  
+} 

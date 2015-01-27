@@ -1,0 +1,190 @@
+Cod,Cod,Cod,Org
+3,0,00, COMISION ELECTORAL
+4,0,00, Rectorado
+4,0,01, Programas Especiales
+4,0,10, Asesoria Juridica
+4,0,20, Direccion Cooperacion y Relac. Interinstituc.
+4,0,21, Unidad de Programas Especiales
+4,0,22, Oficina de Relaciones Publicas
+4,0,23, Oficina de Relaciones Internacionales
+4,0,25, Oficina de Prensa
+4,0,30, Comision de Planificacion
+4,0,31, Oficina de Ingenieria
+4,0,40, Programa de Educacion Continua
+4,0,41, Programa PAYS
+4,0,42, FUNINDES
+4,0,43, ARTEVISION
+4,0,50, Unidad de Auditoria Interna
+4,0,60, Direccion De Desarrollo Estudiantil
+4,0,61, Seccion de Deportes
+4,0,70, Direccion de Relaciones Internacionales
+4,0,72, Dpto. de Soporte Software
+4,0,80, Direccion de Cultura
+4,0,90, Comision Clasificadora
+5,0,00, Vice-Rectorado Administrativo
+5,0,10, Direccion de Finanzas
+5,0,11, Dpto. de Contabilidad
+5,0,12, Oficina de Presupuesto
+5,0,13, Dpto. de Tesoreria
+5,0,14, Dpto. de Registro y Control Financiero
+5,0,15, Dpto. de Bienes Nacionales
+5,0,20, Direccion de Gestion de Capital Humano
+5,0,21, Dpto. de Admon. y Desarrollo de Personal
+5,0,22, Unidad de Informacion de RRHH
+5,0,23, Dpto. de Registro y Ordenamiento de Pagos
+5,0,24, Unidad de Enlace para Asuntos Academicos
+5,0,25, Departamento de Relaciones Laborales
+5,0,26, Unidad de Admon. de Recursos Presupuestarios
+5,0,30, Direccion de Servicios
+5,0,31, Dpto. de Compras y Suministros
+5,0,32, Dpto. de Servicios Generales
+5,0,33, Dpto. de Produccion de Impresos
+5,0,34, Servicio de Comedores
+5,0,39, Apoyo Logistico
+5,0,40, Oficina de Organizacion y Sistemas
+5,0,50, Nomina de Jubilados
+5,0,60, Nomina de Pensionados
+5,0,70, Direccion de Planta Fisica
+5,0,71, Dpto. de Mantenimiento
+5,0,72, Dpto. de Proyectos
+5,0,73, Dpto. de Planeacion
+5,0,80, Direccion de Seguridad Integral
+6,0,00, Vice-Rectorado Academico
+6,1,00, Decanato de Estudios Generales
+6,1,01, Coord. de Estudios Generales y 1er. AÑO
+6,2,00, Decanato de Estudios Profesionales
+6,2,01, Coord. de Arquitectura
+6,2,02, Coord. de Biologia
+6,2,03, Coord. de Cursos en Cooperac. con la Industria
+6,2,04, Coord. de Estudios a Distancia en Lic. Docente
+6,2,05, Coord. de Fisica
+6,2,06, Coord. de Ingenieria de la Computacion
+6,2,07, Coord. de Ingenieria de Materiales
+6,2,08, Coord. de Ingenieria Electrica
+6,2,09, Coord. de Ingenieria Electronica
+6,2,10, Coord. de Ingenieria Mecanica
+6,2,11, Coord. de Ingenieria Quimica
+6,2,12, Coord. de Matematicas
+6,2,13, Coord. de Quimica
+6,2,14, Coord. de Urbanismo
+6,2,15, Coord. de Ingenieria Geofisica
+6,2,16, Coord. de Ingenieria de la Produccion
+6,3,00, Decanato de Estudios de Postgrado
+6,3,01, Coord. de Ciencias de Los Alimentos
+6,3,02, Coord. de Ciencias Politicas
+6,3,03, Coord. de Estudio de La Informacion
+6,3,04, Coord. de Filosofia
+6,3,05, Coord. de Gerencia de La Energia
+6,3,06, Coord. de Ingenieria Civil
+6,3,07, Coord. de Ingenieria Emp. y de Sistemas
+6,3,08, Coord. de Literatura Latin y Contemp.
+6,3,09, Coord. de Planif. e Ing. de Recursos Hidraulicos
+6,3,10, Coord. de Psicologia
+6,3,11, Coord. de Transporte Urbano
+6,3,12, Coord. de Ingenieria de Sistemas
+6,3,13, Coord. Desarrollo del Ambiente
+6,3,14, Coord. Linguistica Aplicada
+6,3,15, Coord. Ingenieria Mecanica
+6,3,16, Coord. de Maestria en Musica
+6,3,17, Coord. de Estudios Interdisciplinarios
+6,4,00, Decanato de Investigaciones
+6,4,01, Fondo del Decanato de Investigaciones
+6,4,75, Secret. Tec. Admtva. de Inst. de Invest.
+6,5,00, Division de Fisica y Matematicas
+6,5,01, Dpto. de Matematicas Puras y Aplicadas
+6,5,02, Dpto. de Fisica
+6,5,03, Dpto. de Quimica
+6,5,04, Dpto. de Mecanica
+6,5,05, Dpto. de Termodinamica y Fenomenos de Transfe.
+6,5,06, Dpto. de Electronica y Circuitos
+6,5,07, Dpto. de Conversion y Transporte de Energia
+6,5,08, Dpto. de Procesos y Sistemas
+6,5,09, Dpto. de Ciencia de los Materiales
+6,5,10, Dpto. Computacion y Tecnologia de la Inform.
+6,5,11, Dpto. de Ciencias de la Tierra
+6,5,12, Dpto. de Computo Cientifico y Estadistico
+6,5,51, Instituto de Energia
+6,5,52, Instituto de Estudios Regionales y Urbanos
+6,5,53, Instituto de Investigacion y Desarrollo Industrial
+6,5,54, Instituto de Metalurgia
+6,6,00, Unidad de Laboratorios
+6,6,01," Laboratorio de Mecanica    ""A"","
+6,6,02," Laboratorio de Quimica     ""B"","
+6,6,03," Laboratorio de Electronica ""C"","
+6,6,04," Laboratorio de Fisica      ""D"","
+6,6,05," Laboratorio de Procesos de Manufactura ""E"","
+6,6,06," Laboratorio de Tecnologia de Informacion ""F"","
+6,7,00, Division de Ciencias Sociales y Humanidades
+6,7,01, Dpto. de Ciencias Sociales
+6,7,02, Dpto. de Lengua y Literatura
+6,7,03, Dpto. de Ciencias Economicas y Admtvas.
+6,7,04, Dpto. de Filosofia
+6,7,05, Dpto. de Idiomas
+6,7,06, Dpto. de Ciencias y Tec. del Comportamiento
+6,7,07, Dpto. de Diseño Arquitectura y Artes Plast.
+6,7,08, Dpto. de Planificacion Urbana
+6,7,51, Inst. de Altos Estudios de America Latina
+6,7,52, Instituto de Estudios Regionales y Urbanos
+6,7,53, Bolivarium
+6,8,00, Division de Ciencias Biologicas
+6,8,01, Dpto. de Biologia Celular
+6,8,02, Dpto. de Estudios Ambientales
+6,8,03, Dpto. de Tecnol. de Proc. Biolog. y Bioqui.
+6,8,04, Dpto. de Biologia de Organismos
+6,8,51, Instituto de Tecnol. y Ciencias Marinas
+6,8,52, Instituto de Recursos Naturales Renovables
+6,9,00, NO--EXISTE--En--El--Archivo
+6,9,10, Centro de Investigaciones Educativas
+6,9,20, Decanato de Extension
+6,9,30, CAMBIO a la 7040 Dir. Servicios Multimedia
+6,9,40, Biblioteca
+6,9,50, Direccion de Desarrollo Profesoral
+6,9,60, Direccion de Deportes
+7,0,00, Secretaria
+7,0,10, Direccion de Admision y Control de Estudios (DACE)
+7,0,20, Direccion de Ingenieria de la Informacion
+7,0,30, Centro de Documentacion y Archivo (CENDA)
+7,0,40, Direccion de Servicios Multimedia
+7,0,44, Unidad de Edumatica
+7,0,50, Direccion de Servicios Telematicos
+8,0,00, Nucleo Universitario del Litoral (DIR. GENERAL).
+8,0,10, Ofic. de Informacion y Secretaria.
+8,0,20, Ofic. de Relaciones Publicas.
+8,0,90, Pensionados y Jubilados.
+8,1,00, Direccion de Administracion.
+8,1,10, Dpto. de Finanzas
+8,1,20, Dpto. de Recursos Humanos
+8,1,21, Unidad de Apoyo Administrativo
+8,1,30, Dpto. de Registro y Control Admtvo.
+8,1,40, Dpto. de Ingenieria y Mantenimiento
+8,1,50, Dpto. de Adquisiciones y Reproduccion
+8,1,60, Dpto. de Seguridad y Servicios
+8,2,00, Direccion de Apoyo Infor. Academica
+8,2,10, Dpto. de Admision y Control Estudios
+8,2,20, Dpto. de Archivo y Estadistica
+8,2,30, Coord. de Ingenieria de Informacion
+8,2,40, Dpto. de Biblioteca
+8,2,50, Departamento de Multimedia Sede Litoral
+8,2,60, Dpto. de Operaciones de Servicios Telematicos
+8,3,00, Coord. de Extension Universitaria
+8,4,00, Dpto. de Desarrollo Estudiantil
+8,4,10, Coord. de Tecnologia Industrial
+8,4,20, Coord. de Tecnologia Administrativa
+8,4,30, Deportes
+8,4,40, Unidad de Apoyo Docente
+8,5,00, Direccion de Programacion Docente
+8,5,10, Coord. de Tecno. Elect. Electronica
+8,5,20, Coord. de Formacion General
+8,5,30, Coord. de Tecno. Mecanica y Mant. Aerona.
+8,5,40, Coord. de Cursos en Coop. con la Empresa
+8,5,50, Coord. de Admt. de Turismo y Hoteleria
+8,5,60, Coord. de Educacion Permanente
+8,5,70, Coord. de Tec. Adm. Gerenciales y Tribut.
+8,6,00, Direccion de Admt. de Programas Academicos
+8,6,10, Unidad de Laboratorios
+8,6,20, Dpto. de Tecnologia Industrial
+8,6,30, Dpto. de Tecnologia de Servicio
+8,6,40, Dpto. Form. General y Ccias. Basicas
+8,6,50, Centro de Inv. en Tec. Apropiadas
+8,7,00, Direccion de Investigacion
+9,0,00, Consejo Superior
