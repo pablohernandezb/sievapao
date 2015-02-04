@@ -8,12 +8,12 @@ define ("USER" , "root");
 //define ("USER", "sievapao_admin");
 
 //define ("PASS" , "SistemaVernier!!");
-define ("PASS" , "h@rkonN3n");
+define ("PASS" , "harkonnen");
 
 //Constantes para la conexión con LimeSurvey
 define ("PATH_LS", "http://localhost/limesurvey/index.php/admin/remotecontrol");
 define ("USER_LS", "admin");
-define ("PSWD_LS", "Segundo!!");
+define ("PSWD_LS", "selusasecundus");
 
 require_once "cFunciones.php";
 

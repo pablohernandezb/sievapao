@@ -13,7 +13,7 @@
 <div class="well text-center">
     <?
 
-    /*if (!isset($_SESSION['USBID'])){
+    if (!isset($_SESSION['USBID'])){
         echo "    
     <p>
         <h4>Mediante este sistema se puede hacer seguimiento de la evaluación de personal de la Universidad Simón Bolívar.</h4>
@@ -30,7 +30,7 @@
     echo "<a href='lib/scriptcas.php' class='btn btn-info'>Iniciar sesión</a><br><br>";
 
     } else {
-*/
+
 	echo "
 	<p>
 	<h4>
@@ -58,12 +58,11 @@
 	  
 	</div>";
 
-  /*  } */
+    } 
     ?>
 </div>
 
 <?
-    /* Agregando un comentario de prueba */
     include_once("vFooter.php");
 
 ?>
