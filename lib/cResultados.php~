@@ -52,11 +52,11 @@
       
       $id_car=$resultado['Enc']['id_car'][0];//ID del cargo evaluado
       //Obtención del nombre del cargo evaluado
-      $sql="SELECT nombre, codigo FROM CARGO WHERE id='".$id_car."'";
-      $atts = array("nombre", "codigo");
+      $sql="SELECT nombre FROM CARGO WHERE id='".$id_car."'";
+      $atts = array("nombre");
       $aux= obtenerDatos($sql, $conexion, $atts, "Car");
       $CARGO=$aux['Car']['nombre'][0]; //Nombre del cargo
-      $CODIGO_CARGO=$aux['Car']['codigo'][0]; //Codigo del cargo 
+      $CODIGO_CARGO=$id_car; //Codigo del cargo 
 
       $id_unidad=$resultado['Enc']['id_unidad'][0];//ID de la unidad adscrita del evaluado
       //Obtención del nombre de la unidad a la que está adscrito el usuario

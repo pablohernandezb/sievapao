@@ -62,7 +62,8 @@
     <blockquote>
        <p><?echo $NOMBRE?></p>
        <p class="lsmall">C.I. <? echo $CEDULA?></p>
-       <p class="lsmall"><? echo $CODIGO_CARGO?> <? echo $CARGO?></p>
+       <p class="lsmall"><? echo $CARGO?></p>
+       <p class="lsmall"><? echo $CODIGO_CARGO?></p>
        <p class="lsmall"><? echo $UNIDAD?></p>
 
     </blockquote>
