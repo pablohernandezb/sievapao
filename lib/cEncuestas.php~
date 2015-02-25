@@ -81,10 +81,10 @@
 	    $aux= obtenerDatos($sql, $conexion, $atts, "Enc");
 	    //Buscar las preguntas de la sección de factores
 	    $sql ="SELECT id_encuesta_ls, id_pregunta_ls, id_pregunta_root_ls, titulo, seccion, id_pregunta ";
-	    //$sql.="FROM PREGUNTA WHERE id_encuesta_ls='".$aux['Enc']['id_encuesta_ls'][0]."' AND seccion='factor' ORDER BY id_pregunta";
-	    $sql.="FROM PREGUNTA WHERE id_encuesta_ls='".$aux['Enc']['id_encuesta_ls'][0]."' ORDER BY id_pregunta";       
+	    $sql.="FROM PREGUNTA WHERE id_encuesta_ls='".$aux['Enc']['id_encuesta_ls'][0]."' AND seccion='factor' ORDER BY id_pregunta";        
 	    $atts = array("id_encuesta_ls","id_pregunta_ls", "id_pregunta_root_ls", "titulo", "seccion", "id_pregunta");
 	    $LISTA_PREGUNTA= obtenerDatos($sql, $conexion, $atts, "Preg"); //Lista de preguntas
+				echo 'hola<br>hola<br><br><br>'.$sql;
 	  }
 	break;
 	

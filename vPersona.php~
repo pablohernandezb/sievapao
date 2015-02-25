@@ -269,9 +269,9 @@ $(function() {
 <div class="tabbable"> <!-- Only required for left/right tabs -->
 <ul class="nav nav-tabs">
    <li class="<? if(!(isset($_GET['tab'])) || ($_GET['tab'])==1 ) echo'active'?>"><a href="#tab1" data-toggle="tab">Persona</a></li>
-   <li <? if(($_GET['tab'])==2 ) echo'class=active'?>><a href="#tab2" data-toggle="tab">Cargo</a></li>
-   <li <? if(($_GET['tab'])==3 ) echo'class=active'?>><a href="#tab3" data-toggle="tab">Evaluador</a></li>
-   <li <? if(($_GET['tab'])==4 ) echo'class=active'?>><a href="#tab4" data-toggle="tab">Supervisor Jerárquico</a></li>
+   <li class="<? if(($_GET['tab'])==2 ) echo'class=active'?>"><a href="#tab2" data-toggle="tab">Cargo</a></li>
+   <li class="<? if(($_GET['tab'])==3 ) echo'class=active'?>"><a href="#tab3" data-toggle="tab">Evaluador</a></li>
+   <li class="<? if(($_GET['tab'])==4 ) echo'class=active'?>"><a href="#tab4" data-toggle="tab">Supervisor Jerárquico</a></li>
 </ul>
 <div class="tab-content">
    <div class="tab-pane <? if(!(isset($_GET['tab']))) echo'active'?>" id="tab1">

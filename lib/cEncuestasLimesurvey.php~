@@ -25,9 +25,9 @@
     if (isset($_GET['action']) && $_GET['action']=='delete'){
    
       //Actualizar vigencia de la encuesta (antigua)
-      $sql="DELETE FROM ENCUESTA_LS WHERE id_encuesta_ls='".$_GET['id_encuesta_ls']."'";
+      $sql="DELETE ENCUESTA_LS WHERE id_encuesta_ls='".$_GET['id_encuesta_ls']."'";
       $resultado_sql=ejecutarConsulta($sql,$conexion);
-      $sql="DELETE FROM ENCUESTA WHERE id_encuesta_ls='".$_GET['id_encuesta_ls']."'";
+      $sql="DELETE ENCUESTA WHERE id_encuesta_ls='".$_GET['id_encuesta_ls']."'";
       $_SESSION['MSJ'] = "La encuesta fue eliminada";
       header("Location: ../vEncuestasLimesurvey.php?success");  
     }

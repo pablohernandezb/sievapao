@@ -204,7 +204,7 @@
 		<td class="center lsmallT" nowrap><small><? echo $LISTA_EVALUACION['Proc']['fecha_fin'][$i];?></small></td> 
 		<!--Evaluaciones pendientes-->
 		<td class="center lsmallT" nowrap><small>
-		  <a href="./vEstadisticas?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="<? echo "".$LISTA_EVALUACION["Proc"]["pendiente"][$i]." de ".$LISTA_EVALUACION["Proc"]["total"][$i]." evaluaciones";?>">
+		  <a href="./vEstadisticas.php?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="<? echo "".$LISTA_EVALUACION["Proc"]["pendiente"][$i]." de ".$LISTA_EVALUACION["Proc"]["total"][$i]." evaluaciones";?>">
 		    <? if ($LISTA_EVALUACION["Proc"]["total"][$i]>0){
 		      echo round((($LISTA_EVALUACION["Proc"]["pendiente"][$i]/$LISTA_EVALUACION["Proc"]["total"][$i])*100));
 		    } else {
@@ -215,7 +215,7 @@
 		</td>  
 		<!--Evaluaciones en proceso-->
 		<td class="center lsmallT" nowrap><small>
-		  <a href="./vEstadisticas?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="<? echo "".$LISTA_EVALUACION["Proc"]["en_proceso"][$i]." de ".$LISTA_EVALUACION["Proc"]["total"][$i]." evaluaciones";?>">
+		  <a href="./vEstadisticas.php?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="<? echo "".$LISTA_EVALUACION["Proc"]["en_proceso"][$i]." de ".$LISTA_EVALUACION["Proc"]["total"][$i]." evaluaciones";?>">
 		    <? if ($LISTA_EVALUACION["Proc"]["total"][$i]>0){
 		      echo round((($LISTA_EVALUACION["Proc"]["en_proceso"][$i]/$LISTA_EVALUACION["Proc"]["total"][$i])*100));
 		    } else {
@@ -226,7 +226,7 @@
 		</td> 
 		<!--Evaluaciones completadas-->
 		<td class="center lsmallT" nowrap><small>
-		  <a href="./vEstadisticas?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="<? echo "".$LISTA_EVALUACION["Proc"]["finalizada"][$i]." de ".$LISTA_EVALUACION["Proc"]["total"][$i]." evaluaciones";?>">
+		  <a href="./vEstadisticas.php?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="<? echo "".$LISTA_EVALUACION["Proc"]["finalizada"][$i]." de ".$LISTA_EVALUACION["Proc"]["total"][$i]." evaluaciones";?>">
 		    <? if ($LISTA_EVALUACION["Proc"]["total"][$i]>0){
 		      echo round((($LISTA_EVALUACION["Proc"]["finalizada"][$i]+$LISTA_EVALUACION["Proc"]["aprobada"][$i]+$LISTA_EVALUACION["Proc"]["rechazada"][$i])/$LISTA_EVALUACION["Proc"]["total"][$i])*100);
 		    } else {
@@ -237,7 +237,7 @@
 		</td> 
 		<!--Evaluaciones aprobadas-->
 		<td class="center lsmallT" nowrap><small>
-		  <a href="./vEstadisticas?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="<? echo "".$LISTA_EVALUACION["Proc"]["aprobada"][$i]." de ".$LISTA_EVALUACION["Proc"]["total"][$i]." evaluaciones";?>">
+		  <a href="./vEstadisticas.php?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="<? echo "".$LISTA_EVALUACION["Proc"]["aprobada"][$i]." de ".$LISTA_EVALUACION["Proc"]["total"][$i]." evaluaciones";?>">
 		    <? if ($LISTA_EVALUACION["Proc"]["total"][$i]>0){
 		      echo round((($LISTA_EVALUACION["Proc"]["aprobada"][$i]/$LISTA_EVALUACION["Proc"]["total"][$i])*100));
 		    } else {
@@ -248,7 +248,7 @@
 		</td>
 		<!--Evaluaciones rechazadas-->
       <td class="center lsmallT" nowrap><small>
-        <a href="./vEstadisticas?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="<? echo "".$LISTA_EVALUACION["Proc"]["rechazada"][$i]." de ".$LISTA_EVALUACION["Proc"]["total"][$i]." evaluaciones";?>">
+        <a href="./vEstadisticas.php?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="<? echo "".$LISTA_EVALUACION["Proc"]["rechazada"][$i]." de ".$LISTA_EVALUACION["Proc"]["total"][$i]." evaluaciones";?>">
           <? if ($LISTA_EVALUACION["Proc"]["total"][$i]>0){
             echo round((($LISTA_EVALUACION["Proc"]["rechazada"][$i]/$LISTA_EVALUACION["Proc"]["total"][$i])*100));
           } else {
@@ -274,7 +274,7 @@
 		    <img src="./img/iconos/edit-16.png" style="margin-left:5px;"></a>
 		  <? } ?>
 		  <? if ($LISTA_EVALUACION['Proc']['total'][$i]!=0){ ?>
-		    <a href="./vEstadisticas?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="Ver estadísticas" >
+		    <a href="./vEstadisticas.php?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="Ver estadísticas" >
 		      <img src="./img/iconos/visible-16.png" style="margin-left:5px;"></a>
 		  <? } else { ?>
 		  <a href="?action=editar&element=<?echo $i; ?>" title="Editar periodo de duración" >

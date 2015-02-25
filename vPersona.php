@@ -594,9 +594,10 @@ $(function() {
                      }else if (isset($_GET['id']) & isset($_GET['view'])){
                         echo '<a href="?action=edit&id='.$_GET['id'].'&tab=2" class="btn btn-warning">Editar</a>' ;
                      } else{
-                        echo '<a class="btn btn-info" href="vListarCargosPersona.php?id='.$_GET["id"].'">Histórico</a>
-			      <a href="?" class="btn">Cancelar</a>
+			// <a class="btn btn-info" href="vListarCargosPersona.php?id='.$_GET["id"].'">Histórico</a>
+                        echo '<a href="?" class="btn">Cancelar</a>
                               <button type="submit" id="confirmButton" class="btn btn-success" >Registrar</button>';
+
                      }
                   ?>
                   </p>
