@@ -18,7 +18,7 @@
         $sql.="WHERE cedula='".$cedula."'";
     }
 
-     
+    echo "<br><br><br><br><br><br>".$sql;    
 
     $PERSONA = obtenerDatos($sql, $conexion, $atts, "Per");
     
