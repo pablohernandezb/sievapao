@@ -52,11 +52,11 @@
       
       $id_car=$resultado['Enc']['id_car'][0];//ID del cargo evaluado
       //Obtención del nombre del cargo evaluado
-      $sql="SELECT nombre FROM CARGO WHERE id='".$id_car."'";
-      $atts = array("nombre");
+      $sql="SELECT nombre, codigo FROM CARGO WHERE id='".$id_car."'";
+      $atts = array("nombre", "codigo");
       $aux= obtenerDatos($sql, $conexion, $atts, "Car");
       $CARGO=$aux['Car']['nombre'][0]; //Nombre del cargo
-      $CODIGO_CARGO=$id_car; //Codigo del cargo 
+      $CODIGO_CARGO=$aux['Car']['codigo'][0]; //Codigo del cargo 
 
       $id_unidad=$resultado['Enc']['id_unidad'][0];//ID de la unidad adscrita del evaluado
       //Obtención del nombre de la unidad a la que está adscrito el usuario
@@ -126,28 +126,28 @@
 	  
 	  switch($aux['Res']['respuesta'][0]){
 	  
-	    case 'Siempre':
+	    case 'Avanzado':
 	      if(isset($PROMEDIO_EVALUADORES['re_competencia'][$j])) {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]+=3;
 	      } else {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]=3;
 	      }
 	      break;
-	    case 'Casi siempre':
+	    case 'Intermedio':
 	      if(isset($PROMEDIO_EVALUADORES['re_competencia'][$j])) {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]+=2;
 	      } else {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]=2;
 	      }
 	      break;
-	    case 'Pocas veces':
+	    case 'Básico':
 	      if(isset($PROMEDIO_EVALUADORES['re_competencia'][$j])) {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]+=1;
 	      } else {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]=1;
 	      }
 	      break;;
-	    case 'Nunca':
+	    case 'Ausencia':
 	      if(!(isset($PROMEDIO_EVALUADORES['re_competencia'][$j]))) {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]=0;
 	      }

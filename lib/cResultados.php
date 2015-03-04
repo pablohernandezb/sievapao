@@ -107,7 +107,7 @@
       $PROMEDIO_EVALUADORES=array("re_competencia", "re_factor");//Arreglo donde se lleva la suma de los resultados de los evaluadores
       
       //Obtener respuestas de los evaluadores
-      for($i=0; $i<$LISTA_EVALUADORES[max_res]; $i++){
+      for($i=0; $i<$LISTA_EVALUADORES[max_res]; $i++) {
 	
 	$sql="SELECT nombre, apellido FROM PERSONA WHERE id='".$LISTA_EVALUADORES['Eva']['id_encuestado'][$i]."'";
 	$atts=array("nombre", "apellido");
@@ -126,28 +126,28 @@
 	  
 	  switch($aux['Res']['respuesta'][0]){
 	  
-	    case 'Siempre':
+	    case 'Avanzado':
 	      if(isset($PROMEDIO_EVALUADORES['re_competencia'][$j])) {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]+=3;
 	      } else {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]=3;
 	      }
 	      break;
-	    case 'Casi siempre':
+	    case 'Intermedio':
 	      if(isset($PROMEDIO_EVALUADORES['re_competencia'][$j])) {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]+=2;
 	      } else {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]=2;
 	      }
 	      break;
-	    case 'Pocas veces':
+	    case 'Básico':
 	      if(isset($PROMEDIO_EVALUADORES['re_competencia'][$j])) {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]+=1;
 	      } else {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]=1;
 	      }
 	      break;;
-	    case 'Nunca':
+	    case 'Ausencia':
 	      if(!(isset($PROMEDIO_EVALUADORES['re_competencia'][$j]))) {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]=0;
 	      }

@@ -62,10 +62,10 @@
   </div>
     <div class="span11">
     <blockquote>
-       <p><?echo $NOMBRE?></p>
-       <p class="lsmall">C.I. <? echo $CEDULA?></p>
-       <p class="lsmall"><? echo $CODIGO_CARGO?> <? echo $CARGO?></p>
-       <p class="lsmall"><? echo $UNIDAD?></p>
+       <p><strong><?echo $NOMBRE?></strong></p>
+       <p class="lsmall">Cédula de Identidad: <strong><? echo $CEDULA?></strong></p>
+       <p class="lsmall">Código del Cargo: <strong><? echo $CODIGO_CARGO?></strong> | Cargo: <strong><? echo $CARGO?></strong></p>
+       <p class="lsmall">Unidad de Adscripción: <strong><? echo $UNIDAD?></strong></p>
 
     </blockquote>
     </div>
@@ -79,12 +79,7 @@
     <div class="row">
     <div class="span1"></div>
     <div class="span10"><br>
-
-    <? echo "1 = ".$LISTA_COMPETENCIAS['Preg']['resultado'][0]."<br>" ?>
-    <? echo "2 = ".$LISTA_COMPETENCIAS['Preg']['resultado'][1]."<br>" ?>
-    <? echo "3 = ".$LISTA_COMPETENCIAS['Preg']['resultado'][2]."<br>" ?>
-    <? echo "4 = ".$LISTA_COMPETENCIAS['Preg']['resultado'][3]."<br>" ?>
-
+    
     <!--Tabla para el gŕafico-->
     <table class="tabla_competencias" style="display: none">
     <caption><small>Gráfico de los resultados</small></caption>
@@ -101,16 +96,16 @@
 	    <th scope="col">Auto-evaluación</th>
 	    <?php for($i=0; $i<$LISTA_COMPETENCIAS['max_res']; $i++){
 	      switch($LISTA_COMPETENCIAS['Preg']['resultado'][$i]){
-	      case 'Siempre':
+	      case 'Avanzado':
 		echo  '<td>3</td>';
 		break;
-	      case 'Casi siempre':
+	      case 'Intermedio':
 		echo  '<td>2</td>';
 		break;
-	      case 'Pocas veces':
+	      case 'Básico':
 		echo  '<td>1</td>';
 		break;
-	      case 'Nunca':
+	      case 'Ausencia':
 		echo  '<td>0</td>';
 		break;
 	      }//cierra switch
@@ -180,7 +175,7 @@
 	    }
 	    }?>
 	  <!--Resultado esperado-->
-	  <td class="center lsmallT" nowrap><small><? echo "Siempre"?></small></td>
+	  <td class="center lsmallT" nowrap><small><? echo "Avanzado"?></small></td>
 	</tr>
       <? } //cierre del for
       ?>   

@@ -463,20 +463,60 @@ $(function() {
             <div class="control-group">
                <label class="control-label">Condiciones</label>
                <div class="controls">
-                  <select style="width:200px" id="condiciones" name="condiciones" class="select2 show-tick org-sel" data-size="auto" <? if (isset($_GET['view'])) echo 'disabled' ?>>
-                        <?
+                  <select style="width:200px" id="condicion" name="condicion" class="select2 show-tick org-sel" data-size="auto" <? if (isset($_GET['view'])) echo 'disabled' ?>>
+			<?
+			if (isset($_GET['view'])) {
+			    switch ($LISTA_PER['Per']['condicion']['0']) {
+				case '0':
+					echo "<option value=0>Ninguno</option>";
+					break;
+				case '1':
+					echo "<option value=1>Reposo Medico</option>";
+					break;
+				case '2':
+					echo "<option value=2>Permiso Pre y Post</option>";
+					break;
+				case '3':
+					echo "<option value=3>Averiguaciones Administrativas</option>";
+					break;
+				case '4':
+					echo "<option value=4>Proceso Disciplinario</option>";
+					break;
+				case '5':
+					echo "<option value=5>Jubilado</option>";
+					break;
+				case '6':
+					echo "<option value=6>Pensionado</option>";
+					break;
+				case '7':
+					echo "<option value=7>Permiso No Remunerado</option>";
+					break;
+				case '8':
+					echo "<option value=8>Permiso Remunerado</option>";
+					break;
+				default:
+					break;
+			     }
+			} else {
+                       
                            while (list($key, $val) = each($CON_ID)){
-                              echo "<option value=".$key.">".$val."</option>";
+			      if($LISTA_PER['Per']['condicion']['0']==$key) {
+				   echo "<option selected value=".$key.">".$val."</option>";
+		    	      } else {
+				   echo "<option value=".$key.">".$val."</option>";
+			      } 
                            }
+			}
                         ?>
                   </select>
+		
                </div>
             </div>
             
             <div class="control-group">
                <label class="control-label">Secci&oacute;n</label>
                <div class="controls">
-                  <select style="width:200px" id="areatrabajo" name="areatrabajo" class="select2 show-tick org-sel" data-size="auto" <? if (isset($_GET['view'])) echo 'disabled' ?>>
+                  <select style="width:200px" id="seccion" name="seccion" class="select2 show-tick org-sel" data-size="auto" <? if (isset($_GET['view'])) echo 'disabled' ?>>
                         <?
                            while (list($key, $val) = each($ORG_ID)){
                               echo "<option value=".$key.">".$val."</option>";
@@ -510,8 +550,7 @@ $(function() {
 
    </div>
    </div>
-   <div class="tab-pane <? if(($_GET['tab'])==2 ) echo'
-   '?>" id="tab2">
+   <div class="tab-pane <? if(($_GET['tab'])==2 ) echo'active'?>" id="tab2">
 
    <!-- Formulario segunda pestaña, Asociar Persona Cargo-->
    <div class="well" align="center">
@@ -588,14 +627,14 @@ $(function() {
                   <?                         
                      if (isset($_GET['id']) & !isset($_GET['view'])) {
                         echo '<a class="btn btn-info" href="vListarCargosPersona.php?id='.$_GET["id"].'">Histórico</a>
-			      <a href="?" class="btn">Cancelar</a>
+			      <a href="?view&id='.$_GET['id'].'&tab=2" class="btn">Cancelar</a>
                               <button type="submit" id="confirmButton" class="btn btn-success" >Registrar</button>';
                          
                      }else if (isset($_GET['id']) & isset($_GET['view'])){
                         echo '<a href="?action=edit&id='.$_GET['id'].'&tab=2" class="btn btn-warning">Editar</a>' ;
                      } else{
 			// <a class="btn btn-info" href="vListarCargosPersona.php?id='.$_GET["id"].'">Histórico</a>
-                        echo '<a href="?" class="btn">Cancelar</a>
+                        echo '<a href="?view&id='.$_GET['id'].' class="btn">Cancelar</a>
                               <button type="submit" id="confirmButton" class="btn btn-success" >Registrar</button>';
 
                      }

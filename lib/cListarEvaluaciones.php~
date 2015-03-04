@@ -18,7 +18,8 @@
         $sql.="WHERE cedula='".$cedula."'";
     }
 
-     
+    // Banderas
+    $respuestas_aux = array();
 
     $PERSONA = obtenerDatos($sql, $conexion, $atts, "Per");
     
@@ -175,13 +176,17 @@
 	      
 		$id_pregunta_i=$PREGUNTA_CON_RESPUESTA['id_pregunta'][$i];
 		$tipo_respuesta_i= trim($RESPUESTAS[$i], '"');
-		if($I==count($RESPUESTAS){
-			$tipo_respuesta_i= trim($RESPUESTAS[$i], '"');
+
+		// La respuesta final se limpia el "
+		if($i==count($RESPUESTAS)-1){
+			$tipo_respuesta_i = substr($RESPUESTAS[$i],1,2);
+			
 		}     
+		
 		if(isset($PREGUNTA_CON_RESPUESTA['tipo_respuesta'][$i]['answeroptions'])){
 		  $respuesta_i=$PREGUNTA_CON_RESPUESTA['tipo_respuesta'][$i]['answeroptions'][$tipo_respuesta_i]['answer'];
 		} else {
-		  $respuesta_i=$tipo_respuesta_i;//Caso en que la respuesta es del tipo "campo de texto"
+		  $respuesta_i=$tipo_respuesta_i; //Caso en que la respuesta es del tipo "campo de texto"
 		}
 
 		//Guardar las respuestas
