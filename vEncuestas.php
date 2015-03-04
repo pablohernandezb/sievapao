@@ -121,7 +121,7 @@
       <td class="center lsmallT" nowrap><small><? 
 	if (($LISTA_ENCUESTA['Enc']['estado'][$i])=='f') {
 	  echo '<a href="?action=modificar&id_encuesta='; echo $LISTA_ENCUESTA['Enc']['id'][$i];echo '" title="Editar pesos de la evaluación"> <img src="./img/iconos/edit-16.png" style="margin-left:5px;"></a></a>';
-	  echo '<a href="lib/cEncuestas.php?action=delete&id_encuesta='; echo $LISTA_ENCUESTA['Enc']['id'][$i]; echo '" title="Eliminar evaluación"><img src="./img/iconos/delete-16.png" style="margin-left:7px;"></a>';
+	  echo '<a href="lib/cEncuestas.php?action=delete&id_encuesta_ls='; echo $LISTA_ENCUESTA['Enc']['id'][$i]; echo '" title="Eliminar evaluación"><img src="./img/iconos/delete-16.png" style="margin-left:7px;"></a>';
 	  echo '<a href="lib/cDescargarEncuesta.php?id_encuesta_ls='; echo $LISTA_ENCUESTA['Enc']['id_encuesta_ls'][$i]; echo '&id_fam='; echo $LISTA_ENCUESTA['Enc']['id_fam'][$i]; echo '" title="Descargar evaluación en PDF"><img src="./img/iconos/pdf-16.png" style="margin-left:9px;"></a>';
 	  } else {
 	  echo '<a href="lib/cDescargarEncuesta.php?id_encuesta_ls='; echo $LISTA_ENCUESTA['Enc']['id_encuesta_ls'][$i]; echo '&id_fam='; echo $LISTA_ENCUESTA['Enc']['id_fam'][$i]; echo '" title="Descargar evaluación en PDF"><img src="./img/iconos/pdf-16.png" style="margin-left:5px;"></a>';

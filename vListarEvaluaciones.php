@@ -95,7 +95,7 @@
 	      <td class="center lsmallT" nowrap>
 		<? switch ($LISTA_EVALUACION_ACTUAL['Enc']['estado'][$i]){
 		case 'Pendiente':
-		  echo "<a href='http://localhost/limesurvey/index.php/survey/index/sid/".$LISTA_EVALUACION_ACTUAL['Enc']['id_encuesta_ls'][$i]."/lang/es?token=".$LISTA_EVALUACION_ACTUAL['Enc']['token_ls'][$i]."&passthru;=token_ls&token_ls;=".$LISTA_EVALUACION_ACTUAL['Enc']['token_ls'][$i]."' title='Realizar evaluación'><img src='./img/iconos/edit-16.png' style='margin-left:5px;'></a>";
+		  echo "<a href='http://localhost/limesurvey/index.php/survey/index/sid/".$LISTA_EVALUACION_ACTUAL['Enc']['id_encuesta_ls'][$i]."/lang/es?token=".$LISTA_EVALUACION_ACTUAL['Enc']['token_ls'][$i]."&token_ls=".$LISTA_EVALUACION_ACTUAL['Enc']['token_ls'][$i]."' title='Realizar evaluación'><img src='./img/iconos/edit-16.png' style='margin-left:5px;'></a>";
 		  if($LISTA_EVALUACION_ACTUAL['Enc']['tipo'][$i]=="evaluacion"){
 		    echo "<a href='./lib/cDescargarEncuesta.php?id_encuesta_ls=".$LISTA_EVALUACION_ACTUAL['Enc']['id_encuesta_ls'][$i]."&id_fam=".$LISTA_EVALUACION_ACTUAL['Enc']['id_fam'][$i]."' title='Descargar encuesta en PDF'><img src='./img/iconos/pdf-16.png' style='margin-left:5px;'></a>"; 
 		  }

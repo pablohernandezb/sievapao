@@ -111,7 +111,7 @@ if (isset($_GET['action'])) {
 	      } //cierre ciclo sobre preguntas
 	    } //cierre ciclo sobre secciones de preguntas
 	    
-	  $_SESSION['MSJ']="La encuesta ha sido importada.";
+	  $_SESSION['MSJ']="La encuesta ha sido importada ".$numGrupos." ".$numPreguntas[0];
 	  header("Location: ../vImportarEncuesta.php?success"); 
 
 	  } //cierre else (verificación de datos no repetidos)

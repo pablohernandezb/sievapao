@@ -174,7 +174,10 @@
 	      for ($i=0; $i<count($RESPUESTAS); $i++){
 	      
 		$id_pregunta_i=$PREGUNTA_CON_RESPUESTA['id_pregunta'][$i];
-		$tipo_respuesta_i= trim($RESPUESTAS[$i], '"');     
+		$tipo_respuesta_i= trim($RESPUESTAS[$i], '"');
+		if($I==count($RESPUESTAS)){
+			$tipo_respuesta_i= trim($RESPUESTAS[$i], '"');
+		}     
 		if(isset($PREGUNTA_CON_RESPUESTA['tipo_respuesta'][$i]['answeroptions'])){
 		  $respuesta_i=$PREGUNTA_CON_RESPUESTA['tipo_respuesta'][$i]['answeroptions'][$tipo_respuesta_i]['answer'];
 		} else {

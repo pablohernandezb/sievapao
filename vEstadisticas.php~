@@ -279,7 +279,7 @@
 	    }
 	    if ($total_evaluaciones==0) {
 		$porcentaje = 0;
-            } else {
+            else {
 	        $porcentaje=round(($subtotal_aprobada/$total_evaluaciones)*100);
 	    }
 	  ?>
@@ -358,7 +358,7 @@
       }
       if ($total_evaluaciones==0) {
 	$porcentaje = 0;
-      } else {
+      else {
 	$porcentaje = round(($subtotal_rechazada/$total_evaluaciones)*100);
       }
      ?>

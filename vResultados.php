@@ -50,6 +50,8 @@
     }
   ?>
 
+  
+
   <!--ENCABEZADO REPORTE DE RESULTADOS-->
   <br>
   <p class="lsmall muted"> Datos del trabajador evaluado</p>
@@ -57,7 +59,7 @@
   <div class="row">
     <div class="span1" align="right">
       <img src="./img/iconos/user-new.jpg" class="img-circle">
-    </div>
+  </div>
     <div class="span11">
     <blockquote>
        <p><?echo $NOMBRE?></p>
@@ -77,7 +79,12 @@
     <div class="row">
     <div class="span1"></div>
     <div class="span10"><br>
-    
+
+    <? echo "1 = ".$LISTA_COMPETENCIAS['Preg']['resultado'][0]."<br>" ?>
+    <? echo "2 = ".$LISTA_COMPETENCIAS['Preg']['resultado'][1]."<br>" ?>
+    <? echo "3 = ".$LISTA_COMPETENCIAS['Preg']['resultado'][2]."<br>" ?>
+    <? echo "4 = ".$LISTA_COMPETENCIAS['Preg']['resultado'][3]."<br>" ?>
+
     <!--Tabla para el gŕafico-->
     <table class="tabla_competencias" style="display: none">
     <caption><small>Gráfico de los resultados</small></caption>
@@ -132,6 +139,7 @@
     <div class="span1"></div>
     </div><br><br><!-- Cierre row-->
     
+ 
     <!--Tabla de detalles-->
     <table class="table table-hover" style="margin-left: 0;">
       <thead>
