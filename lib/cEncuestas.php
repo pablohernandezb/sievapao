@@ -13,8 +13,9 @@
     $sql.="FROM ENCUESTA WHERE actual='t' ORDER BY id_fam";        
     $atts = array("id", "id_encuesta", "id_encuesta_ls", "id_fam", "id_unidad", "estado");
     $LISTA_ENCUESTA= obtenerDatos($sql, $conexion, $atts, "Enc");
-    
-    
+    $NUM_ENC_UNIDAD = 0;
+    $NUM_ENC_GRUPOCARGOS = 0;
+
     // Obtención de las familias de cargos y las unidades
     for ($i=0;$i<$LISTA_ENCUESTA['max_res'];$i++){    
       $sql ="SELECT nombre FROM FAMILIA_CARGO WHERE id='".$LISTA_ENCUESTA['Enc']['id_fam'][$i]."'"; 
@@ -24,24 +25,56 @@
       $LISTA_CARGOS[$i]=$aux['Car']['nombre'][0];
       $aux= obtenerDatos($sql_1, $conexion, $atts, "Uni");
       $LISTA_UNIDADES[$i]=$aux['Uni']['nombre'][0];
+
+      // Cantidad de Encuestas por tipo
+      if($LISTA_UNIDADES[$i]=='USB') {
+		$NUM_ENC_GRUPOCARGOS++;
+      } else {
+		$NUM_ENC_UNIDAD++;
+      }
+
     }    
     
      if (isset($_GET['action'])){
       switch ($_GET['action']) {
-      
 	case 'try':
-	  //Obtención de las unidades registradas
-	  $UNIDAD_ID = obtenerIds($conexion, "ORGANIZACION", false);
-	  //Obtención de las encuestas importadas
-	  $sql ="SELECT id_fam, id_encuesta_ls FROM ENCUESTA_LS"; 
-	  $atts = array("id_fam", "id_encuesta_ls", "nombre"); 
-	  $ENCUESTA_ID= obtenerDatos($sql, $conexion, $atts, "Enc");
-	  for($i=0; $i<$ENCUESTA_ID['max_res']; $i++){
-	    $sql ="SELECT nombre FROM FAMILIA_CARGO WHERE id='".$ENCUESTA_ID['Enc']['id_fam'][$i]."'"; 
-	    $atts = array("nombre"); 
-	    $aux= obtenerDatos($sql, $conexion, $atts, "Car");
-	    $ENCUESTA_ID['Enc']['nombre'][$i]=$aux['Car']['nombre'][0];
-	  }
+	  if(isset($_GET['tipo'])){
+	    switch ($_GET['tipo']){
+	       case 'unidad':
+		  //Obtención de las unidades registradas
+		  $UNIDAD_ID = obtenerIds($conexion, "ORGANIZACION", false);
+		  //Obtención de las encuestas importadas
+		  $sql ="SELECT id_fam, id_encuesta_ls FROM ENCUESTA_LS"; 
+		  $atts = array("id_fam", "id_encuesta_ls", "nombre"); 
+		  $ENCUESTA_ID= obtenerDatos($sql, $conexion, $atts, "Enc");
+		  for($i=0; $i<$ENCUESTA_ID['max_res']; $i++){
+		    $sql ="SELECT nombre FROM FAMILIA_CARGO WHERE id='".$ENCUESTA_ID['Enc']['id_fam'][$i]."'"; 
+		    $atts = array("nombre"); 
+		    $aux= obtenerDatos($sql, $conexion, $atts, "Car");
+		    $ENCUESTA_ID['Enc']['nombre'][$i]=$aux['Car']['nombre'][0];
+		  }
+		  break;
+	       case 'grupocargos':
+		  //Obtención de las encuestas importadas
+		  $sql ="SELECT id_fam, id_encuesta_ls FROM ENCUESTA_LS"; 
+		  $atts = array("id_fam", "id_encuesta_ls", "nombre"); 
+		  $ENCUESTA_ID= obtenerDatos($sql, $conexion, $atts, "Enc");
+		  for($i=0; $i<$ENCUESTA_ID['max_res']; $i++){
+		    $sql ="SELECT nombre FROM FAMILIA_CARGO WHERE id='".$ENCUESTA_ID['Enc']['id_fam'][$i]."'"; 
+		    $atts = array("nombre"); 
+		    $aux= obtenerDatos($sql, $conexion, $atts, "Car");
+		    $ENCUESTA_ID['Enc']['nombre'][$i]=$aux['Car']['nombre'][0];
+		  }
+		  break;
+	       case 'cargo':
+		  break;
+	       case 'persona':
+		  break;
+	       default:
+		  break;
+	    }
+	 }
+
 	break;
 	
 	case 'add':
@@ -58,7 +91,13 @@
 	    $sql="INSERT INTO ENCUESTA (id_encuesta_ls, id_fam, id_unidad, estado, actual) VALUES (";
 	    $sql.="'$_POST[encuesta]', ";  //id de la encuesta en limesurvey           
 	    $sql.="'$id_fam', "; //id de la familia de cargos
+	    
+	    if($_GET['tipo']=='unidad') {
 	    $sql.="'$_POST[unidad]', "; //id de la unidad
+	    } elseif ($_GET['tipo']=='grupocargos') {
+	    $sql.="'1', "; //Toda la USB
+	    }
+
 	    $sql.="'f', "; //estado de la encuesta (inactiva)
 	    $sql.="'t')"; //vigencia de la encuesta (actual)   
 	    $resultado_sql=ejecutarConsulta($sql, $conexion);

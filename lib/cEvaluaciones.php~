@@ -47,8 +47,7 @@
 	  
 	case 'activar':
 
-		echo "<br><br><br> hola<br>";
-	
+		
 	    //Activación de la evaluación
 	    if (isset($_POST[ini])) {
 	      $fecha_ini=$_POST[ini];
@@ -118,9 +117,9 @@
 	      $atts= array("id_per","id_car","fecha_ini");
 	      $LISTA_PERSONA= obtenerDatos($sql, $conexion, $atts, "Per");
 	      
-	      echo "El sql de interés es: $sql<br>";
-	      echo "El resultado de la consulta es: <br>";
-	      print_r($LISTA_PERSONA);
+	      //echo "El sql de interés es: $sql<br>";
+	      //echo "El resultado de la consulta es: <br>";
+	      //print_r($LISTA_PERSONA);
 	      
 	      
 	      //Agregar las encuestas correspondientes a cada usuario

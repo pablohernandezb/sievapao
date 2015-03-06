@@ -1,12 +1,8 @@
 <?php
 //Constantes para la conexión con la BD
 define ("MANEJADOR_BD", "postgres");
-
 define ("NOMBRE_BD", "sievapao_bd");
-
 define ("USER" , "root");
-//define ("USER", "sievapao_admin");
-
 define ("PASS" , "harkonnen");
 
 //Constantes para la conexión con LimeSurvey
