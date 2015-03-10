@@ -117,7 +117,7 @@
                 echo "<a data-toggle='modal' data-data='Sebuah Data' href='#confirm' data-url='lib/cPersona.php?action=delete&id=";
                 echo $LISTA_PER['Per']['id'][$i]."' rel='tooltip' title='Eliminar' onclick='return confirmar()'><img src='img/iconos/delete-16.png'/></a>&nbsp;&nbsp;";
 
-		echo "<a href='vEnviarCorreo.hp?action=compose&id=".$LISTA_PER['Per']['id'][$i]."' rel='tooltip' title='Enviar mensaje'><img src='img/iconos/mail-16.png' border=0 /></a>";
+		echo "<a href='vEnviarCorreo.hp?action=compose&id=".$LISTA_PER['Per']['id'][$i]."' rel='tooltip' title='Enviar mensaje'><img src='img/iconos/mail-16.png' border=0 /></a>
 
             ?>
           </td>
