@@ -639,7 +639,6 @@ function historicoDeficiencias ($id_unidad){
 }
 
 // This work is licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License
-// http://www.webdesignerforum.co.uk/topic/52312-how-to-send-html-emails-with-multiple-attachments-in-php/
 
 function enviarEmail($remail, $rname, $semail, $sname, $cc, $bcc, $subject, $message, $attachments, $priority, $type)  {
 

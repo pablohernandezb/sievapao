@@ -1430,7 +1430,7 @@ textarea::-webkit-input-placeholder {
 }
 .input-xxxlarge {
   width: 530px;
-  height: 20px !important;
+  height: auto;
 }
 input[class*="span"],
 select[class*="span"],

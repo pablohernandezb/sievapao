@@ -2,9 +2,7 @@
     require "cAutorizacion.php";
     extract($_GET);
     extract($_POST);
-    //include "cMail.php";
-//  del post
-//  asun, fecha , tipo, descrip
+
     $_ERRORES = array();
     $_WARNING = array();
     $_SUCCESS = array();

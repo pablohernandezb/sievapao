@@ -16,7 +16,7 @@
     $CON_ID = obtenerIds($conexion, "CONDICIONES", false);
 
     if (isset($_GET['id'])) {
-        $atts = array("id", "tipo", "nombre", "apellido", "cedula", "sexo", "fecha_nac", "unidad", "email", "activo" );
+        $atts = array("id", "tipo", "nombre", "apellido", "cedula", "sexo", "fecha_nac", "unidad", "email", "activo", "condicion", "seccion" );
 
         $sql ="SELECT * ";
         $sql.="FROM PERSONA ";

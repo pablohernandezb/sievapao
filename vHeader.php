@@ -157,7 +157,7 @@
         if (isset($_GET['success'])){
         echo "  <div class='alert alert-success'>
                     <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                    <strong>¡Operación realizada con Exito!</strong> ".$_SESSION['MSJ'].".
+                    <strong>¡Operación realizada con éxito!</strong> ".$_SESSION['MSJ'].".
                 </div>";
         }else if (isset($_GET['error'])) {
                 echo "  <div class='alert alert-error'>
