@@ -19,11 +19,18 @@
 
         switch ($_GET['action']) {
             case 'compose':
-		if (isset($_GET['id'])) {
+		if (isset($_GET['id']) && $_GET['id']<3000) { // Es una persona
                 	$atts = array("nombre", "apellido", "email");
 			$sql ="SELECT nombre, apellido, email ";
 			$sql.="FROM PERSONA ";
 			$sql.="WHERE id='".$_GET['id']."'";
+
+			$LISTA_EMAIL = obtenerDatos($sql, $conexion, $atts, "Per");
+		} else if (isset($_GET['id']) && $_GET['id']>=3000) { // Es una unidad
+                	$atts = array("nombre", "apellido", "email");
+			$sql ="SELECT nombre, apellido, email ";
+			$sql.="FROM PERSONA ";
+			$sql.="WHERE unidad='".$_GET['id']."'";
 
 			$LISTA_EMAIL = obtenerDatos($sql, $conexion, $atts, "Per");
 		}

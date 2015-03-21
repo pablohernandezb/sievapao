@@ -117,8 +117,24 @@
 	 <form id="newPer" class="form-horizontal" method="post" action="lib/cEnviarCorreo.php?action=send" enctype="multipart/form-data">
 		<input type="hidden" id="tipo" name="tipo" value="plain"/>
 		<input type="hidden" id="id" name="id" value="<? if (isset($_GET['id'])) echo $_GET['id']; ?>"/>
+
 		<input type="hidden" id="dest_nombre" name="dest_nombre" value="<? if (isset($LISTA_EMAIL)) echo $LISTA_EMAIL['Per']['nombre'][0].' '.$LISTA_EMAIL['Per']['apellido'][0]; else echo ''?>"/>
 	  	<input type="hidden" id="dest_correo" name="dest_correo" value="<? if (isset($LISTA_EMAIL)) echo $LISTA_EMAIL['Per']['email'][0]; else echo ''?>"/>
+
+		<?php
+		if (isset($LISTA_EMAIL) && (count($LISTA_EMAIL['Per']['email']))>1) {
+			for($i=1;$i<count($LISTA_EMAIL['Per']['email']);$i++) {
+				if($i==count($LISTA_EMAIL['Per']['email'])-1) {
+					$CC = $CC.$LISTA_EMAIL['Per']['email'][$i]; 
+				} else { 
+					$CC = $CC.$LISTA_EMAIL['Per']['email'][$i].', ';
+				}
+			}
+		} else { 
+			$CC = null;
+		}
+		?>
+		<input type="hidden" id="cc" name="cc" value="<? if (isset($CC)) echo $CC; else echo ''?>"/>
 
             <div class="span1"></div>
             <div class="span4" id="enviarCorreo">
@@ -128,7 +144,15 @@
                <div class="controls">
                   <div class='input-prepend'>
                         <span class='add-on'><i class='icon-user'></i></span>
-                        <input required type="text" class="input-xxxlarge" id="destinatario" name="destinatario" placeholder="Ingrese correos electrónicos" value="<? if (isset($LISTA_EMAIL)) echo $LISTA_EMAIL['Per']['email'][0]; else echo ''?>" <? if (isset($LISTA_EMAIL)) echo 'disabled'; else echo ''?> />
+
+
+			<? if (isset($LISTA_EMAIL) && count($LISTA_EMAIL['Per']['email'])==1) { 
+			echo "<input required type='text' class='input-xxxlarge' id='destinatario' name='destinatario' placeholder='Ingrese correos electrónicos' value='".$LISTA_EMAIL['Per']['email'][0]."' />";
+			} else if (isset($LISTA_EMAIL) && count($LISTA_EMAIL['Per']['email'])>1) { 
+			echo "<input required type='text' class='input-xxxlarge' id='destinatario' name='destinatario' placeholder='Ingrese correos electrónicos' value='".$LISTA_EMAIL['Per']['email'][0].", ".$CC."' />";
+			 } else { 
+			echo "<input required type='text' class='input-xxxlarge' id='destinatario' name='destinatario' placeholder='Ingrese correos electrónicos' value='' />";
+			 } ?>      
                   </div>
                </div>
             </div>

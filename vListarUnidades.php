@@ -107,7 +107,8 @@
                 echo "<a href='vUnidad.php?action=copy&id=";
                 echo $LISTA_ORG['Org']['id'][$i]."' rel='tooltip' title='Copiar'><img src='img/iconos/copy-16.png' border=0 /></a> &nbsp;&nbsp;&nbsp;"; 
                 echo "<a data-toggle='modal' data-data='Sebuah Data' href='#confirm' data-url='lib/cOrganizacion.php?action=delete&id=";
-                echo $LISTA_ORG['Org']['id'][$i]."' rel='tooltip' title='Eliminar' onclick='return confirmar()'><img src='img/iconos/delete-16.png'/></a>&nbsp;&nbsp;&nbsp;"; 
+                echo $LISTA_ORG['Org']['id'][$i]."' rel='tooltip' title='Eliminar' onclick='return confirmar()'><img src='img/iconos/delete-16.png'/></a>&nbsp;&nbsp;&nbsp;";
+		echo "<a href='vEnviarCorreo.php?action=compose&id=".$LISTA_ORG['Org']['id'][$i]."' rel='tooltip' title='Enviar mensaje'><img src='img/iconos/mail-16.png' border=0 /></a>" 
             ?>
           </td>
           </tr>
