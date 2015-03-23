@@ -107,7 +107,7 @@
       $PROMEDIO_EVALUADORES=array("re_competencia", "re_factor");//Arreglo donde se lleva la suma de los resultados de los evaluadores
       
       //Obtener respuestas de los evaluadores
-      for($i=0; $i<$LISTA_EVALUADORES[max_res]; $i++){
+      for($i=0; $i<$LISTA_EVALUADORES[max_res]; $i++) {
 	
 	$sql="SELECT nombre, apellido FROM PERSONA WHERE id='".$LISTA_EVALUADORES['Eva']['id_encuestado'][$i]."'";
 	$atts=array("nombre", "apellido");

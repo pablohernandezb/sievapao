@@ -293,7 +293,7 @@
 	  $sql="INSERT INTO NOTIFICACION (tipo, id_per, token_ls_per, mensaje, fecha) VALUES (";
 	  $sql.="'1', '$id_evaluado', '$token_ls', '$mensaje', '$fecha')";
 	  $resultado_sql=ejecutarConsulta($sql, $conexion);
-	  $_SESSION['MSJ'] = "Se ha notificado su caso a la DGCH, el personla iniciará el estudio del mismo. Podrá ser contactado próximamente";
+	  $_SESSION['MSJ'] = "Se ha notificado su caso a la DGCH, el personal iniciará el estudio del mismo. Podrá ser contactado próximamente.";
 	  header("Location: ../vListarEvaluaciones.php?warning");
 	  break;
 	 case 'validarR':

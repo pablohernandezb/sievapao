@@ -195,7 +195,7 @@
       </div>
       </a>
       
-      <p style="font-size:11px"><b>Brecha del resultado</b></p>
+      <p style="font-size:11px"><b>Oportunidad para alcanzar el éxito</b></p>
       <a title="<?echo round($BRECHA).'% ('.($PUNTAJE_COMPETENCIAS_MAX-$PUNTAJE_COMPETENCIAS).' de '.$PUNTAJE_COMPETENCIAS_MAX.' puntos)'?>" style="text-decoration: none;">
       <div class="progress" style="height: 20px;">
 	<div class="progress-bar bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: <?echo round($BRECHA,2).'%'?>; height: 100%;">
@@ -343,15 +343,24 @@
     </div>
     <!--FIN DE LA SECCION DE FACTORES-->
     
+    <br>
+    <p class="lead"><small>Retroalimentación</small></p>
+    <p class="lsmall muted">Valide los resultados obtenidos por usted y complete el proceso de retroalimentación</p>
     <? if(isset($_GET['action']) ) {
 	switch($_GET['action']){
 	  case 'supervisar':?>
 	  <div class="well" style="padding:8px; background-color: #fff; box-shadow:none" align="center">
-	    <br><small>Haga click en el botón <i>Validar</i> para aprobar la evaluación del supervisor inmediato o en el botón <i>Rechazar</i> para rechazar la misma</small><br><br>
-	    <p>
-		<a class="btn btn-success" href="lib/cResultados.php?token_ls=<?echo $_GET['token_ls']?>&action=validar">Validar</a>
-		<a class="btn" href="lib/cResultados.php?token_ls=<?echo $_GET['token_ls']?>&action=rechazar">Rechazar</a>
-	    </p><br> 
+	    
+		<form id="retroalimentacion" class="form-horizontal" method="get" action="lib/cResultados.php?token_ls=<?echo $_GET['token_ls']?>">
+		<p>¿Se realizó la retroalimentación y se hicieron compromisos? <input type="radio" name="compromiso" value="si" checked> Sí &nbsp;&nbsp;&nbsp;<input type="radio" name="compromiso" value="no"> No</p>
+		<p>¿Valida usted los resultados obtenidos de su(s) supervisor(es)? <input type="radio" name="action" value="validar" checked> Validar &nbsp;&nbsp;&nbsp;<input type="radio" name="action" value="rechazar"> Rechazar</p>
+		<br><small>Haga click en el botón <i>Enviar retroalimentación</i> para validar o rechazar la(s) evaluación(es) del supervisor(es) inmediato(s)</small><br><br>
+	        <p>
+		<button type="submit" id="confirmButton" class="btn btn-success" >Enviar retroalimentación</button>
+		<!-- <a class="btn btn-success" href="lib/cResultados.php?token_ls=<?echo $_GET['token_ls']?>&action=validar">Validar</a>-->
+		<!-- <a class="btn" href="lib/cResultados.php?token_ls=<?echo $_GET['token_ls']?>&action=rechazar">Rechazar</a>-->
+	        </p><br> 
+		</form>
 	  </div>
 	  <? break;
 	  case 'revisarR': ?>

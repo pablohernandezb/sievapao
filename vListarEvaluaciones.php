@@ -212,7 +212,7 @@
 		<? switch ($LISTA_EVALUACION_PASADA['Enc']['estado'][$i]){
 		case 'Finalizada':
 		  if ($LISTA_EVALUACION_PASADA['Enc']['tipo'][$i]=="autoevaluacion" && $LISTA_EVALUACION_PASADA['Enc']['periodo_quejas'][$i]==TRUE){
-		    echo "<a href='./vResultados.php?token_ls=".$LISTA_EVALUACION_PASADA['Enc']['token_ls'][$i]."&action=revisarE' title='Ver resultados' ><img src='./img/iconos/visible-16.png' style='margin-left:5px;'></a>"; 
+		    echo "<a href='./vResultados.php?token_ls=".$LISTA_EVALUACION_PASADA['Enc']['token_ls'][$i]."&action=supervisar' title='Hacer retroalimentación' ><img src='./img/iconos/retroalimentacion-16.png' style='margin-left:5px;'></a>"; 
 		  } else {
 		    echo "<a href='./vResultados.php?token_ls=".$LISTA_EVALUACION_PASADA['Enc']['token_ls'][$i]."' title='Ver resultados' ><img src='./img/iconos/visible-16.png' style='margin-left:5px;'></a>"; 
 		  }
@@ -226,7 +226,8 @@
 		  break; 
 		case 'Rechazada': 
 		  if ($LISTA_EVALUACION_PASADA['Enc']['tipo'][$i]=="autoevaluacion" && $LISTA_EVALUACION_PASADA['Enc']['periodo_quejas'][$i]==TRUE){
-		    echo "<a href='./vResultados.php?token_ls=".$LISTA_EVALUACION_PASADA['Enc']['token_ls'][$i]."&action=revisarE' title='Ver resultados' ><img src='./img/iconos/visible-16.png' style='margin-left:5px;'></a>"; 
+		    echo "<a href='./vResultados.php?token_ls=".$LISTA_EVALUACION_PASADA['Enc']['token_ls'][$i]."&action=revisarR' title='Validar resultado' ><img src='./img/iconos/check-16.png' style='margin-left:5px;'></a>";
+		    echo "<a href='./vResultados.php?token_ls=".$LISTA_EVALUACION_PASADA['Enc']['token_ls'][$i]."&action=revisarE' title='Enviar notificación a la DGCH' ><img src='./img/iconos/edit-16.png' style='margin-left:5px;'></a>"; 
 		  } else {
 		    echo "<a href='./vResultados.php?token_ls=".$LISTA_EVALUACION_PASADA['Enc']['token_ls'][$i]."' title='Ver resultados' ><img src='./img/iconos/visible-16.png' style='margin-left:5px;'></a>"; 
 		  }
