@@ -8,8 +8,8 @@
     $_SUCCESS = array();
     require_once 'XML/RPC2/Client.php';
         
-    //Lista de familias de cargos
-    $CAR_ID = obtenerIds($conexion, "FAMILIA_CARGO", false);
+    //Lista de familias de roles
+    $ROL_ID = obtenerIds($conexion, "FAMILIA_ROL", false);
         
     //Obtención de la lista de encuestas registradas en Limesurvey
     $client_ls = XML_RPC2_Client::create(PATH_LS); //Crear un cliente para comunicarse con Limesurvey
@@ -34,7 +34,7 @@ if (isset($_GET['action'])) {
 	  $sql ="SELECT id_encuesta_ls FROM ENCUESTA_LS WHERE id_encuesta_ls='".$_POST[encuesta]."'";        
 	  $atts = array("id_encuesta_ls");
 	  $ENCUESTA_IMPORTADA= obtenerDatos($sql, $conexion, $atts, "Enc");
-	  $sql ="SELECT id_fam FROM ENCUESTA_LS WHERE id_fam='".$_POST[car]."'";        
+	  $sql ="SELECT id_fam FROM ENCUESTA_LS WHERE id_fam='".$_POST[rol]."'";        
 	  $atts = array("id_fam");
 	  $FAMILIA_CARGO_EVALUADO= obtenerDatos($sql, $conexion, $atts, "Fam");
 	  
@@ -43,7 +43,7 @@ if (isset($_GET['action'])) {
 	    $_SESSION['MSJ']="La encuesta indicada ya ha sido importada al sistema";
 	    header("Location: ../vImportarEncuesta.php?error"); 
 	  } else if ($FAMILIA_CARGO_EVALUADO[max_res]){
-	    $_SESSION['MSJ']="El grupo de cargos indicada ya tiene una encuesta asociada";
+	    $_SESSION['MSJ']="El grupo de roles indicada ya tiene una encuesta asociada";
 	    header("Location: ../vImportarEncuesta.php?error");
 	  } else {
 	  
@@ -54,7 +54,7 @@ if (isset($_GET['action'])) {
 	    //Agregar nueva encuesta
 	    $sql="INSERT INTO ENCUESTA_LS (id_encuesta_ls, id_fam) VALUES (";
 	    $sql.="'$_POST[encuesta]', ";  //id de la encuesta en limesurvey           
-	    $sql.="'$_POST[car]')"; //id de la familia de cargos  
+	    $sql.="'$_POST[rol]')"; //id de la familia de cargos  
 	    $resultado_sql=ejecutarConsulta($sql, $conexion);
 
 	    $numGrupos = count($resultado);

@@ -199,7 +199,7 @@
                 
             default:
                 $_SESSION['MSJ'] = "Los cambios fueron guardados";
-                $Location = "Location: ../vPersona.php?succes&view&id=".$_POST['id'];
+                $Location = "Location: ../vPersona.php?success&view&id=".$_POST['id'];
                 header($Location); 
                 break;
         }

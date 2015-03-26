@@ -14,12 +14,13 @@
     $atts = array("id", "id_encuesta", "id_encuesta_ls", "id_fam", "id_unidad", "estado");
     $LISTA_ENCUESTA= obtenerDatos($sql, $conexion, $atts, "Enc");
     $NUM_ENC_UNIDAD = 0;
-    $NUM_ENC_GRUPOCARGOS = 0;
+    $NUM_ENC_ROL = 0;
 
     // Obtención de las familias de cargos y las unidades
     for ($i=0;$i<$LISTA_ENCUESTA['max_res'];$i++){    
-      $sql ="SELECT nombre FROM FAMILIA_CARGO WHERE id='".$LISTA_ENCUESTA['Enc']['id_fam'][$i]."'"; 
+      $sql ="SELECT nombre FROM FAMILIA_ROL WHERE id='".$LISTA_ENCUESTA['Enc']['id_fam'][$i]."'"; 
       $sql_1 ="SELECT nombre FROM ORGANIZACION WHERE id='".$LISTA_ENCUESTA['Enc']['id_unidad'][$i]."'"; 
+      
       $atts = array("nombre"); 
       $aux= obtenerDatos($sql, $conexion, $atts, "Car");
       $LISTA_CARGOS[$i]=$aux['Car']['nombre'][0];
@@ -28,7 +29,7 @@
 
       // Cantidad de Encuestas por tipo
       if($LISTA_UNIDADES[$i]=='USB') {
-		$NUM_ENC_GRUPOCARGOS++;
+		$NUM_ENC_ROL++;
       } else {
 		$NUM_ENC_UNIDAD++;
       }
@@ -48,22 +49,22 @@
 		  $atts = array("id_fam", "id_encuesta_ls", "nombre"); 
 		  $ENCUESTA_ID= obtenerDatos($sql, $conexion, $atts, "Enc");
 		  for($i=0; $i<$ENCUESTA_ID['max_res']; $i++){
-		    $sql ="SELECT nombre FROM FAMILIA_CARGO WHERE id='".$ENCUESTA_ID['Enc']['id_fam'][$i]."'"; 
+		    $sql ="SELECT nombre FROM FAMILIA_ROL WHERE id='".$ENCUESTA_ID['Enc']['id_fam'][$i]."'"; 
 		    $atts = array("nombre"); 
-		    $aux= obtenerDatos($sql, $conexion, $atts, "Car");
-		    $ENCUESTA_ID['Enc']['nombre'][$i]=$aux['Car']['nombre'][0];
+		    $aux= obtenerDatos($sql, $conexion, $atts, "Rol");
+		    $ENCUESTA_ID['Enc']['nombre'][$i]=$aux['Rol']['nombre'][0];
 		  }
 		  break;
-	       case 'grupocargos':
+	       case 'gruporoles':
 		  //Obtención de las encuestas importadas
 		  $sql ="SELECT id_fam, id_encuesta_ls FROM ENCUESTA_LS"; 
 		  $atts = array("id_fam", "id_encuesta_ls", "nombre"); 
 		  $ENCUESTA_ID= obtenerDatos($sql, $conexion, $atts, "Enc");
 		  for($i=0; $i<$ENCUESTA_ID['max_res']; $i++){
-		    $sql ="SELECT nombre FROM FAMILIA_CARGO WHERE id='".$ENCUESTA_ID['Enc']['id_fam'][$i]."'"; 
+		    $sql ="SELECT nombre FROM FAMILIA_ROL WHERE id='".$ENCUESTA_ID['Enc']['id_fam'][$i]."'"; 
 		    $atts = array("nombre"); 
-		    $aux= obtenerDatos($sql, $conexion, $atts, "Car");
-		    $ENCUESTA_ID['Enc']['nombre'][$i]=$aux['Car']['nombre'][0];
+		    $aux= obtenerDatos($sql, $conexion, $atts, "Rol");
+		    $ENCUESTA_ID['Enc']['nombre'][$i]=$aux['Rol']['nombre'][0];
 		  }
 		  break;
 	       case 'cargo':
@@ -94,7 +95,7 @@
 	    
 	    if($_GET['tipo']=='unidad') {
 	    $sql.="'$_POST[unidad]', "; //id de la unidad
-	    } elseif ($_GET['tipo']=='grupocargos') {
+	    } elseif ($_GET['tipo']=='gruporoles') {
 	    $sql.="'1', "; //Toda la USB
 	    }
 

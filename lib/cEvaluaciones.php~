@@ -110,12 +110,24 @@
 	      $resultado= $client_ls->set_survey_properties($session_key, $id_encuesta_ls, $properties);
 	      $resultado= $client_ls->activate_tokens($session_key, $id_encuesta_ls);//Se abre la encuesta solo para usuarios con token
 	      
+	      if($id_unidad!=1) { // Si la encuesta se hace en una o varias unidades	       
+
 	      //Buscar personas con el cargo de la familia de cargos de la encuesta de la i-ésima iteración
 	      $sql= "SELECT id_per, id_car, fecha_ini FROM PERSONA_CARGO WHERE actual=TRUE AND id_car IN (";
 	      $sql.="SELECT id FROM CARGO WHERE id_fam='".$id_fam."') AND id_per IN (";
 	      $sql.="SELECT id FROM PERSONA WHERE unidad='".$id_unidad."')";
 	      $atts= array("id_per","id_car","fecha_ini");
 	      $LISTA_PERSONA= obtenerDatos($sql, $conexion, $atts, "Per");
+
+	      } else { // La encuesta se hace a nivel universitario
+
+	       //Buscar personas con el cargo de la familia de cargos de la encuesta de la i-ésima iteración
+	      $sql= "SELECT id_per, id_car, fecha_ini FROM PERSONA_CARGO WHERE actual=TRUE AND id_car IN (";
+	      $sql.="SELECT id FROM CARGO WHERE id_fam='".$id_fam."')";
+	      $atts= array("id_per","id_car","fecha_ini");
+	      $LISTA_PERSONA= obtenerDatos($sql, $conexion, $atts, "Per");
+
+	      }
 	      
 	      //echo "El sql de interés es: $sql<br>";
 	      //echo "El resultado de la consulta es: <br>";

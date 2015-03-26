@@ -105,6 +105,9 @@
               <li class='divider'></li>
               <li><a href='vFamiliaC.php'>Crear Grupo de Cargos</a></li>
               <li><a href='vListarFamiliasC.php'>Listar Grupo de Cargos</a></li>
+	      <li class='divider'></li>
+              <li><a href='vFamiliaR.php'>Crear Grupo de Roles</a></li>
+              <li><a href='vListarFamiliasR.php'>Listar Grupo de Roles</a></li>
             </ul>
           </li>
           <li>
@@ -148,10 +151,10 @@
         <p>
         <br><br><img src="img/header.png" width="800">
         </p>
-        <h1>SiEvaPAO</h1>
-	<h3>Sistema de Evaluaci&oacute;n del Personal Administrativo y Obrero de la USB</h3>
+	<br>
+        <h1>Sistema de Evaluaci&oacute;n de Desempeño USB</h1>
       </div>
-
+      <br><br><br>
       <div class="span12">
         <?   
         if (isset($_GET['success'])){

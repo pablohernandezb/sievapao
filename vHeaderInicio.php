@@ -76,8 +76,9 @@
         <p>
         <br><br><img src="img/header.png" width="800">
         </p>
-         	<h1>SiEvaPAO</h1>
-		<h3>Sistema de Evaluaci&oacute;n del Personal Administrativo y Obrero de la USB</h3>
+	<br>
+        <h1>Sistema de Evaluaci&oacute;n de Desempeño USB</h1>
       </div>
-    </div>
+   </div>
+      <br><br><br>
   

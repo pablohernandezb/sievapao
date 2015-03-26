@@ -459,7 +459,48 @@ $(function() {
                         <input type="hidden" id="activo" name="activo" value="<? if(isset($_GET['id'])) echo $LISTA_PER['Per']['activo']['0']; else echo "t"?>" />
                </div>
             </div>
-            
+
+            <div class="control-group">
+               <label class="control-label">Rol</label>
+               <div class="controls">
+                  <select style="width:200px" id="rol" name="rol" class="select2 show-tick org-sel" data-size="auto" <? if (isset($_GET['view'])) echo 'disabled' ?>>
+			<?
+			if (isset($_GET['view'])) {
+			    switch ($LISTA_PER['Per']['rol']['0']) {
+				case '1':
+					echo "<option value=1>Apoyo</option>";
+					break;
+				case '2':
+					echo "<option value=2>Operativas</option>";
+					break;
+				case '3':
+					echo "<option value=3>Supervisorio Administrativo</option>";
+					break;
+				case '4':
+					echo "<option value=4>Obrero</option>";
+					break;
+				case '5':
+					echo "<option value=5>Supervisorio Obrero</option>";
+					break;
+				default:
+					break;
+			     }
+			} else {
+                       
+                           while (list($key, $val) = each($ROL_ID)){
+			      if($LISTA_PER['Per']['rol']['0']==$key) {
+				   echo "<option selected value=".$key.">".$val."</option>";
+		    	      } else {
+				   echo "<option value=".$key.">".$val."</option>";
+			      } 
+                           }
+			}
+                        ?>
+                  </select>
+		
+               </div>
+            </div>            
+
             <div class="control-group">
                <label class="control-label">Condiciones</label>
                <div class="controls">

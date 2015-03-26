@@ -21,13 +21,21 @@
       $aux= obtenerDatos($sql, $conexion, $atts, "Car");
       $LISTA_CARGOS[$i]=$aux['Car']['nombre'][0];
     }    
-    
+
+    // Obtención de las familias de roles
+    //for ($i=0;$i<$LISTA_ENCUESTA['max_res'];$i++){    
+    //  $sql ="SELECT nombre FROM FAMILIA_rol WHERE id='".$LISTA_ENCUESTA['Enc']['id_fam'][$i]."'";   
+    //  $atts = array("nombre"); 
+    //  $aux= obtenerDatos($sql, $conexion, $atts, "Rol");
+    //  $LISTA_CARGOS[$i]=$aux['Rol']['nombre'][0];
+    //}        
+
     if (isset($_GET['action']) && $_GET['action']=='delete'){
    
       //Actualizar vigencia de la encuesta (antigua)
-      $sql="DELETE ENCUESTA_LS WHERE id_encuesta_ls='".$_GET['id_encuesta_ls']."'";
+      $sql="DELETE FROM ENCUESTA_LS WHERE id_encuesta_ls='".$_GET['id_encuesta_ls']."'";
       $resultado_sql=ejecutarConsulta($sql,$conexion);
-      $sql="DELETE ENCUESTA WHERE id_encuesta_ls='".$_GET['id_encuesta_ls']."'";
+      $sql="DELETE FROM ENCUESTA WHERE id_encuesta_ls='".$_GET['id_encuesta_ls']."'";
       $_SESSION['MSJ'] = "La encuesta fue eliminada";
       header("Location: ../vEncuestasLimesurvey.php?success");  
     }

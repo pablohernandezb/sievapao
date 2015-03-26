@@ -21,7 +21,15 @@
       $aux= obtenerDatos($sql, $conexion, $atts, "Car");
       $LISTA_CARGOS[$i]=$aux['Car']['nombre'][0];
     }    
-    
+
+    // Obtención de las familias de roles
+    //for ($i=0;$i<$LISTA_ENCUESTA['max_res'];$i++){    
+    //  $sql ="SELECT nombre FROM FAMILIA_rol WHERE id='".$LISTA_ENCUESTA['Enc']['id_fam'][$i]."'";   
+    //  $atts = array("nombre"); 
+    //  $aux= obtenerDatos($sql, $conexion, $atts, "Rol");
+    //  $LISTA_CARGOS[$i]=$aux['Rol']['nombre'][0];
+    //}        
+
     if (isset($_GET['action']) && $_GET['action']=='delete'){
    
       //Actualizar vigencia de la encuesta (antigua)

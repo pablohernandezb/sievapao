@@ -75,11 +75,11 @@
 	    </div> 
 	    
 	    <div class="control-group">
-		<label class="control-label">Grupo de roles</label>
+		<label class="control-label">Grupo de cargos</label>
 		<div class="controls">
-			<select style="width:200px" id="rol" name="rol" class="select2  car-sel" data-size="auto">
+			<select style="width:200px" id="car" name="car" class="select2  car-sel" data-size="auto">
 			    <?
-				while (list($key, $val) = each($ROL_ID)){
+				while (list($key, $val) = each($CAR_ID)){
 				    echo "<option value=".$key.">".$val."</option>";
 				}
 			    ?>

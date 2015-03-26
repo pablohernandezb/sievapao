@@ -85,7 +85,7 @@
 <div class="tabbable"> <!-- Only required for left/right tabs -->
 <ul class="nav nav-tabs">
    <li class="<? if(!(isset($_GET['tab'])) || ($_GET['tab'])==1 ) echo'active'?>"><a href="#tab1" data-toggle="tab">Por Unidad</a></li>
-   <li class="<? if(($_GET['tab'])==2 ) echo'class=active'?>"><a href="#tab2" data-toggle="tab">Por Grupos de Cargos</a></li>
+   <li class="<? if(($_GET['tab'])==2 ) echo'class=active'?>"><a href="#tab2" data-toggle="tab">Por Grupos de Roles</a></li>
    <li class="<? if(($_GET['tab'])==3 ) echo'class=active'?>"><a href="#tab3" data-toggle="tab">Por Cargos</a></li>
    <li class="<? if(($_GET['tab'])==4 ) echo'class=active'?>"><a href="#tab4" data-toggle="tab">Por Persona</a></li>
 </ul>
@@ -105,7 +105,7 @@
     <table align="center" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example" width="100%">
     <thead>
       <tr>
-	<th class="lsmallT"><small>Grupos de cargos evaluada</small></th>
+	<th class="lsmallT"><small>Grupos de roles evaluados</small></th>
 	<th class="lsmallT"><small>Unidad evaluada</small></th>
 	<th class="lsmallT"><small>Estado</small></th>
 	<th class="lsmallT"><small>Acción</small></th>
@@ -113,7 +113,7 @@
     </thead>
     <tfoot>
       <tr>
-	<th class="lsmallT"><small>Grupo de cargos evaluada</small></th>
+	<th class="lsmallT"><small>Grupo de roles evaluados</small></th>
 	<th class="lsmallT"><small>Unidad evaluada</small></th>
 	<th class="lsmallT"><small>Estado</small></th>
 	<th class="lsmallT"><small>Acción</small></th>
@@ -168,7 +168,7 @@
 
 <?php
   
-    if ($NUM_ENC_GRUPOCARGOS==0){
+    if ($NUM_ENC_ROL==0){
 	  echo "<br><br><br><br><p class='text-center text-info'>Hasta el momento no hay evaluaciones en el sistema.</p><br><br><br><br>";
     }else{
     ?>
@@ -201,8 +201,8 @@
 	if($LISTA_UNIDADES[$i]=='USB') {
     ?>
     <tr>
-      <td class="center lsmallT" nowrap><small> <? echo $LISTA_CARGOS[$i];?></small></td>   
-      <td class="center lsmallT" nowrap><small> <? echo $LISTA_UNIDADES[$i]; ?></small></td>
+      <td class="center lsmallT" nowrap><small><? echo $LISTA_CARGOS[$i];?></small></td>   
+      <td class="center lsmallT" nowrap><small><? echo $LISTA_UNIDADES[$i];?></small></td>
       <td class="center lsmallT" nowrap><small><? if (($LISTA_ENCUESTA['Enc']['estado'][$i])=='f') { echo "Evaluación inactiva"; } else { echo "Evaluación activa";}?></small></td>
       <td class="center lsmallT" nowrap><small><? 
 	if (($LISTA_ENCUESTA['Enc']['estado'][$i])=='f') {
@@ -231,7 +231,7 @@
   ?>
 
     <div align="center">
-      <a href="./vEncuestas.php?action=try&tipo=grupocargos" class="btn btn-info">Agregar Evaluación</a>
+      <a href="./vEncuestas.php?action=try&tipo=gruporoles" class="btn btn-info">Agregar Evaluación</a>
     </div>
 
    </div>
@@ -295,11 +295,11 @@
 	<a href="?" class="btn">Cancelar</a>
       </form>
   </div>
-  <? } elseif ($_GET['tipo']=='grupocargos') { ?>
+  <? } elseif ($_GET['tipo']=='gruporoles') { ?>
 
 <div class="well" align="center">
     <p class='muted'><small>Por favor escoja el grupo de cargos asociado a la nueva evaluación. <br>Recuerde que serán evaluados todos los trabajadores pertenecientes a este grupo de cargos sin distingo de sede o unidad.</small></p><br>
-      <form id="newEnc" class="form-horizontal" method="post" action="lib/cEncuestas.php?action=add&tipo=grupocargos" >
+      <form id="newEnc" class="form-horizontal" method="post" action="lib/cEncuestas.php?action=add&tipo=gruporoles" >
 	  <div class="row">
 	  <div class="span3"></div>
 	  <div class="span4">

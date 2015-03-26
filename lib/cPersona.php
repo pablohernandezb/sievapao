@@ -19,7 +19,7 @@
 
         switch ($_GET['action']) {
             case 'add':
-                $sql="INSERT INTO PERSONA (tipo, nombre, apellido, cedula, sexo, fecha_nac, unidad, email, activo, condicion) VALUES(".
+                $sql="INSERT INTO PERSONA (tipo, nombre, apellido, cedula, sexo, fecha_nac, unidad, email, activo, condicion, rol) VALUES(".
                 "'$_POST[tipo]', ".  //id organizacion              
                 "'$_POST[name]', ".  //id organizacion              
                 "'$_POST[lname]', ".  //id organizacion              
@@ -29,8 +29,8 @@
                 "'$_POST[org]', ". //clave para la organizacion                
                 "'$_POST[email]', ".   //funciones             
                 "'$_POST[activo]', ".   //activo
-		//"'$_POST[seccion]', ". //seccion
-		"'$_POST[condicion]'". //condicion
+		"'$_POST[condicion]', ". //condicion
+		"'$_POST[rol]'". //rol
                 ")";
                 break;
 

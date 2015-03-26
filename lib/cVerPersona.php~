@@ -2,9 +2,7 @@
     require "cAutorizacion.php";
     extract($_GET);
     extract($_POST);
-    //include "cMail.php";
-//  del post
-//  asun, fecha , tipo, descrip
+
     $_ERRORES = array();
     $_WARNING = array();
     $_SUCCESS = array();
@@ -16,7 +14,7 @@
     $CON_ID = obtenerIds($conexion, "CONDICIONES", false);
 
     if (isset($_GET['id'])) {
-        $atts = array("id", "tipo", "nombre", "apellido", "cedula", "sexo", "fecha_nac", "unidad", "email", "activo", "condicion", "seccion" );
+        $atts = array("id", "tipo", "nombre", "apellido", "cedula", "sexo", "fecha_nac", "unidad", "email", "activo", "condicion", "seccion", "rol");
 
         $sql ="SELECT * ";
         $sql.="FROM PERSONA ";
@@ -73,7 +71,7 @@
         $LISTA_PER_EVA = obtenerDatos($sql, $conexion, $atts, "Per_Eva"); 
 
     }else if (isset($all)){
-        $atts = array("id", "nombre", "apellido", "cedula", "sexo", "fecha_nac", "unidad", "direccion", "telefono", "email" );
+        $atts = array("id", "nombre", "apellido", "cedula", "sexo", "fecha_nac", "unidad", "direccion", "telefono", "email", "activo", "condicion", "seccion", "rol");
 
         $sql ="SELECT * ";
         $sql.="FROM PERSONA ";

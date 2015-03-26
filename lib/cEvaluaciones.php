@@ -153,9 +153,9 @@
 		  $apellido=$DATOS["Dat"]["apellido"][0];
 
 		  
-		    //Verificar que las personas tengan al menos 150 días (5 meses) en el cargo
+		    //Verificar que las personas tengan al menos 7 días (1 semana) en el cargo
 		    //QUEDA PENDIENTE VERIFICAR CONDICION ESPECIAL
-		    if(obtenerDiferenciaDias($fecha_ini, $LISTA_PERSONA["Per"]["fecha_ini"][$j])>150){
+		    if(obtenerDiferenciaDias($fecha_ini, $LISTA_PERSONA["Per"]["fecha_ini"][$j])>7){
 		      //Se agrega el usuario a la encuesta en Limesurvey
 		      $usuario=array("usuario"=> array("email"=>$email,"firstname"=>$nombre,"lastname"=>$apellido));
 		      $resultado= $client_ls->add_participants($session_key, $id_encuesta_ls, $usuario);//Agregar participante
@@ -204,9 +204,9 @@
 			$nombre=$DATOS["Dat"]["nombre"][0];
 			$apellido=$DATOS["Dat"]["apellido"][0];
 			
-			//Verificar que tenga al menos 150 días (5 meses) como evaluador
+			//Verificar que tenga al menos 7 días (1 semana) como evaluador
 			//QUEDA PENDIENTE VERIFICAR CONDICION ESPECIAL
-			if(obtenerDiferenciaDias($fecha_ini, $LISTA_EVALUADOR["Eva"]["fecha_ini"][$k])>150) {
+			if(obtenerDiferenciaDias($fecha_ini, $LISTA_EVALUADOR["Eva"]["fecha_ini"][$k])>7) {
 			
 			  //Se agrega el usuario a la encuesta en Limesurvey
 			  $usuario=array("usuario"=> array("email"=>$email,"firstname"=>$nombre,"lastname"=>$apellido));

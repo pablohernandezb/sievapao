@@ -24,21 +24,21 @@
             "aButtons": [
               {
                 "sExtends": "copy",
-                "sButtonText": "Copiar <img src='img/iconos/copy-dark.png' border=0 />"
+                "sButtonText": "Copiar <img src='img/iconos/copy-20.png' width='20' height='20' border=0 />"
               },
               {
                 "sExtends": "csv",
                 "sTitle": "lista_familia_rol",
-                "sButtonText": "CSV <img src='img/iconos/csv-dark.png' border=0 />"
+                "sButtonText": "CSV <img src='img/iconos/csv-20.png' width='20' height='20' border=0 />"
               },
               {
                 "sExtends": "pdf",
                 "sTitle": "lista_familia_rol",
-                "sButtonText": "PDF <img src='img/iconos/pdf-dark.png' border=0 />"
+                "sButtonText": "PDF <img src='img/iconos/pdf-20.png' width='20' height='20' border=0 />"
               },
               {
                 "sExtends": "print",
-                "sButtonText": "Imprimir <img src='img/iconos/printer-dark.png' border=0 />"
+                "sButtonText": "Imprimir <img src='img/iconos/print-20.png' width='20' height='20' border=0 />"
               },
             ]
           }

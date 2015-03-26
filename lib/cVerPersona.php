@@ -12,9 +12,10 @@
     $EVA_ID = obtenerIds($conexion, "PERSONA", true);
     $CAR_ID = obtenerIds($conexion, "CARGO", false);
     $CON_ID = obtenerIds($conexion, "CONDICIONES", false);
+    $ROL_ID = obtenerIds($conexion, "FAMILIA_ROL", false);
 
     if (isset($_GET['id'])) {
-        $atts = array("id", "tipo", "nombre", "apellido", "cedula", "sexo", "fecha_nac", "unidad", "email", "activo", "condicion", "seccion" );
+        $atts = array("id", "tipo", "nombre", "apellido", "cedula", "sexo", "fecha_nac", "unidad", "email", "activo", "condicion", "seccion", "rol");
 
         $sql ="SELECT * ";
         $sql.="FROM PERSONA ";
@@ -71,7 +72,7 @@
         $LISTA_PER_EVA = obtenerDatos($sql, $conexion, $atts, "Per_Eva"); 
 
     }else if (isset($all)){
-        $atts = array("id", "nombre", "apellido", "cedula", "sexo", "fecha_nac", "unidad", "direccion", "telefono", "email" );
+        $atts = array("id", "nombre", "apellido", "cedula", "sexo", "fecha_nac", "unidad", "direccion", "telefono", "email", "activo", "condicion", "seccion", "rol");
 
         $sql ="SELECT * ";
         $sql.="FROM PERSONA ";
