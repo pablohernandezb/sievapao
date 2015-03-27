@@ -242,6 +242,30 @@
       $aux=obtenerDatos($sql, $conexion, $atts, "Aux");
     
       switch($_GET['action']){
+	case 'retroalimentar':
+	  if ($aux['max_res']) {
+	      //Insertar en tabla de supervisaciones
+	      $sql="INSERT INTO SUPERVISOR_ENCUESTA (id_sup, token_ls_eva, aprobado, fecha, ip, retroalimentacion) VALUES (";
+	      if($_GET['retroalimentacion']=='si') {
+		      $sql.="'$id_sup', '$token_ls', null, '$fecha', '$ip', 'si')";
+	      } else {
+		      $sql.="'$id_sup', '$token_ls', null, '$fecha', '$ip', 'no')";				
+	      }
+	      $resultado_sql=ejecutarConsulta($sql, $conexion);
+	      //Actualizar estado
+	      $sql = "UPDATE PERSONA_ENCUESTA SET ";
+	      if($_GET['retroalimentacion']=='si') {
+		      $sql.="retroalimentacion='si' ";
+	      } else {
+		      $sql.="retroalimentacion='no' ";				
+	      }
+
+	      $sql.="WHERE token_ls='$_GET[token_ls]'";
+	      $resultado=ejecutarConsulta($sql, $conexion);
+	      $_SESSION['MSJ'] = "Se ha realizado la retroalimentación. Gracias por su participación en el proceso de evaluación.";
+	      header("Location: ../vListarEvaluaciones.php?success");
+	  }
+	  break;
 	case 'validar':
 	  if ($aux['max_res']) {
 	      //Insertar en tabla de supervisaciones

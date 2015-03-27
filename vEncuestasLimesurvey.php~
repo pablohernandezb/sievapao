@@ -17,13 +17,13 @@
     <table align="center" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example" style="max-width:60%">
     <thead>
       <tr>
-	<th class="lsmallT"><small>Familia de cargo evaluada por la encuesta</small></th>
+	<th class="lsmallT"><small>Rol evaluada por la encuesta</small></th>
 	<th class="lsmallT"><small>Acción</small></th>
       </tr>
     </thead>
     <tfoot>
       <tr>
-	<th class="lsmallT"><small>Familia de cargo evaluada por la encuesta</small></th>
+	<th class="lsmallT"><small>Rol evaluada por la encuesta</small></th>
 	<th class="lsmallT"><small>Acción</small></th>
       </tr>
     </tfoot>

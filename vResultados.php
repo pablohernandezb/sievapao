@@ -351,8 +351,10 @@
 	  case 'retroalimentacion':?>
 	  <div class="well" style="padding:8px; background-color: #fff; box-shadow:none" align="center">
 	    
-		<form id="retroalimentacion" class="form-horizontal" method="get" action="lib/cResultados.php?token_ls=<?echo $_GET['token_ls']?>">
-		<p>¿Se realizó la retroalimentación y se hicieron compromisos? <input type="radio" name="compromiso" value="si" checked> Sí &nbsp;&nbsp;&nbsp;<input type="radio" name="compromiso" value="no"> No</p>
+		<form id="retroalimentacion" class="form-horizontal" method="get" action="lib/cResultados.php">
+		<input type="hidden" id="action" name="action" value="retroalimentar"/>
+		<input type="hidden" id="token_ls" name="token_ls" value="<?echo $_GET['token_ls']?>"/>
+		<p>¿Se realizó la retroalimentación y se hicieron compromisos? <input type="radio" name="retroalimentacion" value="si" checked> Sí &nbsp;&nbsp;&nbsp;<input type="radio" name="retroalimentacion" value="no"> No</p>
 		<br>
 
 		<br><br><small>Haga click en el botón <i>Enviar retroalimentación</i> para finalizar el proceso de evaluación</small><br><br>
@@ -366,8 +368,9 @@
 	  case 'supervisar':?>
 	  <div class="well" style="padding:8px; background-color: #fff; box-shadow:none" align="center">
 	    
-		<form id="retroalimentacion" class="form-horizontal" method="get" action="lib/cResultados.php?token_ls=<?echo $_GET['token_ls']?>">
-		<p>¿Se realizó la retroalimentación y se hicieron compromisos? <input type="radio" name="compromiso" value="si" checked> Sí &nbsp;&nbsp;&nbsp;<input type="radio" name="compromiso" value="no"> No</p>
+		<form id="retroalimentacion" class="form-horizontal" method="get" action="lib/cResultados.php">
+		<input type="hidden" id="token_ls" name="token_ls" value="<?echo $_GET['token_ls']?>"/>		
+		<p>¿Se realizó la retroalimentación y se hicieron compromisos? <input type="radio" name="retroalimentacion" value="si" checked> Sí &nbsp;&nbsp;&nbsp;<input type="radio" name="retroalimentacion" value="no"> No</p>
 		<br>
 		<p>¿Valida usted los resultados obtenidos de su(s) supervisor(es)? <input type="radio" name="action" value="validar" checked> Validar &nbsp;&nbsp;&nbsp;<input type="radio" name="action" value="rechazar"> Rechazar</p>
 

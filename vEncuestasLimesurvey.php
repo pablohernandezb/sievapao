@@ -35,7 +35,7 @@
       for ($i=0;$i<$LISTA_ENCUESTA['max_res'];$i++){
     ?>
     <tr>
-      <td class="center lsmallT" nowrap><small> <? echo $LISTA_CARGOS[$i];?></small></td>   
+      <td class="center lsmallT" nowrap><small> <? echo $LISTA_ROLES[$i];?></small></td>   
       <td class="center lsmallT" nowrap><small><? 
 	  echo '<a href="lib/cEncuestasLimesurvey.php?action=delete&id_encuesta_ls='; echo $LISTA_ENCUESTA['Enc']['id_encuesta_ls'][$i]; echo '" title="Desactivar encuesta"><img src="./img/iconos/delete-16.png" style="margin-left:7px;"></a>';
 	  echo '<a href="lib/cDescargarEncuesta.php?id_encuesta_ls='; echo $LISTA_ENCUESTA['Enc']['id_encuesta_ls'][$i]; echo '&id_fam='; echo $LISTA_ENCUESTA['Enc']['id_fam'][$i]; echo '" title="Descargar encuesta en PDF"><img src="./img/iconos/pdf-16.png" style="margin-left:9px;"></a>';

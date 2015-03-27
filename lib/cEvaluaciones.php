@@ -113,9 +113,8 @@
 	      if($id_unidad!=1) { // Si la encuesta se hace en una o varias unidades	       
 
 	      //Buscar personas con el cargo de la familia de cargos de la encuesta de la i-ésima iteración
-	      $sql= "SELECT id_per, id_car, fecha_ini FROM PERSONA_CARGO WHERE actual=TRUE AND id_car IN (";
-	      $sql.="SELECT id FROM CARGO WHERE id_fam='".$id_fam."') AND id_per IN (";
-	      $sql.="SELECT id FROM PERSONA WHERE unidad='".$id_unidad."')";
+	      $sql= "SELECT id_per, id_car, fecha_ini FROM PERSONA_CARGO WHERE actual=TRUE AND id_per IN (";
+	      $sql.="SELECT id FROM PERSONA WHERE unidad='".$id_unidad."' AND rol='".$id_fam."')";
 	      $atts= array("id_per","id_car","fecha_ini");
 	      $LISTA_PERSONA= obtenerDatos($sql, $conexion, $atts, "Per");
 
@@ -123,7 +122,7 @@
 
 	       //Buscar personas con el cargo de la familia de cargos de la encuesta de la i-ésima iteración
 	      $sql= "SELECT id_per, id_car, fecha_ini FROM PERSONA_CARGO WHERE actual=TRUE AND id_car IN (";
-	      $sql.="SELECT id FROM CARGO WHERE id_fam='".$id_fam."')";
+	      $sql.="SELECT id FROM PERSONA WHERE rol='".$id_fam."')";
 	      $atts= array("id_per","id_car","fecha_ini");
 	      $LISTA_PERSONA= obtenerDatos($sql, $conexion, $atts, "Per");
 

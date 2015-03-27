@@ -18,9 +18,6 @@
         $sql.="WHERE cedula='".$cedula."'";
     }
 
-    // Banderas
-    $respuestas_aux = array();
-
     $PERSONA = obtenerDatos($sql, $conexion, $atts, "Per");
     
     //Inicialización de variables

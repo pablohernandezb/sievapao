@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>SiEvaPAO USB | Sistema de Evaluaci&oacute;n del Personal Administrativo y Obrero | DGCH </title>
+        <title>Sistema de Evaluaci&oacute;n de Desempe&ntilde;p USB | DGCH </title>
         <link rel="shortcut icon" href="img/favicon.ico"> 
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -105,6 +105,9 @@
               <li class='divider'></li>
               <li><a href='vFamiliaC.php'>Crear Grupo de Cargos</a></li>
               <li><a href='vListarFamiliasC.php'>Listar Grupo de Cargos</a></li>
+	      <li class='divider'></li>
+              <li><a href='vFamiliaR.php'>Crear Grupo de Roles</a></li>
+              <li><a href='vListarFamiliasR.php'>Listar Grupo de Roles</a></li>
             </ul>
           </li>
           <li>

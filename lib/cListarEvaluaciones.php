@@ -58,14 +58,13 @@
 	}
 	
       //Evaluaciones pasadas
-      //////////////////////
       
 	// Obtención del identificador, tipo, estado y token de Limesurvey de las encuestas del usuario
-	$sql ="SELECT id_encuesta_ls, id_evaluado, token_ls, tipo, estado, periodo ";
+	$sql ="SELECT id_encuesta_ls, id_evaluado, token_ls, tipo, estado, periodo, retroalimentacion ";
 	$sql.="FROM PERSONA_ENCUESTA ";
 	$sql.="WHERE id_encuestado='".$id_usuario."' AND actual='f'";
 	    
-	$atts = array("id_encuesta_ls", "id_evaluado", "token_ls", "tipo", "estado", "periodo", "nombre_periodo", "nombre", "apellido","periodo_quejas");
+	$atts = array("id_encuesta_ls", "id_evaluado", "token_ls", "tipo", "estado", "periodo", "retroalimentacion", "nombre_periodo", "nombre", "apellido","periodo_quejas");
 	$LISTA_EVALUACION_PASADA= obtenerDatos($sql, $conexion, $atts, "Enc");
 	
 	//Obtención de los nombres de los evaluados

@@ -210,7 +210,23 @@
 	      <td class="center lsmallT" style="background-color: <?echo $color;?>;" nowrap><small><?
 		echo $mensaje;
 	      ?></small></td>
-	      <td class="center lsmallT" nowrap><small><? echo $retroalimentacion; ?></small></td>
+	      <? switch ($LISTA_EVALUACION_PASADA['Enc']['retroalimentacion'][$i]){
+            case 'sin realizar':
+               $color='#ffffcc'; 
+               $mensaje='Sin realizar'; 
+               break;
+            case 'si':
+               $color='rgb(204,229,255)';
+               $mensaje='Sí';
+               break;
+            case 'no':
+               $color='rgb(255,229,209)';
+               $mensaje='No';
+               break;
+         }?>
+	      <td class="center lsmallT" style="background-color: <?echo $color;?>;" nowrap><small><?
+		echo $mensaje;
+	      ?></small></td>
 	      <td class="center lsmallT" nowrap><small>
 		<? 
 		$mes = strtok($LISTA_EVALUACION_PASADA['Enc']['nombre_periodo'][$i]," ");

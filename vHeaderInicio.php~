@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>SiEvaPAO USB | Sistema de Evaluaci&oacute;n del Personal Administrativo y Obrero | DGCH</title>
+        <title>Sistema de Evaluaci&oacute;n de Desempe&ntilde;p USB | DGCH </title>
         <link rel="shortcut icon" href="img/favicon.ico"> 
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -76,8 +76,7 @@
         <p>
         <br><br><img src="img/header.png" width="800">
         </p>
-         	<h1>SiEvaPAO</h1>
-		<br>
+	<br>
         <h1>Sistema de Evaluaci&oacute;n de Desempeño USB</h1>
       </div>
    </div>

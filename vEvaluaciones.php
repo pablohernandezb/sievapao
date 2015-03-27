@@ -184,7 +184,7 @@
 		<th class="lsmallT"><small>Evaluaciones<br>en proceso</small></th>
 		<th class="lsmallT"><small>Evaluaciones<br>completadas</small></th>
 		<th class="lsmallT"><small>Evaluaciones<br>aprobadas</small></th>
-      <th class="lsmallT"><small>Evaluaciones<br>rechazadas</small></th>
+      	        <th class="lsmallT"><small>Evaluaciones<br>rechazadas</small></th>
 		<th class="lsmallT"><small>Estado</small></th>
 		<th class="lsmallT"><small>Acción</small></th>
 	      </tr>
