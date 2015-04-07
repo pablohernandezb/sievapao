@@ -1,4 +1,4 @@
-<?
+<?php
   ini_set('display_errors', 1);
 ?>
 <!DOCTYPE html>
@@ -41,38 +41,11 @@
             $("a").tooltip()
         });                  
     </script>
-    <script>
-    $(document).ready(function() {
-        $('a[href=#confirm]').click(function(e) {
-          //var data = $(this).data('data');
-          //var data = $(this).data('data');
-          //alert(url+" "+data);
- 
-          //Link untuk menghapus
-          var url = $(this).data('url');
-          bootbox.dialog('Esta Seguro de continuar?', [{
-                         'label':'No',
-                         'class':'btn'
-                        },
-                        {
-                         'label':'Si',
-                         'class':'btn',
-                         'callback':function() {
-                                return location.href = url;
-                         }
-                        }]);
-        });
-        $('.selectpicker').selectpicker();
-        $('.select2').select2({ width: '310px' });
-        $('.datepicker').datepicker()
-    });
- 
-    </script>
-
-<?
+    
+    
+    <?php
   if (isset($_SESSION['USBID'])){
-    $cedula= $_SESSION['cedula'];
-?>
+    echo "
     <div class='navbar navbar-fixed-top '>
     <div class='navbar-inner'>
       <div class='container'>
@@ -81,22 +54,10 @@
           <span class='icon-bar'></span>
           <span class='icon-bar'></span>
         </a>
-       <a class='brand' href='index.php'>Inicio</a>
+       <a class='brand' href='index.php'>Sistema de Evaluaci&oacuten USB</a>
        <div class='nav-collapse collapse' id='main-menu'>
-        <ul class='nav' id='main-menu-left'>
-          <li class='dropdown'>
-            <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Evaluaciones <b class='caret'></b></a>
-            <ul class='dropdown-menu' id='swatch-menu'>
-              <? if($is_supervisor) { ?>
-	      <li><a href='vSupervisar.php'>Supervisar Evaluaciones</a></li>
-	      <? } else { ?>
-	      <li><a href='vListarEvaluaciones.php?view&id=<? echo $cedula ?>'>Listar Evaluaciones</a></li>
-	      <? } ?>
-            </ul>
-          </li>
-        </ul>
         <ul class='nav pull-right' id='main-menu-right'>
-          <li><a class='dropdown-toggle' data-toggle='dropdown' href='#'><?mostrarDatosUsuario()?><b class='caret'></b></a>
+          <li><a class='dropdown-toggle' data-toggle='dropdown' href='#'>";mostrarDatosUsuario(); echo "<b class='caret'></b></a>
             <ul class='dropdown-menu'>
               <li><a rel='tooltip' href='salir.php' title='Cerrar Sesi&oacute;n'>Salir <i class='icon-off'></i></a></li>
             </ul>
@@ -106,8 +67,8 @@
      </div>
    </div>
  </div>
-<?
-  }
+ ";
+}
 ?>
 
     <div class="container">  
@@ -118,27 +79,6 @@
 	<br>
         <h1>Sistema de Evaluaci&oacute;n de Desempeño USB</h1>
       </div>
+   </div>
       <br><br><br>
-
-      <div class="span12">
-        <?   
-        if (isset($_GET['success'])){
-        echo "  <div class='alert alert-success'>
-                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                    <strong>¡Operación realizada con Exito!</strong> ".$_SESSION['MSJ'].".
-                </div>";
-        }else if (isset($_GET['error'])) {
-                echo "  <div class='alert alert-error'>
-                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                    <strong>¡Parece que algo salió mal!</strong> ".$_SESSION['MSJ'].".
-                </div>";
-        }else if (isset($_GET['warning'])) {
-                echo "  <div class='alert alert-warning'>
-                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                    <strong>¡Atención!</strong> ".$_SESSION['MSJ'].".
-                </div>";
-        }
-
-        ?>
-        <legend><? echo $Legend ?></legend>
   

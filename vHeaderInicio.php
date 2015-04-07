@@ -54,7 +54,7 @@
           <span class='icon-bar'></span>
           <span class='icon-bar'></span>
         </a>
-       <a class='brand' href='index.php'>Sistema de Evaluaci&oacuten USB</a>
+       <a class='brand' href='index.php'>Inicio</a>
        <div class='nav-collapse collapse' id='main-menu'>
         <ul class='nav pull-right' id='main-menu-right'>
           <li><a class='dropdown-toggle' data-toggle='dropdown' href='#'>";mostrarDatosUsuario(); echo "<b class='caret'></b></a>
