@@ -128,11 +128,11 @@
           <li class='dropdown' id='preview-menu'>
             <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Reportes<b class='caret'></b></a>
             <ul class='dropdown-menu'>
-              <li><a href='#'>Personas por Cargo</a></li>
-              <li><a href='#'>Personas por Unidad</a></li>
-              <li><a href='#'>Personas por Rol</a></li>
+              <li><a href='vReportePersonas.php?report=cargo'>Personas por Cargo</a></li>
+              <li><a href='vReportePersonas.php?report=unidad'>Personas por Unidad</a></li>
+              <li><a href='vReportePersonas.php?report=rol'>Personas por Rol</a></li>
               <li class='divider'></li>
-              <li><a href='#'>Personas sin Cargo</a></li>
+              <li><a href='vReportePersonas.php?report=sincargo'>Personas sin Cargo</a></li>
               <li><a href='#'>Personas sin Evaluador</a></li>
             </ul>
           </li>

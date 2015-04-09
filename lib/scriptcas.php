@@ -10,7 +10,7 @@
 
 
 /*** Aqui comienza la autenticacion con el CAS  ***/
-// import phpCAS lib
+//import phpCAS lib
 include_once('CAS.php');
 
 phpCAS::setDebug();
@@ -25,7 +25,7 @@ phpCAS::forceAuthentication();
 
 // Para cerrar la cesion
 if (isset($_REQUEST['logout'])) {
-        phpCAS::logout();
+     phpCAS::logout();
 }
 /*** Aqui termina la autenticación con el CAS ***/
 
@@ -105,6 +105,7 @@ if ($ds) {
 		$_SESSION['usuario_validado']=-1;
          }
 ldap_close($ds);
+
 /*** Aqui termina ala validacion LDAP ***/
 
 /* Se elige a donde redireccionar al usuario,
