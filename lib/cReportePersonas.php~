@@ -101,7 +101,7 @@
 
 	      break;
 	      case "sinsupervisor":
-		$atts = array("id", "nombre", "apellido", "cedula", "email");
+		$atts = array("id", "nombre", "apellido", "cedula", "email", "unidad");
 		$sql ="SELECT * ";
 		$sql.="FROM PERSONA ";
 		$sql.="WHERE id!='0'";
@@ -117,6 +117,14 @@
 			$sql.="ORDER BY fecha_fin DESC";
 			$LISTA_PER_EVA = obtenerDatos($sql, $conexion, $atts, "Per_Eva"); 
 			$LISTA_PER['Per']['supervisores'][$i] = count($LISTA_PER_EVA['Per_Eva']['id_per']);
+
+			$atts = array("nombre");
+			$sql = "SELECT NOMBRE ";
+			$sql.= "FROM ORGANIZACION ";
+			$sql.= "WHERE CODIGO='".$LISTA_PER['Per']['unidad'][$i]."'";
+			$LISTA_TMP = obtenerDatos($sql, $conexion, $atts, "Uni");
+			$LISTA_UNI['Uni']['nombre'][$i] = $LISTA_TMP['Uni']['nombre'][0];
+
 		}
 	      break;
 

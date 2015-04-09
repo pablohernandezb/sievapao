@@ -81,4 +81,19 @@
       </div>
    </div>
       <br><br><br>
-  
+      <div class="span12">
+        <?   
+        if (isset($_GET['success'])){
+        echo "  <div class='alert alert-success'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>¡Operación realizada con éxito!</strong> ".$_SESSION['MSJ'].".
+                </div>";
+        }else if (isset($_GET['error'])) {
+                echo "  <div class='alert alert-error'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>¡Parece que algo salió mal!</strong> ".$_SESSION['MSJ'].".
+                </div>";
+        }
+
+        ?>
+     </div>

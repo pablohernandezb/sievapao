@@ -5,6 +5,11 @@
         include("lib/cAutorizacion.php");
     }
 
+    if (!isAdmin()) {
+	$_SESSION['MSJ'] = "No tiene privilegios de administrador del sistema.";
+        header("Location: Index.php?error"); 
+    }
+
     $Legend = "Inicio/Sistema de Evaluaci&oacuten USB";
     include_once("vHeader.php");
 ?>
@@ -28,7 +33,7 @@
     </p><br><br><br>";
     echo "<a href='lib/scriptcas.php' class='btn btn-info'>Iniciar sesión</a><br><br>";
 
-    } else {
+    } else if(isAdmin()) {
 
             echo "    
         <p>
@@ -44,7 +49,7 @@
             También puedes agregar otros usuarios como administradores del sistema.
         </p><br><br><br>";
 
-    }
+    } 
     ?>
 </div>
 
