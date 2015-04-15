@@ -363,7 +363,7 @@
 		      <input class="peso" type="text" required name="peso_<?echo $LISTA_PREGUNTA['Preg']['id_pregunta'][$i]?>" id="peso_<?echo $i?>" data-format="d.d" placeholder="0" maxLength="3" style="width: 30px;" />
 		    </td>
 		    </td> 		
-		  <? } ?>
+		  <? }?>
 		</tr>
 	    <? } //cierre del for
 	    ?>

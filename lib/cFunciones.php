@@ -269,7 +269,10 @@ function isSupervisor ($conexion){
     $resultado=ejecutarConsulta($sql, $conexion);
     $resultado=obtenerResultados($resultado);
     $id_usuario=$resultado[0];
-    
+
+    if($id_usuario==null)
+	return false;    
+
     $sql= "SELECT * FROM PERSONA_SUPERVISOR WHERE id_sup='".$id_usuario."'";
     $resultado=ejecutarConsulta($sql, $conexion);
     $resultado=obtenerResultados($resultado);
@@ -678,6 +681,21 @@ $fullmessage .= "--".$boundary."--";
 
 return mail($rname."<".$remail.">", $subject, $fullmessage, $header);
 }
+
+function existeUsuario($conexion) {
+
+    $sql= "SELECT id FROM PERSONA WHERE cedula='".$_SESSION['cedula']."'";
+    $resultado=ejecutarConsulta($sql, $conexion);
+    $resultado=obtenerResultados($resultado);
+    $id_usuario=$resultado[0];
+
+    if($id_usuario==null)
+	return false;
+    else
+	return true;    
+
+}
+
 
 /*
 function handleError($errno, $errstr, $errfile, $errline, array $errcontext)

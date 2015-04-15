@@ -51,7 +51,7 @@
    
 	//Obtención del nombre de la unidad adscrita
 	
-	if($LISTA_EVALUACION["Aux"]["id_unidad"][$i]!=1) { // Si la encuesta se aplica a una UNIDAD nada más
+	if($LISTA_EVALUACION["Aux"]["id_unidad"][$i]!=1) {
 
 	$sql ="SELECT nombre ";
 	$sql.="FROM ORGANIZACION ";
@@ -61,7 +61,7 @@
 	$aux= obtenerDatos($sql, $conexion, $atts, "Uni");
 	$nombre_unidad=$aux["Uni"]["nombre"][0];
 
-	} else { // Si la encuesta se aplica a nivel Universitario
+	} else {
 
 	$sql ="SELECT unidad ";
 	$sql.="FROM PERSONA ";

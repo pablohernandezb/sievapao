@@ -263,7 +263,7 @@
                   </tr>';
             }
             
-            $tbl.='</table> <br>';
+            $tbl.='</table>';
             
             $pdf->writeHTML($tbl, true, false, false, true, '');
             

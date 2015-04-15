@@ -33,7 +33,7 @@ cerrarConexion($conexion);
 if($existe == true) {
 	header("Location: ../index.php");
 } else if($existe == false) {
-	$_SESSION['MSJ'] = "Sus datos no se encuentran registrados en el sistema. Por favor diríjase a la Sección de Evaluación y Adiestramiento del Departamento de Administración de Personal de la Dirección de Gestión del Capital Humano para solventar esta situación, pedimos disculpas por las molestias ocasionadas";
+	$_SESSION['MSJ'] = "Sus datos no se encuentran registrados en el sistema. Por favor diríjase a la Sección de Evaluación y Adiestramiento del Departamento de Administración de Personal de la Dirección de Gestión del Capital Humano para solventar esta situación, pedimos disculpas por las molestias ocasionadas.";
 	header("Location: ../index.php?warning");
 }
 

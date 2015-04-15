@@ -123,7 +123,7 @@
 	$sql.= "(SELECT id_pregunta_root_ls FROM PREGUNTA WHERE id_pregunta='".$id_pregunta_i."')";
         $atts = array("titulo");
 	$aux = obtenerDatos($sql, $conexion, $atts, "Fac");
-        $LISTA_COMPETENCIAS['Preg']['factor'][$i]=$aux['Fac']['titulo'][0];
+        $LISTA_COMPETENCIAS['Preg']['factor'][$i]=$aux['Factor']['titulo'][0];
 
       }
 

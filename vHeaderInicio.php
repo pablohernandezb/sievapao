@@ -93,6 +93,11 @@
                     <button type='button' class='close' data-dismiss='alert'>&times;</button>
                     <strong>¡Parece que algo salió mal!</strong> ".$_SESSION['MSJ'].".
                 </div>";
+	}else if (isset($_GET['warning'])) {
+                echo "  <div class='alert alert-warning'>
+                    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                    <strong>¡Atención!</strong> ".$_SESSION['MSJ'].".
+                </div>";
         }
 
         ?>

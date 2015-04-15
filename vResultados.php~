@@ -172,7 +172,7 @@
 	for ($i=0;$i<$LISTA_COMPETENCIAS['max_res'];$i++){
       ?>
 	<tr class="<?php echo $color_tabla; ?>" >
-	  <td class="center lsmallT" nowrap><small><? echo $LISTA_COMPETENCIAS['Preg']['factor'][$i];?></small></td>  
+
 	  <!--Competencia-->
 	  <td class="center lsmallT" nowrap><small><? echo $LISTA_COMPETENCIAS['Preg']['titulo'][$i]." (C".($i+1).")";?></small></td>  
 	  <!--Resultado auto-evaluación-->

@@ -128,9 +128,9 @@
 
 	      }
 	      
-	      //echo "<br><br><br>El sql de interés es: $sql<br>";
-	      //echo "El resultado de la consulta es: <br>";
-	      //print_r($LISTA_PERSONA);
+	      echo "<br><br><br>El sql de interés es: $sql<br>";
+	      echo "El resultado de la consulta es: <br>";
+	      print_r($LISTA_PERSONA);
 	      
 	      
 	      //Agregar las encuestas correspondientes a cada usuario

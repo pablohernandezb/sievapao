@@ -93,7 +93,6 @@
                     <button type='button' class='close' data-dismiss='alert'>&times;</button>
                     <strong>¡Parece que algo salió mal!</strong> ".$_SESSION['MSJ'].".
                 </div>";
-        }
-
+	}
         ?>
      </div>
