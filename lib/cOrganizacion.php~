@@ -21,8 +21,7 @@ try{
 
         switch ($_GET['action']) {
             case 'add':
-                $sql="INSERT INTO ORGANIZACION (id,idsup, nombre, codigo, descripcion, observacion) VALUES(".
-                "'$_POST[cod]', ". //codigo organizacion
+                $sql="INSERT INTO ORGANIZACION (idsup, nombre, codigo, descripcion, observacion) VALUES(".
                 "'$_POST[org]', ". //id superior
                 "'$_POST[oname]', ". //nombre organizacion
                 "'$_POST[cod]', ". //codigo organizacion

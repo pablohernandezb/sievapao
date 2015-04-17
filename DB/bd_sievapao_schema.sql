@@ -9,13 +9,6 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- Name: vernier; Type: COMMENT; Schema: -; Owner: root
---
-
-COMMENT ON DATABASE vernier IS 'Base de datos del sistema vernier';
-
-
---
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -36,6 +29,18 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: area_de_trabajo; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+--
+
+CREATE TABLE area_de_trabajo (
+    cod_area_trabajo character varying(50) NOT NULL,
+    nombre character varying(200)
+);
+
+
+ALTER TABLE public.area_de_trabajo OWNER TO root;
+
+--
 -- Name: cargo; Type: TABLE; Schema: public; Owner: root; Tablespace: 
 --
 
@@ -48,7 +53,8 @@ CREATE TABLE cargo (
     nombre character varying(50) NOT NULL,
     clave boolean,
     descripcion text,
-    funciones text
+    funciones text,
+    cod_cargo_opsu character varying(50)
 );
 
 
@@ -81,6 +87,30 @@ ALTER TABLE public.cargo_id_seq OWNER TO root;
 
 ALTER SEQUENCE cargo_id_seq OWNED BY cargo.id;
 
+
+--
+-- Name: cargo_opsu; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+--
+
+CREATE TABLE cargo_opsu (
+    cod_cargo_opsu character varying(50) NOT NULL,
+    nombre_opsu character varying(200)
+);
+
+
+ALTER TABLE public.cargo_opsu OWNER TO root;
+
+--
+-- Name: condiciones; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+--
+
+CREATE TABLE condiciones (
+    id character varying(50) NOT NULL,
+    nombre character varying(200)
+);
+
+
+ALTER TABLE public.condiciones OWNER TO root;
 
 --
 -- Name: correo; Type: TABLE; Schema: public; Owner: root; Tablespace: 
@@ -394,7 +424,9 @@ CREATE TABLE organizacion (
     nombre character varying(500) NOT NULL,
     codigo character varying(50),
     descripcion text,
-    observacion text
+    observacion text,
+    cod_autoridad character varying(50),
+    autoridad character varying(200)
 );
 
 
@@ -443,7 +475,12 @@ CREATE TABLE persona (
     unidad text,
     direccion text,
     telefono character varying(15),
-    email character varying(50)
+    email character varying(50),
+    activo boolean,
+    seccion character varying(50),
+    condicion character varying(50),
+    rol integer,
+    fecha_ing character varying(10)
 );
 
 
@@ -454,6 +491,20 @@ ALTER TABLE public.persona OWNER TO root;
 --
 
 COMMENT ON TABLE persona IS 'Tabla del personal registrado en el sistema';
+
+
+--
+-- Name: COLUMN persona.rol; Type: COMMENT; Schema: public; Owner: root
+--
+
+COMMENT ON COLUMN persona.rol IS 'Rol para el tipo de encuesta que se le va a aplicar';
+
+
+--
+-- Name: COLUMN persona.fecha_ing; Type: COMMENT; Schema: public; Owner: root
+--
+
+COMMENT ON COLUMN persona.fecha_ing IS 'Fecha de Ingreso a la Universidad Simón Bolívar';
 
 
 --
@@ -497,7 +548,8 @@ CREATE TABLE persona_encuesta (
     estado text,
     actual boolean,
     fecha character varying(16),
-    ip text
+    ip text,
+    retroalimentacion text DEFAULT 'sin realizar'::text
 );
 
 
@@ -508,6 +560,13 @@ ALTER TABLE public.persona_encuesta OWNER TO root;
 --
 
 COMMENT ON TABLE persona_encuesta IS 'Tabla de encuestas del personal evaluado';
+
+
+--
+-- Name: COLUMN persona_encuesta.retroalimentacion; Type: COMMENT; Schema: public; Owner: root
+--
+
+COMMENT ON COLUMN persona_encuesta.retroalimentacion IS 'Valor que indica si se realizaron compromisos y retroalimentación al final de la evaluación';
 
 
 --
@@ -663,7 +722,8 @@ CREATE TABLE supervisor_encuesta (
     token_ls_eva text NOT NULL,
     aprobado boolean,
     fecha character varying(16),
-    ip text
+    ip text,
+    retroalimentacion text
 );
 
 
@@ -674,6 +734,13 @@ ALTER TABLE public.supervisor_encuesta OWNER TO root;
 --
 
 COMMENT ON TABLE supervisor_encuesta IS 'Tabla de evaluaciones supervisadas';
+
+
+--
+-- Name: COLUMN supervisor_encuesta.retroalimentacion; Type: COMMENT; Schema: public; Owner: root
+--
+
+COMMENT ON COLUMN supervisor_encuesta.retroalimentacion IS 'Valor que indica si se realizaron compromisos y retroalimentación al final de la evaluación';
 
 
 --
@@ -756,6 +823,30 @@ ALTER TABLE ONLY persona ALTER COLUMN id SET DEFAULT nextval('persona_id_seq'::r
 --
 
 ALTER TABLE ONLY usuario ALTER COLUMN id SET DEFAULT nextval('usuario_id_seq'::regclass);
+
+
+--
+-- Name: Condicione_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+--
+
+ALTER TABLE ONLY condiciones
+    ADD CONSTRAINT "Condicione_pkey" PRIMARY KEY (id);
+
+
+--
+-- Name: area_de_trabajo_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+--
+
+ALTER TABLE ONLY area_de_trabajo
+    ADD CONSTRAINT area_de_trabajo_pkey PRIMARY KEY (cod_area_trabajo);
+
+
+--
+-- Name: cargo_opsu_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+--
+
+ALTER TABLE ONLY cargo_opsu
+    ADD CONSTRAINT cargo_opsu_pkey PRIMARY KEY (cod_cargo_opsu);
 
 
 --
@@ -863,6 +954,14 @@ ALTER TABLE ONLY usuario
 
 
 --
+-- Name: cargo_cod_cargo_opsu_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+--
+
+ALTER TABLE ONLY cargo
+    ADD CONSTRAINT cargo_cod_cargo_opsu_fkey FOREIGN KEY (cod_cargo_opsu) REFERENCES cargo_opsu(cod_cargo_opsu) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+
+--
 -- Name: cargo_id_fam_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -891,7 +990,7 @@ ALTER TABLE ONLY encuesta
 --
 
 ALTER TABLE ONLY encuesta
-    ADD CONSTRAINT encuesta_id_fam_fkey FOREIGN KEY (id_fam) REFERENCES familia_cargo(id) ON UPDATE CASCADE ON DELETE CASCADE;
+    ADD CONSTRAINT encuesta_id_fam_fkey FOREIGN KEY (id_fam) REFERENCES familia_rol(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -935,19 +1034,27 @@ ALTER TABLE ONLY organizacion
 
 
 --
--- Name: persona_cargo_id_car_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
---
-
-ALTER TABLE ONLY persona_cargo
-    ADD CONSTRAINT persona_cargo_id_car_fkey FOREIGN KEY (id_car) REFERENCES cargo(id) ON DELETE CASCADE;
-
-
---
 -- Name: persona_cargo_id_per_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY persona_cargo
     ADD CONSTRAINT persona_cargo_id_per_fkey FOREIGN KEY (id_per) REFERENCES persona(id) ON DELETE CASCADE;
+
+
+--
+-- Name: persona_cod_area_trabajo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+--
+
+ALTER TABLE ONLY persona
+    ADD CONSTRAINT persona_cod_area_trabajo_fkey FOREIGN KEY (seccion) REFERENCES area_de_trabajo(cod_area_trabajo) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+
+--
+-- Name: persona_cod_condicion_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+--
+
+ALTER TABLE ONLY persona
+    ADD CONSTRAINT persona_cod_condicion_fkey FOREIGN KEY (condicion) REFERENCES condiciones(id) ON UPDATE CASCADE ON DELETE RESTRICT;
 
 
 --
@@ -1095,12 +1202,12 @@ ALTER TABLE ONLY supervisor_encuesta
 
 
 --
--- Name: public; Type: ACL; Schema: -; Owner: root
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM root;
-GRANT ALL ON SCHEMA public TO root;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 

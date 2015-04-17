@@ -1,0 +1,2 @@
+00 00 14 05 * wget -O -q -t 1 'http://localhost/sievapao/lib/cEvaluaciones.php?action=desactivar&inicio=30-04-2015'
+00 00 30 04 * wget -O -q -t 1 'http://localhost/sievapao/lib/cEvaluaciones.php?action=activar&inicio=30-04-2015'
