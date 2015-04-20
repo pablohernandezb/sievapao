@@ -2,6 +2,7 @@
 
     session_start();
     require "cAutorizacion.php";
+    require "cResultados.php";
     extract($_GET);
     extract($_POST);
     date_default_timezone_set('America/Caracas');
@@ -105,7 +106,7 @@
    
       //Obtención de la familia de cargos asociada a la encuesta
       $sql ="SELECT nombre ";
-      $sql.="FROM FAMILIA_ROL WHERE id='".$_GET['id_fam']."'";
+      $sql.="FROM FAMILIA_ROL WHERE id='".(int)$_GET['id_fam']."'";
       $atts = array("nombre");
       $FAMILIA_ROL_EVALUADO= obtenerDatos($sql, $conexion, $atts, "Fam");   
       
@@ -134,12 +135,12 @@
                <th colspan="2" bgcolor="#cccccc"> DATOS DEL TRABAJADOR</th>
             </tr>
             <tr nobr="true" align="left">
-               <td><small>1.1 Apellidos y Nombres:</small></td>
-               <td><small>1.2 No. Cédula de Identidad:</small></td>
+               <td><small>1.1 Apellidos y Nombres: '.$NOMBRE.'</small></td>
+               <td><small>1.2 No. Cédula de Identidad: '.$CEDULA.'</small></td>
             </tr>
             <tr nobr="true" align="left">
-               <td><small>1.3 Cargo:</small></td>
-               <td><small>1.4 Ubicación:</small></td>
+               <td><small>1.3 Cargo: '.$CARGO.'</small></td>
+               <td><small>1.4 Ubicación: '.$UNIDAD.'</small></td>
             </tr>
          </table>';
          
@@ -157,7 +158,7 @@
       $atts = array("id_encuesta_ls", "id_pregunta", "id_pregunta_ls", "titulo", "seccion");
       
       $LISTA_PREGUNTAS= obtenerDatos($sql, $conexion, $atts, "Preg");
-
+      
       for($i=0; $i<$LISTA_PREGUNTAS[max_res]; $i++){
 
 
@@ -180,7 +181,8 @@
                            y adiestramiento para llegar al nivel de  desempeño requerido.
 			   <br/>
 			   Al llenar la encuesta debe considerar todos los factores  sin  omitir alguno. 
-			   La veracidad de sus respuestas contribuirá a reflejar conductas generadas que inciden en el desempeño.";
+			   La veracidad de sus respuestas contribuirá a reflejar conductas generadas que inciden en el desempeño.
+			   <br/>";
                            
             $texto_seccion.="<br/>
                            <br/>
@@ -189,9 +191,9 @@
                            Coloque la calificación que identifique la frecuencia de la conducta en cada aspecto de la encuesta de acuerdo a su percepción. Por favor evalúe la conducta como la observa, no como a usted le gustaría que fuera. <br />Utilice la siguiente la escala: Nunca, Rara vez, A veces, Con frecuencia, Generalmente y Siempre. 
                            <br/><br/>
                            <br/><br/>
-                           III. EVALUACIÓN  DE FACTORES DE DESEMPEÑO";
+                           III. EVALUACIÓN DE FACTORES DE DESEMPEÑO";
             $instruc_comp = 1;
-            
+
             $pdf->writeHTML($texto_seccion, true, false, true, true, '');
             
             $pdf->Ln(5, false); 
@@ -249,22 +251,72 @@
                
                $tbl.='
                   <tr nobr="true">
-                     <td>'.$LISTA_SUBPREGUNTAS['Preg']['titulo'][$j].'</td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-		     <td></td>
-                  </tr>';
+                     <td>'.$LISTA_SUBPREGUNTAS['Preg']['titulo'][$j].'</td>';
+		     switch($LISTA_COMPETENCIAS['Preg']['resultado'][$i]) {
+			case 'Nunca':
+		              $tbl.='<td>X</td>
+				     <td></td>
+				     <td></td>
+				     <td></td>
+				     <td></td>
+				     <td></td>';
+			      break;
+			case 'Rara vez':
+		              $tbl.='<td></td>
+				     <td>X</td>
+				     <td></td>
+				     <td></td>
+				     <td></td>
+				     <td></td>';
+			      break;
+			case 'A veces':
+		              $tbl.='<td></td>
+				     <td></td>
+				     <td>X</td>
+				     <td></td>
+				     <td></td>
+				     <td></td>';
+			      break;
+			case 'Con frecuencia':
+		              $tbl.='<td></td>
+				     <td></td>
+				     <td></td>
+				     <td>X</td>
+				     <td></td>
+				     <td></td>';
+			      break;
+			case 'Generalmente':
+		              $tbl.='<td></td>
+				     <td></td>
+				     <td></td>
+				     <td></td>
+				     <td>X</td>
+				     <td></td>';
+			      break;
+			case 'Siempre':
+		              $tbl.='<td></td>
+				     <td></td>
+				     <td></td>
+				     <td></td>
+				     <td></td>
+				     <td>X</td>';
+			      break;
+			default:
+		              $tbl.='<td></td>
+				     <td></td>
+				     <td></td>
+				     <td></td>
+				     <td></td>
+				     <td></td>';
+			      break;
+		     }
+               $tbl.='</tr>';
             }
             
             $tbl.='</table> <br>';
             
             $pdf->writeHTML($tbl, true, false, false, true, '');
-
-      
-
+            
             // Añade una página
             // $pdf->AddPage();
          
@@ -298,7 +350,7 @@
       
       //-----------------------------------------------------------------------------------------
 
-      $pdf->AddPage();            
+      $pdf->AddPage();      
 
       $pdf->Ln(10, false);
       

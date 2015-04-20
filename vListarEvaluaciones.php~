@@ -111,7 +111,7 @@
 		    echo "<small>No hay acciones disponibles</small>";
 		  }else{
 		    echo "<a href='./vResultados.php?token_ls=".$LISTA_EVALUACION_ACTUAL['Enc']['token_ls'][$i]."' title='Ver resultados'><img src='./img/iconos/visible-16.png' style=' margin-left:5px;'></a>"; 
-		    echo "<a href='./lib/cDescargarRespuesta.php?token_ls=".$LISTA_EVALUACION_ACTUAL['Enc']['token_ls'][$i]."&id_encuesta_ls=".$LISTA_EVALUACION_ACTUAL['Enc']['id_encuesta_ls'][$i]."&id_fam=".$LISTA_EVALUACION_ACTUAL['Enc']['id_fam'][$i]."&action=descargar' title='Descargar resultados' ><img src='./img/iconos/pdf-16.png' style='margin-left:5px;'></a>";
+		    echo "<a href='./lib/cDescargarRespuesta.php?token_ls=".$LISTA_EVALUACION_PASADA['Enc']['token_ls'][$i]."&id_encuesta_ls=".$LISTA_EVALUACION_PASADA['Enc']['id_encuesta_ls'][$i]."&id_fam=".$LISTA_EVALUACION_PASADA['Enc']['id_fam'][$i]."&action=descargar' title='Descargar resultados' ><img src='./img/iconos/pdf-16.png' style='margin-left:5px;'></a>";
 		  }
 		  break;
 		case 'Aprobada': 
@@ -119,7 +119,7 @@
 		    echo "<small>No hay acciones disponibles</small>";
 		  }else{
 		    echo "<a href='./vResultados.php?token_ls=".$LISTA_EVALUACION_ACTUAL['Enc']['token_ls'][$i]."' title='Ver resultados'><img src='./img/iconos/visible-16.png' style=' margin-left:5px;'></a>";
-		    echo "<a href='./lib/cDescargarRespuesta.php?token_ls=".$LISTA_EVALUACION_ACTUAL['Enc']['token_ls'][$i]."&id_encuesta_ls=".$LISTA_EVALUACION_ACTUAL['Enc']['id_encuesta_ls'][$i]."&id_fam=".$LISTA_EVALUACION_ACTUAL['Enc']['id_fam'][$i]."&action=descargar' title='Descargar resultados' ><img src='./img/iconos/pdf-16.png' style='margin-left:5px;'></a>";
+		    echo "<a href='./lib/cDescargarRespuesta.php?token_ls=".$LISTA_EVALUACION_PASADA['Enc']['token_ls'][$i]."&id_encuesta_ls=".$LISTA_EVALUACION_PASADA['Enc']['id_encuesta_ls'][$i]."&id_fam=".$LISTA_EVALUACION_PASADA['Enc']['id_fam'][$i]."&action=descargar' title='Descargar resultados' ><img src='./img/iconos/pdf-16.png' style='margin-left:5px;'></a>";
 		  }
 		  break;
 		case 'Rechazada':
@@ -127,7 +127,7 @@
 		    echo "<small>No hay acciones disponibles</small>";
 		  }else{
 		    echo "<a href='./vResultados.php?token_ls=".$LISTA_EVALUACION_ACTUAL['Enc']['token_ls'][$i]."' title='Ver resultados'><img src='./img/iconos/visible-16.png' style=' margin-left:5px;'></a>"; 
-		    echo "<a href='./lib/cDescargarRespuesta.php?token_ls=".$LISTA_EVALUACION_ACTUAL['Enc']['token_ls'][$i]."&id_encuesta_ls=".$LISTA_EVALUACION_ACTUAL['Enc']['id_encuesta_ls'][$i]."&id_fam=".$LISTA_EVALUACION_ACTUAL['Enc']['id_fam'][$i]."&action=descargar' title='Descargar resultados' ><img src='./img/iconos/pdf-16.png' style='margin-left:5px;'></a>";
+		    echo "<a href='./lib/cDescargarRespuesta.php?token_ls=".$LISTA_EVALUACION_PASADA['Enc']['token_ls'][$i]."&id_encuesta_ls=".$LISTA_EVALUACION_PASADA['Enc']['id_encuesta_ls'][$i]."&id_fam=".$LISTA_EVALUACION_PASADA['Enc']['id_fam'][$i]."&action=descargar' title='Descargar resultados' ><img src='./img/iconos/pdf-16.png' style='margin-left:5px;'></a>";
 		  }
 		  break;
 		}?>

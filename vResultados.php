@@ -103,23 +103,29 @@
 	    <?php for($i=0; $i<$LISTA_COMPETENCIAS['max_res']; $i++){
 	      switch($LISTA_COMPETENCIAS['Preg']['resultado'][$i]){
 	      case 'Siempre':
+		echo  '<td>5</td>';
+		break;
+	      case 'Generalmente':
 		echo  '<td>4</td>';
 		break;
-	      case 'Casi siempre':
+	      case 'Con frecuencia':
 		echo  '<td>3</td>';
 		break;
 	      case 'A veces':
 		echo  '<td>2</td>';
 		break;
-	      case 'Raras veces':
+	      case 'Rara vez':
 		echo  '<td>1</td>';
 		break;
 	      case 'Nunca':
 		echo  '<td>0</td>';
 		break;
+	      default:
+		echo  '<td>0</td>';
+		break;
 	      }//cierra switch
 	    }?>
-	<td>4</td><!--Truco para definir el máximo-->
+	<td>5</td><!--Truco para definir el máximo-->
 	</tr>
       <?php } ?>
       
@@ -186,7 +192,7 @@
 	    }
 	    }?>
 	  <!--Resultado esperado-->
-	  <td class="center lsmallT" nowrap><small><? echo "Excelente"?></small></td>
+	  <td class="center lsmallT" nowrap><small><? echo "Siempre"?></small></td>
 	</tr>
       <? } //cierre del for
       ?>   

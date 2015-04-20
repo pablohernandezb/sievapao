@@ -170,12 +170,19 @@
 	  switch($aux['Res']['respuesta'][0]){
 	    case 'Siempre':
 	      if(isset($PROMEDIO_EVALUADORES['re_competencia'][$j])) {
+		$PROMEDIO_EVALUADORES['re_competencia'][$j]+=5;
+	      } else {
+		$PROMEDIO_EVALUADORES['re_competencia'][$j]=5;
+	      }
+	      break;  	
+	    case 'Generalmente':
+	      if(isset($PROMEDIO_EVALUADORES['re_competencia'][$j])) {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]+=4;
 	      } else {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]=4;
 	      }
 	      break;  
-	    case 'Casi siempre':
+	    case 'Con frecuencia':
 	      if(isset($PROMEDIO_EVALUADORES['re_competencia'][$j])) {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]+=3;
 	      } else {
@@ -189,7 +196,7 @@
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]=2;
 	      }
 	      break;
-	    case 'Raras veces':
+	    case 'Rara vez':
 	      if(isset($PROMEDIO_EVALUADORES['re_competencia'][$j])) {
 		$PROMEDIO_EVALUADORES['re_competencia'][$j]+=1;
 	      } else {
@@ -394,8 +401,13 @@
       
     }//Cierre del if de Validación de Resultados
     
-    //Cierre conexión a la BD
-    cerrarConexion($conexion);
+    //Cierre conexión a la BD si no voy a descargar
+    if(isset($_GET['action'])) {
+	if($_GET['action']!="descargar") {
+    		cerrarConexion($conexion);
+	}
+
+    } 
 
     if (isset($_GET['action'])){
         switch ($_GET['action']) {

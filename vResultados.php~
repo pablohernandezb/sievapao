@@ -103,23 +103,29 @@
 	    <?php for($i=0; $i<$LISTA_COMPETENCIAS['max_res']; $i++){
 	      switch($LISTA_COMPETENCIAS['Preg']['resultado'][$i]){
 	      case 'Siempre':
+		echo  '<td>5</td>';
+		break;
+	      case 'Generalmente':
 		echo  '<td>4</td>';
 		break;
-	      case 'Casi siempre':
+	      case 'Con frecuencia':
 		echo  '<td>3</td>';
 		break;
 	      case 'A veces':
 		echo  '<td>2</td>';
 		break;
-	      case 'Raras veces':
+	      case 'Rara vez':
 		echo  '<td>1</td>';
 		break;
 	      case 'Nunca':
 		echo  '<td>0</td>';
 		break;
+	      default:
+		echo  '<td>0</td>';
+		break;
 	      }//cierra switch
 	    }?>
-	<td>4</td><!--Truco para definir el máximo-->
+	<td>5</td><!--Truco para definir el máximo-->
 	</tr>
       <?php } ?>
       
@@ -149,7 +155,7 @@
       <thead>
 	<tr>
           <th class="lsmallT" style="border-top: 1px solid #dddddd"><small>Factor</small></th>
-	  <th class="lsmallT" style="border-top: 1px solid #dddddd"><small>Criterio</small></th>
+	  <th class="lsmallT" style="border-top: 1px solid #dddddd; width: 420px;"><small>Criterio</small></th>
 	  <?php if($EVALUADO_OK) {?>
 	    <th class="lsmallT" style="border-top: 1px solid #dddddd">
 	      <small>Resultado auto-evaluación</small>
@@ -172,7 +178,7 @@
 	for ($i=0;$i<$LISTA_COMPETENCIAS['max_res'];$i++){
       ?>
 	<tr class="<?php echo $color_tabla; ?>" >
-
+	  <td class="center lsmallT" nowrap><small><? echo $LISTA_COMPETENCIAS['Preg']['factor'][$i];?></small></td>  
 	  <!--Competencia-->
 	  <td class="center lsmallT" nowrap><small><? echo $LISTA_COMPETENCIAS['Preg']['titulo'][$i]." (C".($i+1).")";?></small></td>  
 	  <!--Resultado auto-evaluación-->
@@ -186,7 +192,7 @@
 	    }
 	    }?>
 	  <!--Resultado esperado-->
-	  <td class="center lsmallT" nowrap><small><? echo "Excelente"?></small></td>
+	  <td class="center lsmallT" nowrap><small><? echo "Siempre"?></small></td>
 	</tr>
       <? } //cierre del for
       ?>   

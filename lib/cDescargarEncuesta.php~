@@ -121,7 +121,7 @@
       $texto_encuesta=$FAMILIA_ROL_EVALUADO['Fam']['nombre'][0];
       $pdf->Cell('', '', $texto_encuesta, 0, 1, 'C', false, '', 0, false, 'T', 'C'); 
          
-      $pdf->Cell('', '', 'PROCESO DE EVALUACIÓN DEFINITIVO __________________', 0, 1, 'C', false, '', 0, false, 'T', 'C');  
+      $pdf->Cell('', '', 'PROCESO DE EVALUACIÓN ____________________________', 0, 1, 'C', false, '', 0, false, 'T', 'C');  
       
       $pdf->Ln(5, false);
       
@@ -157,8 +157,10 @@
       $atts = array("id_encuesta_ls", "id_pregunta", "id_pregunta_ls", "titulo", "seccion");
       
       $LISTA_PREGUNTAS= obtenerDatos($sql, $conexion, $atts, "Preg");
-      
+
       for($i=0; $i<$LISTA_PREGUNTAS[max_res]; $i++){
+
+
          //Lista de subpreguntas de la pregunta correspondiente
          $sql ="SELECT id_encuesta_ls, id_pregunta, id_pregunta_ls, titulo, seccion ";
          $sql.="FROM PREGUNTA WHERE id_encuesta_ls='".$_GET['id_encuesta_ls']."' AND id_pregunta_root_ls='".$LISTA_PREGUNTAS['Preg']['id_pregunta_ls'][$i]."'";        
@@ -173,29 +175,21 @@
          if(strcmp($LISTA_PREGUNTAS['Preg']['seccion'][$i],"competencia")==0 && $instruc_comp!=1){
             $texto_seccion="I. INSTRUCCIÓN GENERAL<br/>
                            <br/>
-                           El propósito principal de esta parte de la evaluación es recolectar evidencias sobre conductas asociadas al desempeño
-                           profesional de una persona, con la intención de construir un juicio constructivo sobre su nivel de desarrollo en relación con un
-                           perfil profesional. Al mismo tiempo, identificar aquellas áreas de desempeño que deban ser fortalecidas, utilizando programas
-                           de formación y adiestramiento para llegar al nivel de competencia requerido.";
+			   El propósito de esta encuesta es recolectar información sobre el desempeño del trabajador, 
+                           a fin de conocer las áreas que deban ser fortalecidas, utilizando programas de formación 
+                           y adiestramiento para llegar al nivel de  desempeño requerido.
+			   <br/>
+			   Al llenar la encuesta debe considerar todos los factores  sin  omitir alguno. 
+			   La veracidad de sus respuestas contribuirá a reflejar conductas generadas que inciden en el desempeño.";
                            
-            $texto_seccion.="Si usted está realizando su auto-evaluación, construya mentalmente las oraciones en primera persona. por ejemplo, si la
-                           conducta es: &quot;Aplicar normas y procedimientos&quot; al hacer el trabajo, en primera persona diría: &quot;¿Yo aplico normas y
-                           procedimientos al hacer el trabajo?&quot;. Lo mismo hará cuando evalúe a terceros, por ejemplo, diría: &quot;¿él o ella
-                           aplica normas y procedimientos al hacer el trabajo?&quot;.<br/>
+            $texto_seccion.="<br/>
                            <br/>
+                           II. ESCALA DE EVALUACIÓN<br/>
                            <br/>
-                           II. ESCALA DE EVALUACIÓN DE COMPETENCIAS<br/>
-                           <br/>
-                           Para evaluar aparece una lista de conductas relacionadas a cada competencia. Usted deberá marcar el nivel de frecuencia
-                           que ha observado dicha conducta para el período de evaluación. Utilice la siguiente escala:<br/><br/> 
-                           Nunca: No se observa, no se aplica o no se pone en práctica una conducta requerida. <br/>
-                           Pocas veces: La conducta evaluada se pone en práctica ocasionalmente y se observan largos períodos de ausencia de la misma,
-                           en los momentos en que requiere ser observada o es pertinente. <br/>
-                           Casi siempre: La conducta se observa casi continuamente en los momentos requeridos.<br/>
-                           Siempre: La conducta se observa fija, estable y el individuo la realiza todo el tiempo que se requiere.
+                           Coloque la calificación que identifique la frecuencia de la conducta en cada aspecto de la encuesta de acuerdo a su percepción. Por favor evalúe la conducta como la observa, no como a usted le gustaría que fuera. <br />Utilice la siguiente la escala: Nunca, Rara vez, A veces, Con frecuencia, Generalmente y Siempre. 
                            <br/><br/>
                            <br/><br/>
-                           III. EVALUACIÓN DE COMPETENCIAS";
+                           III. EVALUACIÓN  DE FACTORES DE DESEMPEÑO";
             $instruc_comp = 1;
             
             $pdf->writeHTML($texto_seccion, true, false, true, true, '');
@@ -241,12 +235,13 @@
             $tbl ='
             <table border="1" cellpadding="2" cellspacing="2" align="center">
                <tr nobr="true">
-                  <td width="50%">Factor > '.$htmlPregunta.'</td>
-                  <td width="10%">Deficiente</td>
-                  <td width="10%">Malo</td>
-                  <td width="10%">Regular</td>
-                  <td width="10%">Bueno</td>
-                  <td width="10%">Excelente</td>
+                  <td width="40%">Factor > '.$htmlPregunta.'</td>
+                  <td width="10%">Nunca</td>
+                  <td width="10%">Rara vez</td>
+                  <td width="9%">A veces</td>
+                  <td width="12%">Con frecuencia</td>
+                  <td width="10%">Generalmente</td>
+                  <td width="9%">Siempre</td>
                </tr>';
          
             for($j=0; $j<$LISTA_SUBPREGUNTAS[max_res]; $j++){
@@ -260,13 +255,18 @@
                      <td></td>
                      <td></td>
                      <td></td>
+		     <td></td>
                   </tr>';
             }
             
-            $tbl.='</table>';
+            $tbl.='</table> <br>';
             
             $pdf->writeHTML($tbl, true, false, false, true, '');
-            
+
+	    if($i%3==0 && $i!=0) {
+		$pdf->AddPage();
+	    }            
+
             // Añade una página
             // $pdf->AddPage();
          
@@ -299,7 +299,9 @@
       }
       
       //-----------------------------------------------------------------------------------------
-      
+
+      $pdf->AddPage();            
+
       $pdf->Ln(10, false);
       
       $pdf->Cell('', '', 'CONFORMACIÓN DEL PROCESO DE EVALUACIÓN', 0, 1, 'L', false, '', 0, false, 'T', 'C');
