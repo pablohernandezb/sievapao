@@ -235,13 +235,13 @@
             $tbl ='
             <table border="1" cellpadding="2" cellspacing="2" align="center">
                <tr nobr="true">
-                  <td width="40%">Factor > '.$htmlPregunta.'</td>
-                  <td width="10%">Nunca</td>
-                  <td width="10%">Rara vez</td>
-                  <td width="9%">A veces</td>
-                  <td width="12%">Con frecuencia</td>
-                  <td width="10%">Generalmente</td>
-                  <td width="9%">Siempre</td>
+                  <td width="40%">Factor > <strong>'.$htmlPregunta.'</strong></td>
+                  <td width="10%"><p style="font-size:9px">Nunca</p></td>
+                  <td width="10%"><p style="font-size:9px">Rara vez</p></td>
+                  <td width="9%"><p style="font-size:9px">A veces</p></td>
+                  <td width="12%"><p style="font-size:9px">Con frecuencia</p></td>
+                  <td width="10%"><p style="font-size:9px">Generalmente</p></td>
+                  <td width="9%"><p style="font-size:9px">Siempre</p></td>
                </tr>';
          
             for($j=0; $j<$LISTA_SUBPREGUNTAS[max_res]; $j++){
@@ -249,7 +249,7 @@
                
                $tbl.='
                   <tr nobr="true">
-                     <td>'.$LISTA_SUBPREGUNTAS['Preg']['titulo'][$j].'</td>
+                     <td><p style="font-size:13px">'.$LISTA_SUBPREGUNTAS['Preg']['titulo'][$j].'</p></td>
                      <td></td>
                      <td></td>
                      <td></td>
@@ -259,14 +259,14 @@
                   </tr>';
             }
             
-            $tbl.='</table> <br>';
+            $tbl.='</table> <br /> <br /> <br />';
             
             $pdf->writeHTML($tbl, true, false, false, true, '');
-
       
-
-            // Añade una página
-            // $pdf->AddPage();
+             //Añade una página
+	     if($i%3==0 || $i==0){
+	             $pdf->AddPage();
+	     }
          
          }else{
                $pdf->SetFont('helvetica', '', 12);

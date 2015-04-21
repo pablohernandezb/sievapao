@@ -138,13 +138,14 @@
 	      echo '<td>'.($PROMEDIO_EVALUADORES['re_competencia'][$i]/$n).'</td>';
 	    }  
 	  ?>
-	<td>3</td><!--Truco para definir el máximo-->
+	<td>5</td><!--Truco para definir el máximo-->
 	</tr>
       <?php }?>
       
     </tbody>
     </table>
     <!--Fin de la tabla para el gŕafico-->
+    <p class="lsmall muted" style="text-align: center;"> Escala: (0) Nunca, (1) Rara vez, (2) A veces, (3) Con frecuencia, (4) Generalmente, (5) Siempre</p>
     </div> <!--Cierre span10-->
     <div class="span1"></div>
     </div><br><br><!-- Cierre row-->
@@ -154,22 +155,21 @@
     <table class="table table-hover" style="margin-left: 0;">
       <thead>
 	<tr>
-          <th class="lsmallT" style="border-top: 1px solid #dddddd"><small>Factor</small></th>
-	  <th class="lsmallT" style="border-top: 1px solid #dddddd"><small>Criterio</small></th>
+          <th class="lsmallT" style="border-top: 1px solid #dddddd"><small><p style="text-align: center;">Factor</p></small></th>
+	  <th class="lsmallT" style="border-top: 1px solid #dddddd"><small><p style="text-align: center;">Conducta</p></small></th>
 	  <?php if($EVALUADO_OK) {?>
 	    <th class="lsmallT" style="border-top: 1px solid #dddddd">
-	      <small>Resultado auto-evaluación</small>
-	      <span style="font-size:8px; padding-left:8px; background:#62c462;">&nbsp;</span>
+	      <div stlye="align: center;"><small>Resultado auto-evaluación</small>
+	      <span style="font-size:8px; padding-left:8px; background:#62c462;">&nbsp;</span></div>
 	    </th>
 	  <?php } 
 	  if($EVALUADOR_OK){
 	    for ($j=0; $j<count($LISTA_EVALUADORES['Eva']['nombre']); $j++){
 	    echo "<th class='lsmallT' style='border-top: 1px solid #dddddd'>
-		  <small>Resultado evaluación<br>(".$LISTA_EVALUADORES['Eva']['nombre'][$j].") </small>
-		  <span style='font-size:8px; padding-left:8px; background:#0088cc;'>&nbsp;</span></th>";
+		  <small>Resultado evaluación<br>(".$LISTA_EVALUADORES['Eva']['nombre'][$j].")</small>
+		  <span style='font-size:8px; padding-left:8px; background:#0088cc; align: center;'>&nbsp;</span></th>";
 	    }
 	  } ?>
-	  <th class="lsmallT" style="border-top: 1px solid #dddddd"><small>Resultado esperado</small></th>
 	</tr>
       </thead>
       <tbody role="alert" aria-live="polite" aria-relevant="all">   
@@ -178,12 +178,12 @@
 	for ($i=0;$i<$LISTA_COMPETENCIAS['max_res'];$i++){
       ?>
 	<tr class="<?php echo $color_tabla; ?>" >
-	  <td class="center lsmallT" nowrap><small><? echo $LISTA_COMPETENCIAS['Preg']['factor'][$i];?></small></td>  
+	  <td class="center lsmallT" nowrap><small><p style="text-align: center;"><? echo $LISTA_COMPETENCIAS['Preg']['factor'][$i];?></p></small></td>  
 	  <!--Competencia-->
-	  <td class="center lsmallT" nowrap><small><? echo $LISTA_COMPETENCIAS['Preg']['titulo'][$i]." (C".($i+1).")";?></small></td>  
+	  <td class="center lsmallT" wrap><small><? echo $LISTA_COMPETENCIAS['Preg']['titulo'][$i]." (C".($i+1).")";?></small></td>  
 	  <!--Resultado auto-evaluación-->
 	  <? if ($EVALUADO_OK){ ?>
-	  <td class="center lsmallT" nowrap><small><? echo $LISTA_COMPETENCIAS['Preg']['resultado'][$i]?></small></td>   
+	  <td class="center lsmallT" nowrap><small><p style="text-align: center;"><? echo $LISTA_COMPETENCIAS['Preg']['resultado'][$i]?></p></small></td>   
 	  <? } ?>
 	  <!--Resultado de las evaluaciones-->
 	  <?if ($EVALUADOR_OK){
@@ -191,8 +191,6 @@
 	      echo "<td class='center lsmallT' nowrap><small>".$LISTA_EVALUADORES['Eva']['re_competencia'][$j][$i]."</small></td>";
 	    }
 	    }?>
-	  <!--Resultado esperado-->
-	  <td class="center lsmallT" nowrap><small><? echo "Siempre"?></small></td>
 	</tr>
       <? } //cierre del for
       ?>   
@@ -202,7 +200,7 @@
     
     <!--Estadísticas-->
     <div class="well" style="padding:8px;">
-      <p style="font-size:11px"><b>Puntaje obtenido en la sección de competencias (índice aptitudinal)</b></p>
+      <p style="font-size:11px"><b>Puntaje obtenido en la sección de Factores de Desempe&ntilde;o (índice aptitudinal)</b></p>
       <?if ($EVALUADOR_OK){?>
       <a title="<?echo (round(($PUNTAJE_COMPETENCIAS/$PUNTAJE_COMPETENCIAS_MAX)*100)).'%'?> (<?echo $PUNTAJE_COMPETENCIAS?> de <?echo $PUNTAJE_COMPETENCIAS_MAX?> puntos)" style="text-decoration: none;">
       <div class="progress" style="height: 20px;">

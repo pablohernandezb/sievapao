@@ -101,7 +101,7 @@
 <!-- Codigo importante -->
 <?php
 
-      if(!isAdmin()) {
+      if(isAdmin()) {
         echo "<br><br><br><br><br><br><p class='text-center text-info'>Usted no tiene permisos en el sistema para enviar mensajes de correo electrónico masivos.</p><br><br><br><br><br><br>";
       } else {
 

@@ -141,7 +141,36 @@
 	$aux= obtenerDatos($sql, $conexion, $atts, "Aux");
 	$LISTA_FACTORES['Preg']['peso'][$i]=$aux['Aux']['peso'][0];
       }
+
+	if($_GET['action']=='descargar') {
       
+      //Obtención de los datos del supervisor jerárquico
+
+        $sql="SELECT id_sup FROM persona_supervisor WHERE id_per='".$id_evaluado."'";
+        $atts = array("id_sup");
+        $aux= obtenerDatos($sql, $conexion, $atts, "Jer");
+        $SUPERVISOR_JER['id']=$aux['Jer']['id_sup'][0]; // Id
+
+        $sql="SELECT nombre, apellido, unidad FROM persona WHERE id='".$SUPERVISOR_JER['id']."'";
+        $atts = array("nombre", "apellido", "unidad");
+        $aux= obtenerDatos($sql, $conexion, $atts, "Jer");
+        $SUPERVISOR_JER['nombre']=$aux['Jer']['nombre'][0]." ".$aux['Jer']['apellido'][0]; // Nombre completo
+        $SUPERVISOR_JER['unidad']=$aux['Jer']['unidad'][0]; // Unidad
+
+        $sql="SELECT nombre FROM organizacion WHERE id='".$SUPERVISOR_JER['unidad']."'";
+        $atts = array("nombre");
+        $aux= obtenerDatos($sql, $conexion, $atts, "Jer");
+        $SUPERVISOR_JER['nombre_unidad']=$aux['Jer']['nombre'][0]; // Nombre de la unidad
+
+        // Cargo del supervisor inmediato
+        $sql="SELECT nombre, codigo FROM CARGO WHERE id IN (SELECT id_car FROM PERSONA_CARGO WHERE id_per='".$SUPERVISOR_JER['id']."')";
+        $atts = array("nombre", "codigo");
+        $aux= obtenerDatos($sql, $conexion, $atts, "Jer");
+        $SUPERVISOR_JER['nombre_cargo']=$aux['Jer']['nombre'][0]; //Nombre del cargo
+        $SUPERVISOR_JER['cargo']=$aux['Jer']['codigo'][0]; //Codigo del cargo 
+	
+	}
+
       
       //Obtención del ID y token de cada evaluador
       $sql="SELECT id_encuestado, token_ls FROM PERSONA_ENCUESTA WHERE periodo='".$id_proceso."' AND id_encuesta='".$id_encuesta."' AND tipo='evaluador' AND estado!='En proceso' AND estado!='Pendiente' AND id_evaluado='".$id_evaluado."'";
@@ -152,12 +181,33 @@
       //Obtener respuestas de los evaluadores
       for($i=0; $i<$LISTA_EVALUADORES[max_res]; $i++) {
 	
-	$sql="SELECT nombre, apellido FROM PERSONA WHERE id='".$LISTA_EVALUADORES['Eva']['id_encuestado'][$i]."'";
-	$atts=array("nombre", "apellido");
+	$sql="SELECT nombre, apellido, unidad FROM PERSONA WHERE id='".$LISTA_EVALUADORES['Eva']['id_encuestado'][$i]."'";
+	$atts=array("nombre", "apellido", "unidad");
 	$aux= obtenerDatos($sql, $conexion, $atts, "Nom");
 	$LISTA_EVALUADORES['Eva']['nombre'][$i]=$aux['Nom']['nombre'][0].' '.$aux['Nom']['apellido'][0];
+        $LISTA_EVALUADORES['Eva']['unidad'][$i]=$aux['Nom']['unidad'][0];
 	$LISTA_EVALUADORES['Eva']['re_competencia'][$i]=array();
 	$LISTA_EVALUADORES['Eva']['re_factor'][$i]=array();
+
+	// Unidad del supervisor inmediato
+        $sql = "SELECT nombre FROM ORGANIZACION WHERE id='".$LISTA_EVALUADORES['Eva']['unidad'][$i]."'";
+        $atts = array("nombre");
+        $aux= obtenerDatos($sql, $conexion, $atts, "Org");
+        $LISTA_EVALUADORES['Eva']['nombre_unidad'][$i]=$aux['Org']['nombre'][0]; 
+
+        // Cargo del supervisor inmediato
+        $sql="SELECT nombre, codigo FROM CARGO WHERE id IN (SELECT id_car FROM PERSONA_CARGO WHERE id_per='".$LISTA_EVALUADORES['Eva']['id_encuestado'][$i]."')";
+        $atts = array("nombre", "codigo");
+        $aux= obtenerDatos($sql, $conexion, $atts, "Car");
+        $LISTA_EVALUADORES['Eva']['nombre_cargo'][$i]=$aux['Car']['nombre'][0]; //Nombre del cargo
+        $LISTA_EVALUADORES['Eva']['cargo'][$i]=$aux['Car']['codigo'][0]; //Codigo del cargo 
+
+        // Cargo del supervisor inmediato
+        $sql="SELECT nombre, codigo FROM CARGO WHERE id='".$id_car."'";
+        $atts = array("nombre", "codigo");
+        $aux= obtenerDatos($sql, $conexion, $atts, "Car");
+        $CARGO=$aux['Car']['nombre'][0]; //Nombre del cargo
+        $CODIGO_CARGO=$aux['Car']['codigo'][0]; //Codigo del cargo 
 	
 	//Obtener resultados para la sección de competencias
 	for ($j=0; $j<$LISTA_COMPETENCIAS[max_res] ;$j++){
@@ -258,14 +308,14 @@
 	$PUNTAJE_COMPETENCIAS_MAX=0;//Puntaje maximo de la seccion de competencias
 	$PUNTAJE_COMPETENCIAS=0;//Puntaje total de la sección de competencias
 	for($i=0; $i<$LISTA_COMPETENCIAS[max_res] ;$i++){
-	  $PUNTAJE_COMPETENCIAS_MAX+=3;
+	  $PUNTAJE_COMPETENCIAS_MAX+=5;
 	  $PUNTAJE_COMPETENCIAS+=($PROMEDIO_EVALUADORES['re_competencia'][$i])/$n;
 	}
 	
 	$PUNTAJE_FACTORES_MAX=0;//Puntaje maximo de la seccion de competencias
 	$PUNTAJE_FACTORES=0;//Puntaje total de la sección de competencias
 	for($i=0; $i<$LISTA_FACTORES[max_res] ;$i++){
-	  $PUNTAJE_FACTORES_MAX+=3*$LISTA_FACTORES['Preg']['peso'][$i];
+	  $PUNTAJE_FACTORES_MAX+=5*$LISTA_FACTORES['Preg']['peso'][$i];
 	  $PUNTAJE_FACTORES+=($PROMEDIO_EVALUADORES['re_factor'][$i]*$LISTA_FACTORES['Preg']['peso'][$i])/$n;
 	}
 	
@@ -273,7 +323,7 @@
 	$BRECHA=(($PUNTAJE_COMPETENCIAS_MAX-$PUNTAJE_COMPETENCIAS)/$PUNTAJE_COMPETENCIAS_MAX)*100;
       }
       
-      
+       
      
     }//cierre del if
     
@@ -401,8 +451,13 @@
       
     }//Cierre del if de Validación de Resultados
     
-    //Cierre conexión a la BD
-    //cerrarConexion($conexion);
+    //Cierre conexión a la BD si no voy a descargar
+    if(isset($_GET['action'])) {
+	if($_GET['action']!="descargar") {
+    		cerrarConexion($conexion);
+	}
+
+    } 
 
     if (isset($_GET['action'])){
         switch ($_GET['action']) {

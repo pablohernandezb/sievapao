@@ -122,7 +122,7 @@
       $texto_encuesta=$FAMILIA_ROL_EVALUADO['Fam']['nombre'][0];
       $pdf->Cell('', '', $texto_encuesta, 0, 1, 'C', false, '', 0, false, 'T', 'C'); 
          
-      $pdf->Cell('', '', 'PROCESO DE EVALUACIÓN ____________________________', 0, 1, 'C', false, '', 0, false, 'T', 'C');  
+      $pdf->Cell('', '', 'PROCESO DE EVALUACIÓN - '.$PERIODO.' ', 0, 1, 'C', false, '', 0, false, 'T', 'C');  
       
       $pdf->Ln(5, false);
       
@@ -174,24 +174,15 @@
       
          
          if(strcmp($LISTA_PREGUNTAS['Preg']['seccion'][$i],"competencia")==0 && $instruc_comp!=1){
-            $texto_seccion="I. INSTRUCCIÓN GENERAL<br/>
-                           <br/>
-			   El propósito de esta encuesta es recolectar información sobre el desempeño del trabajador, 
-                           a fin de conocer las áreas que deban ser fortalecidas, utilizando programas de formación 
-                           y adiestramiento para llegar al nivel de  desempeño requerido.
-			   <br/>
-			   Al llenar la encuesta debe considerar todos los factores  sin  omitir alguno. 
-			   La veracidad de sus respuestas contribuirá a reflejar conductas generadas que inciden en el desempeño.
-			   <br/>";
+            $texto_seccion='I. INSTRUCCIÓN GENERAL<br />
+			   <br />El propósito de esta encuesta es recolectar información sobre el desempeño del trabajador, a fin de conocer las áreas que deban ser fortalecidas, utilizando programas de formación y adiestramiento para llegar al nivel de  desempeño requerido. Al llenar la encuesta debe considerar todos los factores  sin  omitir alguno. La veracidad de sus respuestas contribuirá a reflejar conductas generadas que inciden en el desempeño.<br />';
                            
-            $texto_seccion.="<br/>
-                           <br/>
-                           II. ESCALA DE EVALUACIÓN<br/>
-                           <br/>
-                           Coloque la calificación que identifique la frecuencia de la conducta en cada aspecto de la encuesta de acuerdo a su percepción. Por favor evalúe la conducta como la observa, no como a usted le gustaría que fuera. <br />Utilice la siguiente la escala: Nunca, Rara vez, A veces, Con frecuencia, Generalmente y Siempre. 
-                           <br/><br/>
-                           <br/><br/>
-                           III. EVALUACIÓN DE FACTORES DE DESEMPEÑO";
+            $texto_seccion.='<br />
+                           II. ESCALA DE EVALUACIÓN<br />
+                           Coloque la calificación que identifique la frecuencia de la conducta en cada aspecto de la encuesta de acuerdo a su percepción. Por favor evalúe la conducta como la observa, no como a usted le gustaría que fuera. <br />Utilice la siguiente la escala: Nunca, Rara vez, A veces, Con frecuencia, Generalmente y Siempre.<br /><br />
+                           III. EVALUACIÓN DE FACTORES DE DESEMPEÑO <br />
+			   Las respuestas se verán marcadas con una "X" en color <span style="color: rgb(0, 94, 255);">azul</span> para el Supervisor Inmediato y con una "O" en color <span style="color: rgb(0, 128, 64);">verde</span> para el Evaluado.<br /> ';
+		           
             $instruc_comp = 1;
 
             $pdf->writeHTML($texto_seccion, true, false, true, true, '');
@@ -237,13 +228,13 @@
             $tbl ='
             <table border="1" cellpadding="2" cellspacing="2" align="center">
                <tr nobr="true">
-                  <td width="40%">Factor > '.$htmlPregunta.'</td>
-                  <td width="10%">Nunca</td>
-                  <td width="10%">Rara vez</td>
-                  <td width="9%">A veces</td>
-                  <td width="12%">Con frecuencia</td>
-                  <td width="10%">Generalmente</td>
-                  <td width="9%">Siempre</td>
+                  <td width="40%">Factor > <strong>'.$htmlPregunta.'</strong></td>
+                  <td width="10%"><p style="font-size:9px">Nunca</p></td>
+                  <td width="10%"><p style="font-size:9px">Rara vez</p></td>
+                  <td width="9%"><p style="font-size:9px">A veces</p></td>
+                  <td width="12%"><p style="font-size:9px">Con frecuencia</p></td>
+                  <td width="10%"><p style="font-size:9px">Generalmente</p></td>
+                  <td width="9%"><p style="font-size:9px">Siempre</p></td>
                </tr>';
          
             for($j=0; $j<$LISTA_SUBPREGUNTAS[max_res]; $j++){
@@ -251,75 +242,89 @@
                
                $tbl.='
                   <tr nobr="true">
-                     <td>'.$LISTA_SUBPREGUNTAS['Preg']['titulo'][$j].'</td>';
-		     switch($LISTA_COMPETENCIAS['Preg']['resultado'][$i]) {
+                     <td><p style="font-size:13px">'.$LISTA_SUBPREGUNTAS['Preg']['titulo'][$j].'</p></td>';
+
+		     // Busco las respuestas del evaluado
+		     switch($LISTA_COMPETENCIAS['Preg']['resultado'][$i+$j]) {
 			case 'Nunca':
-		              $tbl.='<td>X</td>
-				     <td></td>
-				     <td></td>
-				     <td></td>
-				     <td></td>
-				     <td></td>';
+		              $RESP_EVA[0]='O';
 			      break;
 			case 'Rara vez':
-		              $tbl.='<td></td>
-				     <td>X</td>
-				     <td></td>
-				     <td></td>
-				     <td></td>
-				     <td></td>';
+		              $RESP_EVA[1]='O';
 			      break;
 			case 'A veces':
-		              $tbl.='<td></td>
-				     <td></td>
-				     <td>X</td>
-				     <td></td>
-				     <td></td>
-				     <td></td>';
+		              $RESP_EVA[2]='O';
 			      break;
 			case 'Con frecuencia':
-		              $tbl.='<td></td>
-				     <td></td>
-				     <td></td>
-				     <td>X</td>
-				     <td></td>
-				     <td></td>';
+		              $RESP_EVA[3]='O';
 			      break;
 			case 'Generalmente':
-		              $tbl.='<td></td>
-				     <td></td>
-				     <td></td>
-				     <td></td>
-				     <td>X</td>
-				     <td></td>';
+		              $RESP_EVA[4]='O';
 			      break;
 			case 'Siempre':
-		              $tbl.='<td></td>
-				     <td></td>
-				     <td></td>
-				     <td></td>
-				     <td></td>
-				     <td>X</td>';
+		              $RESP_EVA[5]='O';
 			      break;
 			default:
-		              $tbl.='<td></td>
-				     <td></td>
-				     <td></td>
-				     <td></td>
-				     <td></td>
-				     <td></td>';
 			      break;
-		     }
+		     }               
+
+		    // Busco las respuestas del supervisor inmediato que hace la consulta
+                    $ind_sup = 0;
+		    for($k=0; $k<count($LISTA_EVALUADORES['Eva']['token_ls']); $k++) {
+			if($LISTA_EVALUADORES['Eva']['token_ls'][$k]==$_GET['token_ls']) {
+				$ind_sup = $k;
+			}
+		    }
+
+		     switch($LISTA_EVALUADORES['Eva']['re_competencia'][$ind_sup][$i+$j]) {
+			case 'Nunca':
+		              $RESP_SUP[0]='X';
+			      break;
+			case 'Rara vez':
+		              $RESP_SUP[1]='X';
+			      break;
+			case 'A veces':
+		              $RESP_SUP[2]='X';
+			      break;
+			case 'Con frecuencia':
+		              $RESP_SUP[3]='X';
+			      break;
+			case 'Generalmente':
+		              $RESP_SUP[4]='X';
+			      break;
+			case 'Siempre':
+		              $RESP_SUP[5]='X';
+			      break;
+			default:
+			      break;
+		     }         
+
+
+          $tbl.='<td><span style="color: rgb(0, 128, 64);">'.$RESP_EVA[0].'</span> &nbsp; <span style="color: rgb(0, 94, 255);">'.$RESP_SUP[0].'</span></td>
+                 <td><span style="color: rgb(0, 128, 64);">'.$RESP_EVA[1].'</span> &nbsp; <span style="color: rgb(0, 94, 255);">'.$RESP_SUP[1].'</span></td>
+                 <td><span style="color: rgb(0, 128, 64);">'.$RESP_EVA[2].'</span> &nbsp; <span style="color: rgb(0, 94, 255);">'.$RESP_SUP[2].'</span></td>
+                 <td><span style="color: rgb(0, 128, 64);">'.$RESP_EVA[3].'</span> &nbsp; <span style="color: rgb(0, 94, 255);">'.$RESP_SUP[3].'</span></td>
+		 <td><span style="color: rgb(0, 128, 64);">'.$RESP_EVA[4].'</span> &nbsp; <span style="color: rgb(0, 94, 255);">'.$RESP_SUP[4].'</span></td>
+		 <td><span style="color: rgb(0, 128, 64);">'.$RESP_EVA[5].'</span> &nbsp; <span style="color: rgb(0, 94, 255);">'.$RESP_SUP[5].'</span></td>';
                $tbl.='</tr>';
+
+	     // Limpio los arreglos usados para escribir las respuestas
+             unset($RESP_EVA);
+	     unset($RESP_SUP);   
+
             }
             
             $tbl.='</table> <br>';
             
             $pdf->writeHTML($tbl, true, false, false, true, '');
             
-            // Añade una página
-            // $pdf->AddPage();
-         
+             //Añade una página
+	     if($i%3==0 || $i==0){
+	             $pdf->AddPage();
+	     }
+
+      
+
          }else{
                $pdf->SetFont('helvetica', '', 12);
                
@@ -365,11 +370,11 @@
                <th colspan="2" bgcolor="#cccccc">Supervisor Inmediato</th>
             </tr>
             <tr nobr="true" align="left">
-               <td><small>Nombre y Apellidos:</small>
+               <td><small>Nombre y Apellidos: '.$LISTA_EVALUADORES['Eva']['nombre'][$ind_sup].'</small>
                   <br/>
-                  <small>Cargo:</small>
+                  <small>Cargo: '.$LISTA_EVALUADORES['Eva']['nombre_cargo'][$ind_sup].'</small>
                   <br/>
-                  <small>Ubicación:</small>
+                  <small>Ubicación: '.$LISTA_EVALUADORES['Eva']['nombre_unidad'][$ind_sup].'</small>
                   <br/><br/>
                   __________________
                   <br/>
