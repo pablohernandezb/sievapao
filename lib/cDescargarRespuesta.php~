@@ -158,7 +158,7 @@
       $atts = array("id_encuesta_ls", "id_pregunta", "id_pregunta_ls", "titulo", "seccion");
       
       $LISTA_PREGUNTAS= obtenerDatos($sql, $conexion, $atts, "Preg");
-      
+      $m = 0;
       for($i=0; $i<$LISTA_PREGUNTAS[max_res]; $i++){
 
 
@@ -245,7 +245,7 @@
                      <td><p style="font-size:13px">'.$LISTA_SUBPREGUNTAS['Preg']['titulo'][$j].'</p></td>';
 
 		     // Busco las respuestas del evaluado
-		     switch($LISTA_COMPETENCIAS['Preg']['resultado'][$i+$j]) {
+		     switch($LISTA_COMPETENCIAS['Preg']['resultado'][$m]) {
 			case 'Nunca':
 		              $RESP_EVA[0]='O';
 			      break;
@@ -276,7 +276,7 @@
 			}
 		    }
 
-		     switch($LISTA_EVALUADORES['Eva']['re_competencia'][$ind_sup][$i+$j]) {
+		     switch($LISTA_EVALUADORES['Eva']['re_competencia'][$ind_sup][$m]) {
 			case 'Nunca':
 		              $RESP_SUP[0]='X';
 			      break;
@@ -310,7 +310,10 @@
 
 	     // Limpio los arreglos usados para escribir las respuestas
              unset($RESP_EVA);
-	     unset($RESP_SUP);   
+	     unset($RESP_SUP);
+	     
+	     // Incremento la variable para buscar las respuestas
+	     $m++;   
 
             }
             
@@ -374,7 +377,7 @@
                   <br/>
                   <small>Cargo: '.$LISTA_EVALUADORES['Eva']['nombre_cargo'][$ind_sup].'</small>
                   <br/>
-                  <small>Ubicación: '.$LISTA_EVALUADORES['Eva']['nombre_unidad'][$ind_sup].'</small>
+                  <small>Unidad: '.$LISTA_EVALUADORES['Eva']['nombre_unidad'][$ind_sup].'</small>
                   <br/><br/>
                   __________________
                   <br/>
@@ -399,11 +402,11 @@
                <th colspan="2" bgcolor="#cccccc">Supervisor Jerárquico</th>
             </tr>
             <tr nobr="true" align="left">
-               <td><small>Nombre y Apellidos:</small>
+               <td><small>Nombre y Apellidos: '.$SUPERVISOR_JER['nombre'].'</small>
                   <br/>
-                  <small>Cargo:</small>
+                  <small>Cargo: '.$SUPERVISOR_JER['nombre_cargo'].'</small>
                   <br/>
-                  <small>Ubicación:</small>
+                  <small>Unidad: '.$SUPERVISOR_JER['nombre_unidad'].'</small>
                   <br/><br/>
                   __________________
                   <br/>

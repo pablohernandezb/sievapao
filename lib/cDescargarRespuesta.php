@@ -158,7 +158,7 @@
       $atts = array("id_encuesta_ls", "id_pregunta", "id_pregunta_ls", "titulo", "seccion");
       
       $LISTA_PREGUNTAS= obtenerDatos($sql, $conexion, $atts, "Preg");
-      
+      $m = 0;
       for($i=0; $i<$LISTA_PREGUNTAS[max_res]; $i++){
 
 
@@ -245,7 +245,7 @@
                      <td><p style="font-size:13px">'.$LISTA_SUBPREGUNTAS['Preg']['titulo'][$j].'</p></td>';
 
 		     // Busco las respuestas del evaluado
-		     switch($LISTA_COMPETENCIAS['Preg']['resultado'][$i+$j]) {
+		     switch($LISTA_COMPETENCIAS['Preg']['resultado'][$m]) {
 			case 'Nunca':
 		              $RESP_EVA[0]='O';
 			      break;
@@ -276,7 +276,7 @@
 			}
 		    }
 
-		     switch($LISTA_EVALUADORES['Eva']['re_competencia'][$ind_sup][$i+$j]) {
+		     switch($LISTA_EVALUADORES['Eva']['re_competencia'][$ind_sup][$m]) {
 			case 'Nunca':
 		              $RESP_SUP[0]='X';
 			      break;
@@ -310,7 +310,10 @@
 
 	     // Limpio los arreglos usados para escribir las respuestas
              unset($RESP_EVA);
-	     unset($RESP_SUP);   
+	     unset($RESP_SUP);
+	     
+	     // Incremento la variable para buscar las respuestas
+	     $m++;   
 
             }
             
@@ -319,7 +322,7 @@
             $pdf->writeHTML($tbl, true, false, false, true, '');
             
              //Añade una página
-	     if($i%3==0 || $i==0){
+	     if($i%4==0 || $i==0){
 	             $pdf->AddPage();
 	     }
 
