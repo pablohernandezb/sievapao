@@ -25,12 +25,7 @@
     <p>
 	Podrás ver las diferentes evaluaciones que debes realizar y ver los resultados.   
     </p><br><br><br>";
-    if($is_supervisor) { 
-              echo '<a href="vListarEvaluaciones.php?view&id='.$cedula.'" class="btn btn-info">Listar Evaluaciones</a>&nbsp;&nbsp;<a href="vSupervisar.php">Supervisar Evaluaciones</a><br><br>';
-    } else {
-	      echo '<a href="vListarEvaluaciones.php?view&id='.$cedula.'" class="btn btn-info">Listar Evaluaciones</a><br><br>';
-    }
-    
+    echo '<a href="vListarEvaluaciones.php?view&id='.$cedula.'" class="btn btn-info">Listar Evaluaciones</a><br><br>';
     }
     ?>
 </div>

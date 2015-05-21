@@ -1430,7 +1430,7 @@ textarea::-webkit-input-placeholder {
 }
 .input-xxxlarge {
   width: 530px;
-  height: auto;
+  height: 20px !important;
 }
 input[class*="span"],
 select[class*="span"],
@@ -3103,7 +3103,8 @@ input[type="submit"].btn.btn-mini {
   list-style: none;
 }
 .nav > li > a {
-  display: block;
+  display: inline;
+  margin-top: 3px;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -6297,7 +6298,7 @@ button.close {
   }
   .navbar .nav-collapse .nav.pull-right {
     float: none;
-    margin-left: 0;
+    margin-left: 0px;
   }
   .nav-collapse,
   .nav-collapse.collapse {

@@ -83,24 +83,8 @@
         </a>
        <a class='brand' href='index.php'>Inicio</a>
        <div class='nav-collapse collapse' id='main-menu'>
-        <ul class='nav' id='main-menu-left'>
-          <li class='dropdown'>
-            <a class='dropdown-toggle' data-toggle='dropdown' href='#'>Evaluaciones <b class='caret'></b></a>
-            <ul class='dropdown-menu' id='swatch-menu'>
-              <? if($is_supervisor) { ?>
-              <li><a href='vListarEvaluaciones.php?view&id=<? echo $cedula ?>'>Listar Evaluaciones</a></li>
-	      <li><a href='vSupervisar.php'>Supervisar Evaluaciones</a></li>
-	      <? } else { ?>
-	      <li><a href='vListarEvaluaciones.php?view&id=<? echo $cedula ?>'>Listar Evaluaciones</a></li>
-	      <? } ?>
-            </ul>
-          </li>
-        </ul>
         <ul class='nav pull-right' id='main-menu-right'>
-          <li><a class='dropdown-toggle' data-toggle='dropdown' href='#'><?mostrarDatosUsuario()?><b class='caret'></b></a>
-            <ul class='dropdown-menu'>
-              <li><a rel='tooltip' href='salir.php' title='Cerrar Sesi&oacute;n'>Salir <i class='icon-off'></i></a></li>
-            </ul>
+          <li><?mostrarDatosUsuario()?> <a href='salir.php'>Salir <i class='icon-off'></i></a>
           </li>
         </ul>
        </div>

@@ -30,7 +30,7 @@
   <!-- Codigo importante -->
   <?php
     if ($LISTA_EVALUACION_ACTUAL['max_res']==0){
-      echo "<br><br><br><br><br><br><p class='text-center text-info'>Hasta el momento no hay evaluaciones para el usuario.</p><br><br><br><br><br><br>";
+      echo "<br><br><p class='text-center text-info'>Hasta el momento no hay evaluaciones pendientes para el usuario.</p><br><br>";
     }else{
   ?>
       <br><p class="lead"><small>Lista de evaluaciones</small></p>
@@ -66,8 +66,8 @@
 		echo $LISTA_EVALUACION_ACTUAL['Enc']['nombre_periodo'][$i];echo " ";
 	      ?></small></td>
 	      <td class="center lsmallT" nowrap><small><? 
-		if ($LISTA_EVALUACION_ACTUAL['Enc']['tipo'][$i]=="autoevaluacion") echo 'Encuesta de autoevaluación';
-		if ($LISTA_EVALUACION_ACTUAL['Enc']['tipo'][$i]=="evaluador") echo 'Encuesta como evaluador';
+		if ($LISTA_EVALUACION_ACTUAL['Enc']['tipo'][$i]=="autoevaluacion") echo 'Autoevaluación';
+		if ($LISTA_EVALUACION_ACTUAL['Enc']['tipo'][$i]=="evaluador") echo 'Evaluación del Supervisor';
 	      ?></small></td>     
 	      <td class="center lsmallT" nowrap><small><? 
 		echo $LISTA_EVALUACION_ACTUAL['Enc']['nombre'][$i];echo " ";echo $LISTA_EVALUACION_ACTUAL['Enc']['apellido'][$i];
@@ -182,8 +182,8 @@
 		echo $LISTA_EVALUACION_PASADA['Enc']['nombre_periodo'][$i];echo " ";
 	      ?></small></td>
 	      <td class="center lsmallT" nowrap><small><? 
-		if ($LISTA_EVALUACION_PASADA['Enc']['tipo'][$i]=="autoevaluacion") echo 'Encuesta de autoevaluación';
-		if ($LISTA_EVALUACION_PASADA['Enc']['tipo'][$i]=="evaluador") echo 'Encuesta como evaluador';
+		if ($LISTA_EVALUACION_PASADA['Enc']['tipo'][$i]=="autoevaluacion") echo 'Autoevaluación';
+		if ($LISTA_EVALUACION_PASADA['Enc']['tipo'][$i]=="evaluador") echo 'Evaluación del Supervisor';
 	      ?></small></td>     
 	      <td class="center lsmallT" nowrap><small><? 
 		echo $LISTA_EVALUACION_PASADA['Enc']['nombre'][$i];echo " ";echo $LISTA_EVALUACION_PASADA['Enc']['apellido'][$i];

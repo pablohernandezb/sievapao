@@ -1,1 +1,0 @@
-00 00 04 05 * wget -O -q -t 1 'http://localhost/sievapao/lib/cEvaluaciones.php?action=desactivar&inicio=20-04-2015'

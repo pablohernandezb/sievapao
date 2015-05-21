@@ -3103,7 +3103,7 @@ input[type="submit"].btn.btn-mini {
   list-style: none;
 }
 .nav > li > a {
-  display: block;
+  display: inline;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -6297,7 +6297,7 @@ button.close {
   }
   .navbar .nav-collapse .nav.pull-right {
     float: none;
-    margin-left: 0;
+    margin-left: 0px;
   }
   .nav-collapse,
   .nav-collapse.collapse {
