@@ -119,22 +119,11 @@
 		    while ($i <= $columna){
 		      $fila = $excel->parser->getRow($i);
 
-		      $codigo = $fila[0].$fila[1].$fila[2];
-
 		      $sql="INSERT INTO ORGANIZACION (id, idsup, nombre, codigo, descripcion, observacion) VALUES(";
-		      $sql.="'$codigo', ";  //id organizacion   
-		      if (substr($codigo, 1) == '000') {
-			$sql.="'0', ";  //id organizacion                
-		      }elseif (substr($codigo, 2) == '00'){
-			$sup = substr($codigo, 0, 1)."000";
-			$sql.="'$sup', ";  //id organizacion   
-		      } else {
-			$sup = substr($codigo, 0, 2)."00";
-			$sql.="'$sup', ";  //id organizacion   
-		      }
-		
-		      $sql.= "'$fila[3]', ".  //nombre de la organizacion
-		      "'$codigo', ".  //codigo de la organizacion
+		      $sql.="'".$fila[0]."', ";  //id organizacion   
+  		      $sql.="'".$fila[1]."', ";  //id organizacion superior                
+		      $sql.= "'".$fila[2]."', ".  //nombre de la organizacion
+		      "'".$fila[0]."', ".  //codigo de la organizacion
 		      "'', ".  //descripcion de la organizacion
 		      "'' ".  //observacion de la organizacion
 		      ")";
