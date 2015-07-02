@@ -148,7 +148,7 @@ function obtenerIds($conexion, $tabla, $persona){
 -------------------------------------------------------------------------*/
 
 function isAdmin() {
-    $admins = array("dgch","evaluaciones","mustariz","02-35027");
+    $admins = array("dgch","evaluaciones","mustariz","02-35027","leygonza");
     if (in_array($_SESSION['USBID'],$admins))
         return true;
     else
