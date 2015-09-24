@@ -228,18 +228,19 @@
     
     <? if(isset($_GET['action']) ) { ?>
     <br>
-    <p class="lead"><small>Retroalimentación</small></p>
+    <p class="lead"><small>Parte 2 - Retroalimentación</small></p>
     <p class="lsmall muted">Valide los resultados obtenidos por usted y complete el proceso de retroalimentación</p>
 	<? switch($_GET['action']){
 	  case 'retroalimentacion':?>
 	  <div class="well" style="padding:8px; background-color: #fff; box-shadow:none" align="center">
-	    
+	        <p>Mediante esta opción del sistema llamada "Retroalimentación", la Dirección de Gestión del Capital Humano podrá conocer y llevar un registro del número de  supervisores que cumplen con este aspecto tan importante en su rol y generar acciones de adiestramiento que faciliten al supervisor los conocimientos  y habilidades necesarios para que exista una comunicación que favorezca la relación entre supervisor/supervisado conllevando a un mejor desempeño.</p>
 		<form id="retroalimentacion" class="form-horizontal" method="get" action="lib/cResultados.php">
 		<input type="hidden" id="action" name="action" value="retroalimentar"/>
 		<input type="hidden" id="token_ls" name="token_ls" value="<?echo $_GET['token_ls']?>"/>
-		<p>¿Se realizó la retroalimentación y se hicieron compromisos? <input type="radio" name="retroalimentacion" value="si" checked> Sí &nbsp;&nbsp;&nbsp;<input type="radio" name="retroalimentacion" value="no"> No</p>
 		<br>
-
+		<p><strong>¿Se realizó la retroalimentación y se estableció algún compromiso individual que enriquezca el área de oportunidad detectada? <input type="radio" name="retroalimentacion" value="si" checked> Sí &nbsp;&nbsp;&nbsp;<input type="radio" name="retroalimentacion" value="no"> No</strong></p>
+		<br>
+		<p>Recuerde que la comunicación es una oportunidad para corregir o completar algún aspecto que no haya sido informado o interpretado correctamente.</p>
 		<br><br><small>Haga click en el botón <i>Enviar retroalimentación</i> para finalizar el proceso de evaluación</small><br><br>
 	        <p>
 		<button type="submit" id="confirmButton" class="btn btn-success" >Enviar retroalimentación</button>

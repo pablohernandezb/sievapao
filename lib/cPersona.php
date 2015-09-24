@@ -151,7 +151,7 @@
 
             case 'edit':
                 $sql = "UPDATE PERSONA SET activo = '$_POST[activo]', tipo='$_POST[tipo]', nombre='$_POST[name]', apellido='$_POST[lname]' , cedula='$_POST[ced]', sexo='$_POST[sex]', fecha_nac='$_POST[fnac]', 
-                        unidad='$_POST[org]', email='$_POST[email]', condicion='$_POST[condicion]' WHERE id='$_GET[id]'";
+                        unidad='$_POST[org]', email='$_POST[email]', condicion='$_POST[condicion]', rol='$_POST[rol]' WHERE id='$_GET[id]'";
                 break;  
 	    case 'view';
 		break;

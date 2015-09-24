@@ -368,7 +368,7 @@
 
 	      $sql.="WHERE token_ls='$_GET[token_ls]'";
 	      $resultado=ejecutarConsulta($sql, $conexion);
-	      $_SESSION['MSJ'] = "Se ha realizado la retroalimentación. Gracias por su participación en el proceso de evaluación.";
+	      $_SESSION['MSJ'] = "Se ha realizado la retroalimentación. Usted finalizó con todo el proceso de evaluación. Gracias";
 	      header("Location: ../vListarEvaluaciones.php?success");
 	  }
 	  break;

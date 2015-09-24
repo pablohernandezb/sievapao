@@ -144,30 +144,30 @@
 
 	if($_GET['action']=='descargar') {
       
-      //Obtención de los datos del supervisor jerárquico
+	        //Obtención de los datos del supervisor jerárquico
 
-        $sql="SELECT id_sup FROM persona_supervisor WHERE id_per='".$id_evaluado."'";
-        $atts = array("id_sup");
-        $aux= obtenerDatos($sql, $conexion, $atts, "Jer");
-        $SUPERVISOR_JER['id']=$aux['Jer']['id_sup'][0]; // Id
+		$sql="SELECT id_sup FROM persona_supervisor WHERE id_per='".$id_evaluado."'";
+		$atts = array("id_sup");
+		$aux= obtenerDatos($sql, $conexion, $atts, "Jer");
+		$SUPERVISOR_JER['id']=$aux['Jer']['id_sup'][0]; // Id
 
-        $sql="SELECT nombre, apellido, unidad FROM persona WHERE id='".$SUPERVISOR_JER['id']."'";
-        $atts = array("nombre", "apellido", "unidad");
-        $aux= obtenerDatos($sql, $conexion, $atts, "Jer");
-        $SUPERVISOR_JER['nombre']=$aux['Jer']['nombre'][0]." ".$aux['Jer']['apellido'][0]; // Nombre completo
-        $SUPERVISOR_JER['unidad']=$aux['Jer']['unidad'][0]; // Unidad
+		$sql="SELECT nombre, apellido, unidad FROM persona WHERE id='".$SUPERVISOR_JER['id']."'";
+		$atts = array("nombre", "apellido", "unidad");
+		$aux= obtenerDatos($sql, $conexion, $atts, "Jer");
+		$SUPERVISOR_JER['nombre']=$aux['Jer']['nombre'][0]." ".$aux['Jer']['apellido'][0]; // Nombre completo
+		$SUPERVISOR_JER['unidad']=$aux['Jer']['unidad'][0]; // Unidad
 
-        $sql="SELECT nombre FROM organizacion WHERE id='".$SUPERVISOR_JER['unidad']."'";
-        $atts = array("nombre");
-        $aux= obtenerDatos($sql, $conexion, $atts, "Jer");
-        $SUPERVISOR_JER['nombre_unidad']=$aux['Jer']['nombre'][0]; // Nombre de la unidad
+		$sql="SELECT nombre FROM organizacion WHERE id='".$SUPERVISOR_JER['unidad']."'";
+		$atts = array("nombre");
+		$aux= obtenerDatos($sql, $conexion, $atts, "Jer");
+		$SUPERVISOR_JER['nombre_unidad']=$aux['Jer']['nombre'][0]; // Nombre de la unidad
 
-        // Cargo del supervisor inmediato
-        $sql="SELECT nombre, codigo FROM CARGO WHERE id IN (SELECT id_car FROM PERSONA_CARGO WHERE id_per='".$SUPERVISOR_JER['id']."')";
-        $atts = array("nombre", "codigo");
-        $aux= obtenerDatos($sql, $conexion, $atts, "Jer");
-        $SUPERVISOR_JER['nombre_cargo']=$aux['Jer']['nombre'][0]; //Nombre del cargo
-        $SUPERVISOR_JER['cargo']=$aux['Jer']['codigo'][0]; //Codigo del cargo 
+		// Cargo del supervisor inmediato
+		$sql="SELECT nombre, codigo FROM CARGO WHERE id IN (SELECT id_car FROM PERSONA_CARGO WHERE id_per='".$SUPERVISOR_JER['id']."')";
+		$atts = array("nombre", "codigo");
+		$aux= obtenerDatos($sql, $conexion, $atts, "Jer");
+		$SUPERVISOR_JER['nombre_cargo']=$aux['Jer']['nombre'][0]; //Nombre del cargo
+		$SUPERVISOR_JER['cargo']=$aux['Jer']['codigo'][0]; //Codigo del cargo 
 	
 	}
 
@@ -368,7 +368,7 @@
 
 	      $sql.="WHERE token_ls='$_GET[token_ls]'";
 	      $resultado=ejecutarConsulta($sql, $conexion);
-	      $_SESSION['MSJ'] = "Se ha realizado la retroalimentación. Gracias por su participación en el proceso de evaluación.";
+	      $_SESSION['MSJ'] = "Se ha realizado la retroalimentación. Usted finalizó con todo el proceso de evaluación. Gracias.";
 	      header("Location: ../vListarEvaluaciones.php?success");
 	  }
 	  break;
