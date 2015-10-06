@@ -79,8 +79,8 @@
   <br>
 
   <!--RESULTADOS PARA LA SECCION DE COMPETENCIAS-->
-  <p class="lead"><small>Evaluación de competencias</small></p>
-  <p class="lsmall muted"> Resultados obtenidos para la evaluación de competencias</p>
+  <p class="lead"><small>Evaluación de Factores de Desempe&ntilde;o</small></p>
+  <p class="lsmall muted"> Resultados obtenidos para los Factores de Desempe&ntilde;o</p>
   
     <div class="row">
     <div class="span1"></div>
@@ -238,7 +238,7 @@
 		<input type="hidden" id="action" name="action" value="retroalimentar"/>
 		<input type="hidden" id="token_ls" name="token_ls" value="<?echo $_GET['token_ls']?>"/>
 		<br>
-		<p><strong>¿Se realizó la retroalimentación y se estableció algún compromiso individual que enriquezca el área de oportunidad detectada? <input type="radio" name="retroalimentacion" value="si" checked> Sí &nbsp;&nbsp;&nbsp;<input type="radio" name="retroalimentacion" value="no"> No</strong></p>
+		<p><strong>¿Se realizó la retroalimentación y se estableció algún compromiso individual que enriquezca el área de oportunidad detectada?<br> <input type="radio" name="retroalimentacion" value="si" checked> Sí &nbsp;&nbsp;&nbsp;<input type="radio" name="retroalimentacion" value="no"> No</strong></p>
 		<br>
 		<p>Recuerde que la comunicación es una oportunidad para corregir o completar algún aspecto que no haya sido informado o interpretado correctamente.</p>
 		<br><br><small>Haga click en el botón <i>Enviar retroalimentación</i> para finalizar el proceso de evaluación</small><br><br>

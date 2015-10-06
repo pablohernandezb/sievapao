@@ -197,7 +197,7 @@
 		$resultado_sql=ejecutarConsulta($sql, $conexion);
 	      }
 	      
-	      $_SESSION['MSJ'] = "Sus respuestas han sido procesadas. Gracias por realizar la encuesta";
+	      $_SESSION['MSJ'] = "Sus respuestas han sido procesadas. Gracias por completar la primera parte del proceso de evaluación.";
 	      header("Location: ./vListarEvaluaciones.php?success"); 
 	    } else {
 	      //No finalizó la encuesta
