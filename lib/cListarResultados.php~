@@ -18,10 +18,10 @@
       $nombre_periodo= $aux["Proc"]["periodo"][0];//nombre del periodo de evaluación
       
       //Obtención del número total de evaluaciones
-      $sql="SELECT tipo, token_ls, id_encuesta_ls, id_encuestado, id_evaluado, estado, ip, fecha, id_unidad FROM PERSONA_ENCUESTA WHERE periodo='";
+      $sql="SELECT tipo, token_ls, id_encuesta, id_encuesta_ls, id_encuestado, id_evaluado, estado, ip, fecha, id_unidad, id_car FROM PERSONA_ENCUESTA WHERE periodo='";
       $sql.=$_GET['periodo'];
       $sql.="' AND tipo='evaluador' AND estado='Finalizada'";
-      $atts= array("tipo", "token_ls", "id_encuesta_ls", "id_encuestado", "id_evaluado", "estado", "ip", "fecha", "id_unidad");
+      $atts= array("tipo", "token_ls", "id_encuesta", "id_encuesta_ls", "id_encuestado", "id_evaluado", "estado", "ip", "fecha", "id_unidad", "id_car");
       $LISTA_EVALUACION=obtenerDatos($sql, $conexion, $atts, "Aux");
       
       //Sorting de las evaluaciones según su estado
@@ -115,91 +115,37 @@
 	//Saco el Índice de Desempeño para el evaluado
 
       //Determinar a quién pertenece el token suministrado
-      $sql="SELECT tipo, id_evaluado, id_encuesta, periodo FROM PERSONA_ENCUESTA WHERE token_ls='".$LISTA_EVALUACION["Aux"]["token_ls"][$l]."'";
-      $atts=array("tipo", "id_evaluado", "id_encuesta", "periodo");
-      $aux=obtenerDatos($sql, $conexion, $atts, "Aux");
+      //$sql="SELECT tipo, id_evaluado, id_encuesta, periodo FROM PERSONA_ENCUESTA WHERE token_ls='".$LISTA_EVALUACION["Aux"]["token_ls"][$l]."'";
+      //$atts=array("tipo", "id_evaluado", "id_encuesta", "periodo");
+      //$aux=obtenerDatos($sql, $conexion, $atts, "Aux");
       
     
-      if ($aux['Aux']['tipo'][0]=='evaluador'){
+      //if ($aux['Aux']['tipo'][0]=='evaluador'){
 	//Si el token pertenece a un evaluador, buscamos el token del evaluado
-	$sql="SELECT token_ls FROM PERSONA_ENCUESTA WHERE ";
-	$sql.="id_encuesta='".$aux['Aux']['id_encuesta'][0]."' AND ";
-	$sql.="periodo='".$aux['Aux']['periodo'][0]."' AND ";
-	$sql.="id_evaluado='".$aux['Aux']['id_evaluado'][0]."' AND ";
-	$sql.="id_encuestado='".$aux['Aux']['id_evaluado'][0]."'";
-	$atts=array("token_ls");
-	$resultado=obtenerDatos($sql, $conexion, $atts, "Tok");
-	$token_ls_evaluado=$resultado['Tok']['token_ls'][0];
-      } else {
+	//$sql="SELECT token_ls FROM PERSONA_ENCUESTA WHERE ";
+	//$sql.="id_encuesta='".$aux['Aux']['id_encuesta'][0]."' AND ";
+	//$sql.="periodo='".$aux['Aux']['periodo'][0]."' AND ";
+	//$sql.="id_evaluado='".$aux['Aux']['id_evaluado'][0]."' AND ";
+	//$sql.="id_encuestado='".$aux['Aux']['id_evaluado'][0]."'";
+	//$atts=array("token_ls");
+	//$resultado=obtenerDatos($sql, $conexion, $atts, "Tok");
+	//$token_ls_evaluado=$resultado['Tok']['token_ls'][0];
+      //} else {
 	//Si el token pertenece al evaluado trabajamos con su token
 	$token_ls_evaluado=$LISTA_EVALUACION["Aux"]["token_ls"][$l];
-      }
+      //}
       
       //Obtención del ID para: encuesta, usuario evaluador, cargo evaluado, unidad asociada
       $sql="SELECT id_encuesta, id_encuesta_ls, id_evaluado, id_car, id_unidad, periodo FROM PERSONA_ENCUESTA WHERE token_ls='".$token_ls_evaluado."'";
       $atts = array("id_encuesta", "id_encuesta_ls", "id_evaluado", "id_car", "id_unidad", "periodo");
       $resultado= obtenerDatos($sql, $conexion, $atts, "Enc"); 
      
-      $id_evaluado=$resultado['Enc']['id_evaluado'][0];//ID del usuario evaluado
-
-      //Obtención del nombre del evaluado
-      $sql="SELECT nombre, apellido, cedula FROM PERSONA WHERE id='".$id_evaluado."'";
-      $atts = array("nombre", "apellido", "cedula");
-      $aux= obtenerDatos($sql, $conexion, $atts, "Nom");
-      $NOMBRE=$aux['Nom']['nombre'][0].' '.$aux['Nom']['apellido'][0]; //Nombre y apellido del usuario
-      $CEDULA=$aux['Nom']['cedula'][0];
-      
-      $id_car=$resultado['Enc']['id_car'][0];//ID del cargo evaluado
-      //Obtención del nombre del cargo evaluado
-      $sql="SELECT nombre, codigo FROM CARGO WHERE id='".$id_car."'";
-      $atts = array("nombre", "codigo");
-      $aux= obtenerDatos($sql, $conexion, $atts, "Car");
-      $CARGO=$aux['Car']['nombre'][0]; //Nombre del cargo
-      $CODIGO_CARGO=$aux['Car']['codigo'][0]; //Codigo del cargo 
-
-      $id_unidad=$resultado['Enc']['id_unidad'][0];//ID de la unidad adscrita del evaluado
-
-      if($id_unidad!=1) { //Cuando la prueba se aplica a una Unidad en específico
-
-      //Obtención del nombre de la unidad a la que está adscrito el usuario
-      $sql="SELECT nombre, idsup FROM ORGANIZACION WHERE id='".$id_unidad."'";
-      $atts = array("nombre");
-      $aux= obtenerDatos($sql, $conexion, $atts, "Org");
-      $UNIDAD=$aux['Org']['nombre'][0]; //Nombre de la unidad
-
-      } else { // Cuando la encuesta se hace a nivel universitario
-
-      $sql = "SELECT nombre, idsup FROM ORGANIZACION WHERE id IN (SELECT cast(unidad as int) FROM PERSONA WHERE id='".$id_evaluado."')";
-      $atts = array("nombre", "idsup");
-      $aux= obtenerDatos($sql, $conexion, $atts, "Org");
-      $UNIDAD=$aux['Org']['nombre'][0]; //Nombre de la unidad
-	
-      }
-
-      // Obtención de su Unidad Superior
-      if($aux['Org']['idsup'][0]!=0) { 
-
-      $sql = "SELECT nombre, idsup FROM ORGANIZACION WHERE id='".$aux['Org']['idsup'][0]."'";
-      $atts = array("nombre","idsup");
-      $aux= obtenerDatos($sql, $conexion, $atts, "OrgSup");
-      $UNIDADSUP=$aux['OrgSup']['nombre'][0]; //Nombre de la unidad superior
-      
-      	// Obtención de su Unidad Jerárquica
-	if($aux['OrgSup']['idsup'][0]!=0) {
-
-	$sql = "SELECT nombre FROM ORGANIZACION WHERE id='".$aux['OrgSup']['idsup'][0]."'";
-      	$atts = array("nombre");
-	$aux= obtenerDatos($sql, $conexion, $atts, "OrgJer");
-      	$UNIDADJER=$aux['OrgJer']['nombre'][0]; //Nombre de la unidad jerarquica
-      	
-
-	}
-
-      }
-
-      $id_encuesta=$resultado['Enc']['id_encuesta'][0];//ID de la encuesta para el token del usuario
-      $id_encuesta_ls=$resultado['Enc']['id_encuesta_ls'][0];//ID de la encuesta en Limesurvey para el token del usuario
-      $id_proceso=$resultado['Enc']['periodo'][0];//ID del proceso de evaluación correspondiente al token del usuario
+      $id_evaluado=$LISTA_EVALUACION["Aux"]["id_evaluado"][$l];//ID del usuario evaluado 
+      $id_car=$LISTA_EVALUACION["Aux"]["id_car"][$l];//ID del cargo evaluado
+      $id_unidad=$LISTA_EVALUACION["Aux"]["id_unidad"][$l];//ID de la unidad adscrita del evaluado
+      $id_encuesta=$LISTA_EVALUACION["Aux"]["id_encuesta"][$l];//ID de la encuesta para el token del usuario
+      $id_encuesta_ls=$LISTA_EVALUACION["Aux"]['id_encuesta_ls'][$l];//ID de la encuesta en Limesurvey para el token del usuario
+      $id_proceso=$_GET['periodo'];//ID del proceso de evaluación correspondiente al token del usuario
       
       //Obtención de las preguntas de la encuesta
       $sql="SELECT id_pregunta, titulo FROM PREGUNTA WHERE id_encuesta_ls='".$id_encuesta_ls."' AND seccion='competencia' AND id_pregunta_root_ls IS NOT NULL ORDER BY id_pregunta";
@@ -272,13 +218,7 @@
         $LISTA_EVALUADORES['Eva']['nombre_cargo'][$i]=$aux['Car']['nombre'][0]; //Nombre del cargo
         $LISTA_EVALUADORES['Eva']['cargo'][$i]=$aux['Car']['codigo'][0]; //Codigo del cargo 
 
-        // Cargo del supervisor inmediato
-        $sql="SELECT nombre, codigo FROM CARGO WHERE id='".$id_car."'";
-        $atts = array("nombre", "codigo");
-        $aux= obtenerDatos($sql, $conexion, $atts, "Car");
-        $CARGO=$aux['Car']['nombre'][0]; //Nombre del cargo
-        $CODIGO_CARGO=$aux['Car']['codigo'][0]; //Codigo del cargo 
-	
+
 	//Obtener resultados para la sección de competencias
 	for ($j=0; $j<$LISTA_COMPETENCIAS[max_res] ;$j++){
 	  $id_pregunta_j=$LISTA_COMPETENCIAS['Preg']['id_pregunta'][$j];
