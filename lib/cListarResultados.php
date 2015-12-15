@@ -143,54 +143,54 @@
       $id_evaluado=$resultado['Enc']['id_evaluado'][0];//ID del usuario evaluado
 
       //Obtención del nombre del evaluado
-      $sql="SELECT nombre, apellido, cedula FROM PERSONA WHERE id='".$id_evaluado."'";
-      $atts = array("nombre", "apellido", "cedula");
-      $aux= obtenerDatos($sql, $conexion, $atts, "Nom");
-      $NOMBRE=$aux['Nom']['nombre'][0].' '.$aux['Nom']['apellido'][0]; //Nombre y apellido del usuario
-      $CEDULA=$aux['Nom']['cedula'][0];
+      //$sql="SELECT nombre, apellido, cedula FROM PERSONA WHERE id='".$id_evaluado."'";
+      //$atts = array("nombre", "apellido", "cedula");
+      //$aux= obtenerDatos($sql, $conexion, $atts, "Nom");
+      //$NOMBRE=$aux['Nom']['nombre'][0].' '.$aux['Nom']['apellido'][0]; //Nombre y apellido del usuario
+      //$CEDULA=$aux['Nom']['cedula'][0];
       
       $id_car=$resultado['Enc']['id_car'][0];//ID del cargo evaluado
       //Obtención del nombre del cargo evaluado
-      $sql="SELECT nombre, codigo FROM CARGO WHERE id='".$id_car."'";
-      $atts = array("nombre", "codigo");
-      $aux= obtenerDatos($sql, $conexion, $atts, "Car");
-      $CARGO=$aux['Car']['nombre'][0]; //Nombre del cargo
-      $CODIGO_CARGO=$aux['Car']['codigo'][0]; //Codigo del cargo 
+      //$sql="SELECT nombre, codigo FROM CARGO WHERE id='".$id_car."'";
+      //$atts = array("nombre", "codigo");
+      //$aux= obtenerDatos($sql, $conexion, $atts, "Car");
+      //$CARGO=$aux['Car']['nombre'][0]; //Nombre del cargo
+      //$CODIGO_CARGO=$aux['Car']['codigo'][0]; //Codigo del cargo 
 
       $id_unidad=$resultado['Enc']['id_unidad'][0];//ID de la unidad adscrita del evaluado
 
       if($id_unidad!=1) { //Cuando la prueba se aplica a una Unidad en específico
 
       //Obtención del nombre de la unidad a la que está adscrito el usuario
-      $sql="SELECT nombre, idsup FROM ORGANIZACION WHERE id='".$id_unidad."'";
-      $atts = array("nombre");
-      $aux= obtenerDatos($sql, $conexion, $atts, "Org");
-      $UNIDAD=$aux['Org']['nombre'][0]; //Nombre de la unidad
+      //$sql="SELECT nombre, idsup FROM ORGANIZACION WHERE id='".$id_unidad."'";
+      //$atts = array("nombre");
+      //$aux= obtenerDatos($sql, $conexion, $atts, "Org");
+      //$UNIDAD=$aux['Org']['nombre'][0]; //Nombre de la unidad
 
       } else { // Cuando la encuesta se hace a nivel universitario
 
-      $sql = "SELECT nombre, idsup FROM ORGANIZACION WHERE id IN (SELECT cast(unidad as int) FROM PERSONA WHERE id='".$id_evaluado."')";
-      $atts = array("nombre", "idsup");
-      $aux= obtenerDatos($sql, $conexion, $atts, "Org");
-      $UNIDAD=$aux['Org']['nombre'][0]; //Nombre de la unidad
+      //$sql = "SELECT nombre, idsup FROM ORGANIZACION WHERE id IN (SELECT cast(unidad as int) FROM PERSONA WHERE id='".$id_evaluado."')";
+      //$atts = array("nombre", "idsup");
+      //$aux= obtenerDatos($sql, $conexion, $atts, "Org");
+      //$UNIDAD=$aux['Org']['nombre'][0]; //Nombre de la unidad
 	
       }
 
       // Obtención de su Unidad Superior
       if($aux['Org']['idsup'][0]!=0) { 
 
-      $sql = "SELECT nombre, idsup FROM ORGANIZACION WHERE id='".$aux['Org']['idsup'][0]."'";
-      $atts = array("nombre","idsup");
-      $aux= obtenerDatos($sql, $conexion, $atts, "OrgSup");
-      $UNIDADSUP=$aux['OrgSup']['nombre'][0]; //Nombre de la unidad superior
+      //$sql = "SELECT nombre, idsup FROM ORGANIZACION WHERE id='".$aux['Org']['idsup'][0]."'";
+      //$atts = array("nombre","idsup");
+      //$aux= obtenerDatos($sql, $conexion, $atts, "OrgSup");
+      //$UNIDADSUP=$aux['OrgSup']['nombre'][0]; //Nombre de la unidad superior
       
       	// Obtención de su Unidad Jerárquica
 	if($aux['OrgSup']['idsup'][0]!=0) {
 
-	$sql = "SELECT nombre FROM ORGANIZACION WHERE id='".$aux['OrgSup']['idsup'][0]."'";
-      	$atts = array("nombre");
-	$aux= obtenerDatos($sql, $conexion, $atts, "OrgJer");
-      	$UNIDADJER=$aux['OrgJer']['nombre'][0]; //Nombre de la unidad jerarquica
+	//$sql = "SELECT nombre FROM ORGANIZACION WHERE id='".$aux['OrgSup']['idsup'][0]."'";
+      	//$atts = array("nombre");
+	//$aux= obtenerDatos($sql, $conexion, $atts, "OrgJer");
+      	//$UNIDADJER=$aux['OrgJer']['nombre'][0]; //Nombre de la unidad jerarquica
       	
 
 	}
@@ -273,11 +273,11 @@
         $LISTA_EVALUADORES['Eva']['cargo'][$i]=$aux['Car']['codigo'][0]; //Codigo del cargo 
 
         // Cargo del supervisor inmediato
-        $sql="SELECT nombre, codigo FROM CARGO WHERE id='".$id_car."'";
-        $atts = array("nombre", "codigo");
-        $aux= obtenerDatos($sql, $conexion, $atts, "Car");
-        $CARGO=$aux['Car']['nombre'][0]; //Nombre del cargo
-        $CODIGO_CARGO=$aux['Car']['codigo'][0]; //Codigo del cargo 
+        //$sql="SELECT nombre, codigo FROM CARGO WHERE id='".$id_car."'";
+        //$atts = array("nombre", "codigo");
+        //$aux= obtenerDatos($sql, $conexion, $atts, "Car");
+        //$CARGO=$aux['Car']['nombre'][0]; //Nombre del cargo
+        //$CODIGO_CARGO=$aux['Car']['codigo'][0]; //Codigo del cargo 
 	
 	//Obtener resultados para la sección de competencias
 	for ($j=0; $j<$LISTA_COMPETENCIAS[max_res] ;$j++){

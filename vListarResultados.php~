@@ -94,7 +94,7 @@
   </tfoot>
           <tbody role="alert" aria-live="polite" aria-relevant="all">
           <?php
-            for ($i=0;$i<count($LISTA_RES['cedula'])+1;$i++){
+            for ($i=0;$i<count($LISTA_RES['cedula']);$i++){
           ?>
           <tr class="<?php echo $color_tabla; ?>" >
           <td class="center lsmallT" nowrap><small><?php echo $LISTA_RES['cedula'][$i]?></small></td>

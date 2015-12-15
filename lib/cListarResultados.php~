@@ -398,7 +398,7 @@
 	    $LISTA_RES["token"][$k]= $LISTA_EVALUACION["Aux"]["token_ls"][$l];
 	    $LISTA_RES["id_evaluado"][$k]= $LISTA_EVALUACION["Aux"]["id_evaluado"][$l];
 	    $LISTA_RES["unidad"][$k]=$nombre_unidad;
-	    $LSITA_RES["cedula"][$k]=$cedula;
+	    $LISTA_RES["cedula"][$k]=$cedula;
 	    $LISTA_RES["rol"][$k]=$rol;
             $LISTA_RES["id"][$k]=$PUNTAJE_COMPETENCIAS;
             $k++;

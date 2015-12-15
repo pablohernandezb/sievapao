@@ -77,7 +77,7 @@
       <th class="lsmallT"><small>C&eacute;dula</small></th>
       <th class="lsmallT"><small>Nombre</small></th>
       <th class="lsmallT"><small>Unidad de Adscripci&oacute;n</small></th>
-      <th class="lsmallT"><small>Rol</small></th> ?>
+      <th class="lsmallT"><small>Rol</small></th> 
       <th class="lsmallT"><small>ID</small></th>
       <th class="lsmallT"><small>Acci&oacute;n</small></th>
     </tr>
@@ -87,7 +87,7 @@
       <th class="lsmallT"><small>C&eacute;dula</small></th>
       <th class="lsmallT"><small>Nombre</small></th>
       <th class="lsmallT"><small>Unidad de Adscripci&oacute;n</small></th>
-      <th class="lsmallT"><small>Rol</small></th> ?>
+      <th class="lsmallT"><small>Rol</small></th> 
       <th class="lsmallT"><small>ID</small></th>
       <th class="lsmallT"><small>Acci&oacute;n</small></th>
     </tr>
