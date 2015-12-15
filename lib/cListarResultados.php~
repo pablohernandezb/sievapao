@@ -97,18 +97,23 @@
 	switch($aux["Datos"]["rol"][0]) {
 		case 1:
 			$rol = "Apoyo";
+			$divisor = 31;
 			break;
 		case 2: 
 			$rol = "Operativas";
+			$divisor = 32;
 			break;
 		case 3:
 			$rol = "Supervisorio Adm.";
+			$divisor = 32;
 			break;
 		case 4:
 			$rol = "Obrero";
+			$divisor = 31;
 			break;
 		case 5:
 			$rol = "Supervisorio Obr.";
+			$divisor = 34;
 			break;
 	}	
 
@@ -340,7 +345,7 @@
 	    $LISTA_RES["unidad"][$k]=$nombre_unidad;
 	    $LISTA_RES["cedula"][$k]=$cedula;
 	    $LISTA_RES["rol"][$k]=$rol;
-            $LISTA_RES["id"][$k]=$PUNTAJE_COMPETENCIAS;
+            $LISTA_RES["id"][$k]=($PUNTAJE_COMPETENCIAS*100)/($divisor*5);
             $k++;
 	   
       } //cierre de la iteración
