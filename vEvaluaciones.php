@@ -283,7 +283,7 @@
 		  <? } else { ?>
 		    <a href="./vEstadisticas.php?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="Ver estadísticas" >
 		      <img src="./img/iconos/visible-16.png" style="margin-left:5px;"></a>
-		    <a href="./lib/cEvaluaciones.php?action=delete&proceso=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="Eliminar" ><img src="./img/iconos/delete-16.png" style="margin-left:5px;"></a>
+		    <a href="./vListarResultados.php?periodo=<?echo $LISTA_EVALUACION['Proc']['id'][$i]; ?>" title="Listar Evaluaciones" ><img src="./img/iconos/pdf-16.png" style="margin-left:5px;"></a>
 		  <? } ?>		  		  
 	      </td>
 	      </tr>
